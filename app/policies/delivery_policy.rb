@@ -16,4 +16,12 @@ class DeliveryPolicy < ApplicationPolicy
   def past?
     true
   end
+
+  def upcoming?
+    true
+  end
+
+  def today?
+    true
+  end
 end
