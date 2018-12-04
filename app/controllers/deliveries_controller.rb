@@ -1,6 +1,7 @@
 class DeliveriesController < ApplicationController
 
   def index
+    @deliveries = policy_scope(Delivery)
   end
 
   def new
@@ -11,13 +12,12 @@ class DeliveriesController < ApplicationController
   def create
     @delivery = Delivery.create(deliveries_params)
     authorize @delivery
-    @company = Company.find(params[:id])
+    @company = Company.first
     @delivery.company = @company
+    @delivery.status = "Créer"
     if @delivery.save
-      raise
       redirect_to deliveries_path
     else
-      raise
       render :new
     end
   end
@@ -25,6 +25,10 @@ class DeliveriesController < ApplicationController
   def update
     @deliveries = Delivery.find(params[:id])
     @deliveries.update(deliveries_params)
+  end
+
+  def status
+    # à utiliser pour afficher le status ?
   end
 
   private
