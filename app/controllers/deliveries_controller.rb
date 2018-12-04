@@ -14,7 +14,6 @@ class DeliveriesController < ApplicationController
     authorize @delivery
     @company = Company.first
     @delivery.company = @company
-    @delivery.status = "Créer"
     if @delivery.save
       redirect_to deliveries_path
     else
@@ -22,27 +21,16 @@ class DeliveriesController < ApplicationController
     end
   end
 
-  # def assigned!(id)
-  #   @delivery = Delivery.find(params[:id])
-  #   if @delivery.picked_up_at != nil
-  #     @delivery.status = "Assignée"
-  # end
-
-
   def update
     @deliveries = Delivery.find(params[:id])
     @deliveries.update(deliveries_params)
-  end
-
-  def status
-    # à utiliser pour afficher le status ?
   end
 
   private
 
   def deliveries_params
     params.require(:delivery).permit(:address, :company_id, :recipient_name, :recipient_phone, :complete_before,
-                    :complete_after, :status)
+                    :complete_after)
   end
 
 end

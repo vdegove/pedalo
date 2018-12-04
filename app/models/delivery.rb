@@ -25,8 +25,8 @@ class Delivery < ApplicationRecord
   def status?
     if self.picked_up_at.nil?
       return "Enregisté"
-    elsif self.delivered.nil?
-      return "Assigné"
+    elsif self.delivered_at.nil?
+      return "Enlevé"
     else
       return "Livré"
     end
