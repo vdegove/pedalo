@@ -4,6 +4,13 @@ class DeliveriesController < ApplicationController
     @deliveries = policy_scope(Delivery)
   end
 
+  def past
+    morning = DateTime.now
+    mornig.hour = 0
+
+    @deliveries = Delivery.where("DateTime.now >= :complete_before <= DateTime.now + 1")
+  end
+
   def new
     @delivery = Delivery.new
     authorize @delivery
