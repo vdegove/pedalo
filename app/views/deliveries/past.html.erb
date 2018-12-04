@@ -1,4 +1,13 @@
-<h1> <%= @deliveries.first.company.name%>,  <strong> Past</strong> deliveries </h1>
+<div class="container">
+<div class="tabs">
+  <%= link_to "Passées", past_deliveries_path, class: "tab active" %>
+
+  <%= link_to "Aujourd'hui", today_deliveries_path, class: "tab" %>
+
+  <%= link_to "A venir", upcoming_deliveries_path, class: "tab" %>
+
+  <%= link_to "Tout voir", deliveries_path, class: "tab" %>
+</div>
 
 <ul>
 <% @deliveries.each do |delivery| %>

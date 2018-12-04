@@ -39,4 +39,11 @@
 .container {
   position: absolute;
   margin-top: 80px;
+  width: 100%;
+}
+.container .row {
+  border: solid;
+  margin-left: 0px;
+  margin-right: 0px;
+  text-align: center;
 }

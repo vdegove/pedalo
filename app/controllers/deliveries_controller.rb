@@ -2,6 +2,14 @@ class DeliveriesController < ApplicationController
 
   def index
     @deliveries = policy_scope(Delivery)
+
+  end
+
+  def today
+    today = DateTime.yesterday + 1.day
+    tomorrow = DateTime.tomorrow
+    @deliveries = Delivery.where('complete_after > ? AND complete_after < ?', today, tomorrow)
+    authorize @deliveries
   end
 
   def past
@@ -13,13 +21,6 @@ class DeliveriesController < ApplicationController
   def upcoming
     today = DateTime.now
     @deliveries = Delivery.where('complete_after > ?', today)
-    authorize @deliveries
-  end
-
-  def today
-    today = DateTime.yesterday + 1.day
-    tomorrow = DateTime.tomorrow
-    @deliveries = Delivery.where('complete_after > ? AND complete_after < ?', today, tomorrow)
     authorize @deliveries
   end
 

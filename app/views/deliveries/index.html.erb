@@ -1,18 +1,20 @@
 <div class="container">
-<div class="tabs">
-  <%= link_to "past", past_deliveries_path, class: "tab" %>
-
-  <%= link_to "today", deliveries_path, class: "tab active" %>
-
-  <%= link_to "upcoming", upcoming_deliveries_path, class: "tab" %>
-
-<ul>
-<% @deliveries.each do |delivery| %>
-  <li>ID : <%= delivery.id %></li>
-  <li><%= delivery.complete_after %></li>
-  <li><%= delivery.complete_before %></li>
-  <li>Status : <%= delivery.status? %></li>
-<% end %>
-</ul>
-
+  <div class="tabs">
+    <%= link_to "Passées", past_deliveries_path, class: "tab" %>
+    <%= link_to "Aujourd'hui", today_deliveries_path, class: "tab" %>
+    <%= link_to "A venir", upcoming_deliveries_path, class: "tab" %>
+    <%= link_to "Tout voir", deliveries_path, class: "tab active" %>
+  </div>
+  <div class="row">
+    <div class="col-sm-3" style="background-color: grey">Nom</div>
+    <div class="col-sm-3" style="background-color: grey">Date de livraison</div>
+    <div class="col-sm-3" style="background-color: grey">Créneau de livraison</div>
+    <div class="col-sm-3" style="background-color: grey">Status</div>
+    <% @deliveries.each do |delivery| %>
+      <div class="col-sm-3">ID : <%= delivery.id %></div>
+      <div class="col-sm-3"><%= delivery.complete_after.to_date %></div>
+      <div class="col-sm-3"><%= delivery.complete_before %></div>
+      <div class="col-sm-3">Status : <%= delivery.status? %></div>
+    <% end %>
+  </div>
 </div>
