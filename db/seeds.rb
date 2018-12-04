@@ -1,6 +1,6 @@
 puts "Creating company Brasserie Tout Schuss…"
 brasserie = Company.new( name: "Brasserie Tout Schuss")
-brasserie.address = "16 rue de Sambre et Meuse, Paris"
+brasserie.address = "9 rue Ambroise Thomas, Paris"
 brasserie.contact_name = "Martoche"
 brasserie.contact_phone = "+33601010101"
 brasserie.save!
@@ -24,4 +24,35 @@ PackageType.create!( name: "Fut de 30 L de bière blonde")
 puts "Creating plants package types…"
 PackageType.create!(name: "Grande jardinière 80 cm × 20 cm")
 PackageType.create!(name: "Pot de fleur moyen")
+
+tomorrow = (Date.today + 1).to_time
+
+puts "Creating a first delivery for Tout Schuss…"
+
+laffitte_delivery = Delivery.new(
+  recipient_name: "Olivier",
+  recipient_phone: "0602020202",
+  address: "43 Rue Laffitte, 75009 Paris",
+  complete_after: tomorrow + (8 * 60 + 30) * 60,
+  complete_before: tomorrow + 13 * 60 * 60)
+
+laffitte_delivery.company = brasserie
+
+casks_for_delivery = DeliveryPackage.new(
+  delivery: laffitte_delivery,
+  package_type: PackageType.find_by(name: "Fut de 30 L de bière blonde"),
+  amount: 3)
+bottles_for_delivery = DeliveryPackage.new(
+  delivery: laffitte_delivery,
+  package_type: PackageType.find_by(name: "Pack de 6 bières IPA 50 cl"),
+  amount: 1)
+
+laffitte_delivery.save!
+casks_for_delivery.save!
+bottles_for_delivery.save!
+
+
+
+
+
 

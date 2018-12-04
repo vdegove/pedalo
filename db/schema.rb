@@ -43,6 +43,16 @@ ActiveRecord::Schema.define(version: 2018_12_04_135146) do
     t.index ["company_id"], name: "index_deliveries_on_company_id"
   end
 
+  create_table "delivery_packages", force: :cascade do |t|
+    t.bigint "delivery_id"
+    t.bigint "package_type_id"
+    t.integer "amount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["delivery_id"], name: "index_delivery_packages_on_delivery_id"
+    t.index ["package_type_id"], name: "index_delivery_packages_on_package_type_id"
+  end
+
   create_table "package_types", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -64,5 +74,7 @@ ActiveRecord::Schema.define(version: 2018_12_04_135146) do
   end
 
   add_foreign_key "deliveries", "companies"
+  add_foreign_key "delivery_packages", "deliveries"
+  add_foreign_key "delivery_packages", "package_types"
   add_foreign_key "users", "companies"
 end
