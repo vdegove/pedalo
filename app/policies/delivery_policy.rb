@@ -12,4 +12,8 @@ class DeliveryPolicy < ApplicationPolicy
   def create?
     true
   end
+
+  def past?
+    true
+  end
 end

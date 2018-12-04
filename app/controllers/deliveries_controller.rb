@@ -5,10 +5,9 @@ class DeliveriesController < ApplicationController
   end
 
   def past
-    morning = DateTime.now
-    mornig.hour = 0
-
-    @deliveries = Delivery.where("DateTime.now >= :complete_before <= DateTime.now + 1")
+    today = DateTime.now
+    # @deliveries = Delivery.where('today > complete_before')
+    authorize @deliveries
   end
 
   def new
