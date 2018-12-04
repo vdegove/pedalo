@@ -22,6 +22,13 @@ class DeliveriesController < ApplicationController
     end
   end
 
+  # def assigned!(id)
+  #   @delivery = Delivery.find(params[:id])
+  #   if @delivery.picked_up_at != nil
+  #     @delivery.status = "Assignée"
+  # end
+
+
   def update
     @deliveries = Delivery.find(params[:id])
     @deliveries.update(deliveries_params)
