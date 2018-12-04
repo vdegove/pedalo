@@ -13,4 +13,20 @@
   color: #3A4763;
 }
 
+.btn-model-sign-in {
+  color: #3A4763;
+  background-color: transparent;
+  border: 3px solid #3A4763;
+  padding: 10px 15px;
+  border-radius: 50px;
+  font-weight: lighter;
+  box-shadow: 1px;
+  text-align: center;
+  vertical-align: middle;
+  width: 100vh;
+}
 
+.btn-model-sign-in:hover {
+  text-decoration: none;
+  color: #14223E;
+}
