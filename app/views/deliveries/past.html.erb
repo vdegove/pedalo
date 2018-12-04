@@ -1,0 +1,10 @@
+<h1> <%= @deliveries.first.company.name%>  <strong> Past</strong> deliveries </h1>
+
+<ul>
+<% @deliveries.each do |delivery| %>
+  <li>ID : <%= delivery.id %></li>
+  <li><%= delivery.complete_after %></li>
+  <li><%= delivery.complete_before %></li>
+  <li>Status : <%= delivery.status? %></li>
+<% end %>
+</ul>
