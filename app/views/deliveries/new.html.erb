@@ -1,16 +1,14 @@
-<h1> Try it </h1>
-
 <div class="container">
-  <div class="row">
-    <div class="col-sm-4 col-sm-offset-4">
+  <div clas="row">
+    <div class="col-md-6 col-lg-12">
       <%= simple_form_for @delivery do |d| %>
-      <%= d.input :address %>
-      <%= d.input :recipient_phone %>
-      <%= d.input :recipient_name %>
-      <%= d.input :complete_before %>
-      <%= d.input :complete_after %>
-  <%= d.submit "create delivery", class: "btn btn-primary" %>
-<% end %>
+        <%= d.input :recipient_name %>
+        <%= d.input :address %>
+        <%= d.input :recipient_phone %>
+        <%= d.input :complete_before %>
+        <%= d.input :complete_after %>
+        <%= d.submit "create delivery", class: "btn-model" %>
+      <% end %>
     </div>
   </div>
 </div>
