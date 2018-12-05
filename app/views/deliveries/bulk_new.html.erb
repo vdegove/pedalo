@@ -1,4 +1,9 @@
-<%= form_tag(deliveries_bulk_create_path, method: "post", multipart: true) do %>
-  <%= file_field_tag 'csv_file' %>
-  <%= submit_tag("Send") %>
+<div class="bulknew-title">
+  <h3>Importez votre fichier CSV</h3>
+  <p>Pedalo pédale très vite pour que tout soit prêt !</p>
+</div>
+  <%= form_tag(deliveries_bulk_create_path, method: "post", multipart: true, class: "dropzone", id:"my-awesome-dropzone") do %>
+  <%= file_field_tag 'file', class: "hidden" %>
+  <%#= submit_tag("Drag and drop", class: "btn-model") %>
 <% end %>
+
