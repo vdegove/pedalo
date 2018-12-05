@@ -51,7 +51,7 @@ class DeliveriesController < ApplicationController
       recipient_phone: row["recipient_phone"],
       address: row["address"],
       complete_after: DateTime.parse(row["complete_after"]),
-      complete_before: DateTime.parse(row["complete_after"])
+      complete_before: DateTime.parse(row["complete_before"])
       )
     PackageType.all.each do |package_type|
       if row[package_type.name] && row[package_type.name] != "0"
