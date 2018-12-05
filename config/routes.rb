@@ -2,8 +2,11 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
 
-  resources :deliveries, only: [:new, :create, :update, :index]
+  resources :deliveries, only: [:create, :update, :index]
   resources :companies, only: [:new, :create]
+
+  get '/deliveries/bulk-new', to: 'deliveries#bulk_new'
+  post 'deliveries/bulk-create', to: 'deliveries#bulk_create'
 
   resources :deliveries do
     collection do
