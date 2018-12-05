@@ -6,7 +6,6 @@ class CompleteValidation < ActiveModel::Validator
   end
 end
 
-
 class Delivery < ApplicationRecord
   validates :recipient_name, presence: true
   validates :recipient_phone, presence: true, format: { with: /\A(?:(?:\+|00)33|0)*[1-9](?:[\s.-]*\d{2}){4}\z/}
@@ -22,7 +21,6 @@ class Delivery < ApplicationRecord
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
 
-
   def status?
     if self.picked_up_at.nil?
       return "Enregisté"
@@ -33,3 +31,4 @@ class Delivery < ApplicationRecord
     end
   end
 end
+

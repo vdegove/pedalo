@@ -34,6 +34,7 @@ class DeliveriesController < ApplicationController
       delivery = create_delivery(row)
       authorize(delivery)
       delivery.save
+      push_to_onfleet(delivery)
     end
     redirect_to root_path
   end
@@ -62,5 +63,36 @@ class DeliveriesController < ApplicationController
       end
     end
     return delivery
+  end
+
+
+  def push_to_onfleet(delivery)
+    Onfleet.api_key = ENV['ONFLEET_API_KEY']
+
+    task = Onfleet::Task.create(
+      destination: {
+        address: {
+          unparsed: "#{delivery.address}, France"
+        },
+      },
+      recipients: [{
+        name: delivery.recipient_name,
+        phone: delivery.recipient_phone
+      }],
+      notes: build_onfleet_task_details(delivery),
+      # complete_after: delivery.complete_after.to_time.to_f, # timestamp with ms precision
+      # complete_before: delivery.complete_after.to_time.to_f
+      )
+
+  end
+
+  def build_onfleet_task_details(delivery)
+    descrs = delivery.delivery_packages.map do |delivery_package|
+      "#{delivery_package.package_type.name} : #{delivery_package.amount}"
+    end
+    return "Client : #{delivery.company.name}
+
+    Colisage :
+    #{descrs.join('\n')}"
   end
 end
