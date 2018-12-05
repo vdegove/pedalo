@@ -15,6 +15,9 @@ gem 'pundit'
 # Geocodin
 gem "geocoder"
 
+#pg_search
+gem 'pg_search'
+
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass', '~> 3.3'
 gem 'font-awesome-sass', '~> 5.0.9'
