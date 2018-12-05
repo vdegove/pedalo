@@ -23,6 +23,9 @@ gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
 
+# Onfleet
+gem 'onfleet-ruby', github: 'vdegove/onfleet'
+
 group :development do
   gem 'web-console', '>= 3.3.0'
 end
