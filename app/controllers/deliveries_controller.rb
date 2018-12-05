@@ -1,8 +1,9 @@
 require 'csv'
 
 class DeliveriesController < ApplicationController
-  skip_after_action :verify_authorized, only: :new
-  def new
+  skip_after_action :verify_authorized, only: :bulk_new
+
+  def bulk_new
   end
 
   def index
@@ -28,7 +29,7 @@ class DeliveriesController < ApplicationController
     authorize @deliveries
   end
 
-  def create
+  def bulk_create
     CSV.foreach(params[:csv_file].tempfile, headers: true) do |row|
       delivery = create_delivery(row)
       authorize(delivery)
