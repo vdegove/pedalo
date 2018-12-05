@@ -1,5 +1,5 @@
 .tabs {
-  background: #53443F;
+  // background: #53443F;
   display: flex;
   padding: 10px 10px 0 10px;
 }
@@ -35,6 +35,8 @@
 .tab.active {
   background: white;
   color: black;
+  border-bottom: solid;
+  border-color: white white blue white;
 }
 .container {
   position: absolute;
@@ -42,8 +44,45 @@
   width: 100%;
 }
 .container .row {
-  border: solid;
+  // border: solid;
   margin-left: 0px;
   margin-right: 0px;
   text-align: center;
+}
+
+.container-content {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.headers {
+  display: flex;
+}
+
+.head {
+  flex: 1;
+  text-align: center;
+}
+
+.delivery-container{
+  display: flex;
+  flex-direction: column;
+}
+
+
+.delivery-rows {
+  flex: 1;
+  display: flex;
+}
+
+.delivery {
+  flex: 1;
+  text-align: center;
+}
+
+.delivery-rows:nth-child(odd) {
+  background: white;
+}
+.delivery-rows:nth-child(even) {
+  background: $light-gray;
 }

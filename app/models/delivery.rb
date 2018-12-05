@@ -32,4 +32,12 @@ class Delivery < ApplicationRecord
       return "Livré"
     end
   end
+
+  # pg_search on deliveries' fields
+  include PgSearch
+  pg_search_scope :search_by_keyword,
+    against: [ :recipient_phone, :recipient_name, :address, :complete_after, :complete_before, :status ],
+    using: {
+      tsearch: { prefix: true }
+    }
 end

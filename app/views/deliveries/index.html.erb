@@ -1,20 +1,41 @@
 <div class="container">
+
+  <div class="container-search">
+  <div class="orders"> Commandes </div>
+  <div class="delivery-search">
+  <%= form_tag movies_path, method: :get do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "e.g contact name"
+  %>
+<% end %>
+</div>
+</div>
+
+
   <div class="tabs">
     <%= link_to "Passées", past_deliveries_path, class: "tab" %>
     <%= link_to "Aujourd'hui", today_deliveries_path, class: "tab" %>
     <%= link_to "A venir", upcoming_deliveries_path, class: "tab" %>
     <%= link_to "Tout voir", deliveries_path, class: "tab active" %>
   </div>
-  <div class="row">
-    <div class="col-sm-3" style="background-color: grey">Nom</div>
-    <div class="col-sm-3" style="background-color: grey">Date de livraison</div>
-    <div class="col-sm-3" style="background-color: grey">Créneau de livraison</div>
-    <div class="col-sm-3" style="background-color: grey">Status</div>
+  <div class="container-content">
+  <div class="headers">
+    <div class="head" style="background-color: grey">Nom</div>
+    <div class="head" style="background-color: grey">Date de livraison</div>
+    <div class="head" style="background-color: grey">Créneau de livraison</div>
+    <div class="head" style="background-color: grey">Status</div>
+  </div>
+  <div class="delivery-container">
     <% @deliveries.each do |delivery| %>
-      <div class="col-sm-3">ID : <%= delivery.id %></div>
-      <div class="col-sm-3"><%= delivery.complete_after.to_date %></div>
-      <div class="col-sm-3"><%= delivery.complete_before %></div>
-      <div class="col-sm-3">Status : <%= delivery.status? %></div>
+      <div class="delivery-rows">
+        <div class="delivery">ID : <%= delivery.id %></div>
+        <div class="delivery"><%= delivery.complete_after.to_date %></div>
+        <div class="delivery"><%= delivery.complete_before %></div>
+        <div class="delivery">Status : <%= delivery.status? %></div>
+      </div>
     <% end %>
+  </div>
   </div>
 </div>
