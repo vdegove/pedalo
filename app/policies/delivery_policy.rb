@@ -5,11 +5,7 @@ class DeliveryPolicy < ApplicationPolicy
     end
   end
 
-  def new?
-    create?
-  end
-
-  def create?
+  def bulk_create?
     true
   end
 
