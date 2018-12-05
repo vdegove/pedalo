@@ -7,7 +7,21 @@ class DeliveriesController < ApplicationController
   end
 
   def index
-    @deliveries = policy_scope(Delivery)
+    if params[:query].present?
+      @deliveries = policy_scope(Delivery.where("recipient_name ILIKE ?
+        OR recipient_phone ILIKE ?
+        OR address ILIKE ?
+        OR status ILIKE ?", "%#{params[:query]}%", "%#{params[:query]}%", "%#{params[:query]}%", "%#{params[:query]}%"))
+    else
+      @deliveries = policy_scope(Delivery)
+    end
+  end
+
+  def today
+    today = DateTime.yesterday + 1.day
+    tomorrow = DateTime.tomorrow
+    @deliveries = Delivery.where('complete_after > ? AND complete_after < ?', today, tomorrow)
+    authorize @deliveries
   end
 
   def past
