@@ -1,0 +1,5 @@
+<ul class="progressbar">
+  <li class="active">Enregistré</li>
+  <li class="<%= "active" if delivery.status? == "Enlevé" || delivery.status? == "Livré" %>">Enlevé</li>
+  <li class="<%= "active" if delivery.status? == "Livré" %>">Livré</li>
+</ul>
