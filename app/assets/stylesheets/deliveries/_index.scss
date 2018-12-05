@@ -14,7 +14,6 @@
   opacity: 0.8;
 }
 .tabs h3 {
-  font-size: 17px;
   font-weight: bold;
   margin-top: 0;
 }
@@ -28,9 +27,8 @@
   text-align: center;
   padding: 20px 0;
   height: 58px;
-
-
 }
+
 .tab:first-child {
   border-radius: 10px 0 0 0;
 }
@@ -88,6 +86,7 @@
 .head {
   background-color: #8ebcea;
   flex: 1;
+  font-size: 20px;
   text-align: center;
   justify-content: center;
   font-weight: bold;
@@ -126,3 +125,4 @@
   text-decoration: none;
   opacity: 0.7;
 }
+
