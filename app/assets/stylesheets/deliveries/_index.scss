@@ -1,10 +1,11 @@
 .tabs {
-  // background: #53443F;
   display: flex;
   padding: 10px 10px 0 10px;
 }
 .tabs a {
   color: white;
+  border: 1px solid #ddd;
+  // height : 40px;
 }
 .tabs a:hover {
   cursor: pointer;
@@ -25,6 +26,7 @@
   flex: 0 0 25%;
   text-align: center;
   padding: 20px 0;
+
 }
 .tab:first-child {
   border-radius: 10px 0 0 0;
@@ -108,7 +110,7 @@
   background: white;
 }
 .delivery-rows:nth-child(even) {
-  background: $light-gray;
+  background: #d3edff;
 }
 
 .form-control {
