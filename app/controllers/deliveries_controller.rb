@@ -80,8 +80,8 @@ class DeliveriesController < ApplicationController
         phone: delivery.recipient_phone
       }],
       notes: build_onfleet_task_details(delivery),
-      # complete_after: delivery.complete_after.to_time.to_f, # timestamp with ms precision
-      # complete_before: delivery.complete_after.to_time.to_f
+      complete_after: delivery.complete_after.to_datetime.strftime('%Q').to_i, # timestamp with ms precision
+      complete_before: delivery.complete_before.to_datetime.strftime('%Q').to_i, # timestamp with ms precision
       )
 
   end
