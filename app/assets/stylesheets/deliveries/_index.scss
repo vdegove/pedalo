@@ -40,7 +40,7 @@
 .tab.active {
   background: white;
   color: black;
-  border-bottom: solid;
+  border-bottom: 3px solid;
   border-color: white white blue white;
 }
 .container {
@@ -119,4 +119,10 @@
 
 .form-control {
   border-radius: 15px;
+}
+
+.delivery-rows:hover{
+  cursor: pointer;
+  text-decoration: none;
+  opacity: 0.7;
 }
