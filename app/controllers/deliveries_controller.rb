@@ -57,6 +57,11 @@ class DeliveriesController < ApplicationController
     @deliveries.update(deliveries_params)
   end
 
+  def show
+    @delivery = Delivery.find(params[:id])
+    authorize @delivery
+  end
+
   private
 
   def create_delivery(row)

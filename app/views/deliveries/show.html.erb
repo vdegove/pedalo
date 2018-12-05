@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="all-cards">
+    <div class="card-left">
+      <div class="infos-card">
+        <div class="status-edit">
+          <p>Status</p>
+          <p>Edit</p>
+        </div>
+        <br>
+        <p>Informations client</p>
+        <br>
+        <p>Livraison (date, créneau)</p>
+        <br>
+        <p>Informations complémentaires (digicode, étage, etc...)</p>
+        <br>
+        <p>Produits commandés</p>
+      </div>
+    </div>
+    <div class="cards-right">
+      <div class="map-card">
+        <%= image_tag "google-maps.png" %>
+      </div>
+
+      <div class="progress-card">
+        <p><strong>Livraison de la commande</strong></p>
+        <div class="progress_bar">
+          <%= render 'progress_bar', delivery: @delivery %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

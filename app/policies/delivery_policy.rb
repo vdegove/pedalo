@@ -20,4 +20,8 @@ class DeliveryPolicy < ApplicationPolicy
   def today?
     true
   end
+
+  def show?
+    true
+  end
 end
