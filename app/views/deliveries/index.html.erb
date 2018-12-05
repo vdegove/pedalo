@@ -1,19 +1,16 @@
 <div class="container">
-
   <div class="container-search">
-  <div class="orders"> Commandes </div>
-  <div class="delivery-search">
-  <%= form_tag movies_path, method: :get do %>
-  <%= text_field_tag :query,
-    params[:query],
-    class: "form-control",
-    placeholder: "e.g contact name"
-  %>
-<% end %>
-</div>
-</div>
-
-
+    <div class="orders"> Commandes </div>
+    <div class="delivery-search">
+      <%= form_tag deliveries_path, method: :get do %>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+          placeholder: "Rechercher une commande..."
+        %>
+      <% end %>
+    </div>
+  </div>
   <div class="tabs">
     <%= link_to "Passées", past_deliveries_path, class: "tab" %>
     <%= link_to "Aujourd'hui", today_deliveries_path, class: "tab" %>
@@ -21,12 +18,12 @@
     <%= link_to "Tout voir", deliveries_path, class: "tab active" %>
   </div>
   <div class="container-content">
-  <div class="headers">
-    <div class="head" style="background-color: grey">Nom</div>
-    <div class="head" style="background-color: grey">Date de livraison</div>
-    <div class="head" style="background-color: grey">Créneau de livraison</div>
-    <div class="head" style="background-color: grey">Status</div>
-  </div>
+    <div class="headers">
+      <div class="head">Nom</div>
+      <div class="head">Date de livraison</div>
+      <div class="head">Créneau de livraison</div>
+      <div class="head">Status</div>
+    </div>
   <div class="delivery-container">
     <% @deliveries.each do |delivery| %>
       <div class="delivery-rows">

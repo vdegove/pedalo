@@ -21,7 +21,7 @@
   margin-bottom: 0;
 }
 .tab {
-  background: #756A66;
+  background: gray;
   flex: 0 0 25%;
   text-align: center;
   padding: 20px 0;
@@ -55,13 +55,37 @@
   margin-right: 10px;
 }
 
+.container-search {
+  display: flex;
+  height: 60px;
+  padding-top: 10px;
+}
+
+.orders {
+  flex: 1;
+  padding-top: 10px;
+  padding-left: 16px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.delivery-search {
+  flex: 1;
+  margin-right: 10px;
+}
+
 .headers {
   display: flex;
+  height: 40px;
 }
 
 .head {
+  background-color: #44B3FF;
   flex: 1;
   text-align: center;
+  justify-content: center;
+  font-weight: bold;
+  padding-top: 10px;
 }
 
 .delivery-container{
@@ -85,4 +109,8 @@
 }
 .delivery-rows:nth-child(even) {
   background: $light-gray;
+}
+
+.form-control {
+  border-radius: 15px;
 }
