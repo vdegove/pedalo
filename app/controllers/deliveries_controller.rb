@@ -30,12 +30,12 @@ class DeliveriesController < ApplicationController
   end
 
   def bulk_create
-    CSV.foreach(params[:csv_file].tempfile, headers: true) do |row|
+    CSV.foreach(params[:file].tempfile, headers: true) do |row|
       delivery = create_delivery(row)
       authorize(delivery)
       delivery.save
     end
-    redirect_to root_path
+    # redirect_to root_path
   end
 
   def update
