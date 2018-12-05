@@ -5,6 +5,29 @@ class DeliveriesController < ApplicationController
   def new
   end
 
+  def index
+    @deliveries = policy_scope(Delivery)
+  end
+
+  def past
+    today = DateTime.now
+    @deliveries = Delivery.where('complete_before < ?', today)
+    authorize @deliveries
+  end
+
+  def upcoming
+    today = DateTime.now
+    @deliveries = Delivery.where('complete_after > ?', today)
+    authorize @deliveries
+  end
+
+  def today
+    today = DateTime.yesterday + 1.day
+    tomorrow = DateTime.tomorrow
+    @deliveries = Delivery.where('complete_after > ? AND complete_after < ?', today, tomorrow)
+    authorize @deliveries
+  end
+
   def create
     CSV.foreach(params[:csv_file].tempfile, headers: true) do |row|
       delivery = create_delivery(row)
@@ -12,6 +35,11 @@ class DeliveriesController < ApplicationController
       delivery.save
     end
     redirect_to root_path
+  end
+
+  def update
+    @deliveries = Delivery.find(params[:id])
+    @deliveries.update(deliveries_params)
   end
 
   private

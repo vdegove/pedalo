@@ -8,11 +8,23 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  z-index: 1000;
+  position: absolute;
+  width: 100%;
 }
 
 /* Logo */
 .navbar-wagon-brand img {
   height: 50px;
+}
+
+.navbar-wagon a {
+  color: black;
+}
+
+.navbar-wagon a:hover {
+ text-decoration: none;
+ color: black;
 }
 
 /* User Avatar */
@@ -50,6 +62,12 @@
   margin-top: 15px;
   box-shadow: 1px 1px 4px #E6E6E6;
   border-color: #E6E6E6;
+  display: none;
+  position: absolute;
+  background-color: white;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
 }
 .navbar-wagon-dropdown-menu li > a {
   transition: color 0.3s ease;
@@ -62,7 +80,9 @@
 .navbar-wagon-dropdown-menu li > a:hover {
   background: transparent !important;
   color: black !important;
+  text-decoration: none;
 }
+
 .navbar-wagon-dropdown-menu:before {
   content: ' ';
   height: 10px;

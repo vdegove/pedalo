@@ -21,4 +21,15 @@ class Delivery < ApplicationRecord
 
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
+
+
+  def status?
+    if self.picked_up_at.nil?
+      return "Enregisté"
+    elsif self.delivered_at.nil?
+      return "Enlevé"
+    else
+      return "Livré"
+    end
+  end
 end
