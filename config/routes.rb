@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: 'pages#home'
+  root to: 'deliveries#today'
 
   resources :deliveries, only: [:create, :update, :index]
   resources :companies, only: [:new, :create]
