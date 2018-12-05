@@ -26,11 +26,13 @@
     </div>
   <div class="delivery-container">
     <% @deliveries.each do |delivery| %>
+    <% debut = delivery.complete_after.to_formatted_s(:short).split(" ").last %>
+    <% fin = delivery.complete_before.to_formatted_s(:short).split(" ").last %>
       <div class="delivery-rows">
-        <div class="delivery">ID : <%= delivery.id %></div>
-        <div class="delivery"><%= delivery.complete_after.to_date %></div>
-        <div class="delivery"><%= delivery.complete_before %></div>
-        <div class="delivery">Status : <%= delivery.status? %></div>
+        <div class="delivery"><%= delivery.recipient_name %></div>
+        <div class="delivery"><%= delivery.complete_after.strftime("%m/%d/%Y") %></div>
+        <div class="delivery"><%= debut %> - <%= fin %></div>
+        <div class="delivery"><%= delivery.status? %></div>
       </div>
     <% end %>
   </div>
