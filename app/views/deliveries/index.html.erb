@@ -30,7 +30,7 @@
     <% fin = delivery.complete_before.to_formatted_s(:short).split(" ").last %>
       <!-- <div class="delivery-rows"> -->
         <%= link_to delivery_path(delivery), class: "delivery-rows" do %>
-          <div class="delivery"><%= delivery.company_id %></div>
+          <div class="delivery"><%= delivery.recipient_name %></div>
           <div class="delivery"><%= delivery.complete_after.strftime("%m/%d/%Y") %></div>
           <div class="delivery"><%= debut %> - <%= fin %></div>
           <div class="delivery"><%= delivery.status? %></div>
