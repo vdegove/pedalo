@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_06_134625) do
+ActiveRecord::Schema.define(version: 2018_12_06_143706) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,10 @@ ActiveRecord::Schema.define(version: 2018_12_06_134625) do
     t.string "status"
     t.string "picked_up_at"
     t.string "delivered_at"
+    t.string "onfleet_task_dropoff"
+    t.string "tracking_url_dropoff"
+    t.string "onfleet_task_pickup"
+    t.string "tracking_url_pickup"
     t.index ["company_id"], name: "index_deliveries_on_company_id"
   end
 
