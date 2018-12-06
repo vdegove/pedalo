@@ -28,10 +28,10 @@ ActiveRecord::Schema.define(version: 2018_12_06_134625) do
 
   create_table "company_package_types", force: :cascade do |t|
     t.bigint "package_type_id"
-    t.bigint "companies_id"
+    t.bigint "company_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["companies_id"], name: "index_company_package_types_on_companies_id"
+    t.index ["company_id"], name: "index_company_package_types_on_company_id"
     t.index ["package_type_id"], name: "index_company_package_types_on_package_type_id"
   end
 
@@ -82,7 +82,7 @@ ActiveRecord::Schema.define(version: 2018_12_06_134625) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "company_package_types", "companies", column: "companies_id"
+  add_foreign_key "company_package_types", "companies"
   add_foreign_key "company_package_types", "package_types"
   add_foreign_key "deliveries", "companies"
   add_foreign_key "delivery_packages", "deliveries"

@@ -16,10 +16,14 @@ Company.create!( name: "Alias Vert")
 
 
 puts "Creating beer package types…"
-PackageType.create!( name: "Pack de 12 bières blondes 33 cl")
-PackageType.create!( name: "Pack de 12 bières ambrées 33 cl")
-PackageType.create!( name: "Pack de 6 bières IPA 50 cl")
-PackageType.create!( name: "Fut de 30 L de bière blonde")
+pack1 = PackageType.create!( name: "Pack de 12 bières blondes 33 cl")
+# CompanyPackageType.package_type = pack1
+pack2 = PackageType.create!( name: "Pack de 12 bières ambrées 33 cl")
+# CompanyPackageType.package_type = pack2
+pack3 = PackageType.create!( name: "Pack de 6 bières IPA 50 cl")
+# CompanyPackageType.package_type = pack3
+pack4 = PackageType.create!( name: "Fut de 30 L de bière blonde")
+# CompanyPackageType.package_type = pack4
 
 puts "Creating plants package types…"
 PackageType.create!(name: "Grande jardinière 80 cm × 20 cm")

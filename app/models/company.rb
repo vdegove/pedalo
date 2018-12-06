@@ -6,7 +6,8 @@ class Company < ApplicationRecord
 
   has_many :deliveries
   has_many :users
-  has_many :package_types, through: :company_package_types
+  has_many :company_package_types
+  # has_many :package_types, through: :company_package_types
 
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
