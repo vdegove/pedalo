@@ -50,8 +50,8 @@ class Delivery < ApplicationRecord
       complete_before: complete_before.to_datetime.strftime('%Q').to_i, # timestamp with ms precision
       )
 
-    onfleet_task_dropoff = task.id # can be called later with task = Onfleet::Task.get(delivery.onfleet_task_dropoff)
-    onfleet_task_dropoff = task.tracking_url
+    self.onfleet_task_dropoff = task.id # can be called later with task = Onfleet::Task.get(delivery.onfleet_task_dropoff)
+    self.tracking_url_dropoff = task.tracking_url
   end
 
   def build_onfleet_task_details
