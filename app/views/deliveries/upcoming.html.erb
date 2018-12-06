@@ -14,25 +14,8 @@
   <div class="tabs">
     <%= link_to "Passées", past_deliveries_path, class: "tab" %>
     <%= link_to "Aujourd'hui", today_deliveries_path, class: "tab" %>
-    <%= link_to "A venir", upcoming_deliveries_path, class: "tab active" %>
-    <%= link_to "Tout voir", deliveries_path, class: "tab" %>
+    <%= link_to "A venir", upcoming_deliveries_path, class: "tab" %>
+    <%= link_to "Tout voir", deliveries_path, class: "tab active" %>
   </div>
-  <div class="container-content">
-    <div class="headers">
-      <div class="head">Nom</div>
-      <div class="head">Date de livraison</div>
-      <div class="head">Créneau de livraison</div>
-      <div class="head">Status</div>
-    </div>
-  <div class="delivery-container">
-    <% @deliveries.each do |delivery| %>
-      <div class="delivery-rows">
-        <div class="delivery">ID : <%= delivery.id %></div>
-        <div class="delivery"><%= delivery.complete_after.to_date %></div>
-        <div class="delivery"><%= delivery.complete_before %></div>
-        <div class="delivery">Status : <%= delivery.status? %></div>
-      </div>
-    <% end %>
-  </div>
-  </div>
+  <% render "deliveries_table" %>
 </div>

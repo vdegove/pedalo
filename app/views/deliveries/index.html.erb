@@ -17,26 +17,5 @@
     <%= link_to "A venir", upcoming_deliveries_path, class: "tab" %>
     <%= link_to "Tout voir", deliveries_path, class: "tab active" %>
   </div>
-  <div class="container-content">
-    <div class="headers">
-      <div class="head">Nom</div>
-      <div class="head">Date de livraison</div>
-      <div class="head">Créneau de livraison</div>
-      <div class="head">Status</div>
-    </div>
-  <div class="delivery-container">
-    <% @deliveries.each do |delivery| %>
-    <% debut = delivery.complete_after.to_formatted_s(:short).split(" ").last %>
-    <% fin = delivery.complete_before.to_formatted_s(:short).split(" ").last %>
-      <!-- <div class="delivery-rows"> -->
-        <%= link_to delivery_path(delivery), class: "delivery-rows" do %>
-          <div class="delivery"><%= delivery.recipient_name %></div>
-          <div class="delivery"><%= delivery.complete_after.strftime("%m/%d/%Y") %></div>
-          <div class="delivery"><%= debut %> - <%= fin %></div>
-          <div class="delivery"><%= delivery.status? %></div>
-        <% end %>
-      <!-- </div> -->
-    <% end %>
-  </div>
-  </div>
+  <% render "deliveries_table" %>
 </div>
