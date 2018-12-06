@@ -12,7 +12,7 @@
       <!-- <div class="delivery-rows"> -->
         <%= link_to delivery_path(delivery), class: "delivery-rows" do %>
           <div class="delivery"><%= delivery.recipient_name %></div>
-          <div class="delivery"><%= delivery.complete_after.strftime("%m/%d/%Y") %></div>
+          <div class="delivery"><%= delivery.complete_after.strftime("%d/%m/%Y") %></div>
           <div class="delivery"><%= debut %> - <%= fin %></div>
           <div class="delivery"><%= delivery.status? %></div>
         <% end %>
