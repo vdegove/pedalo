@@ -16,6 +16,7 @@ Company.create!( name: "Alias Vert")
 
 
 puts "Creating beer package types…"
+
 PackageType.create!( name: "Pack de 12 bières blondes 33 cl")
 PackageType.create!( name: "Pack de 12 bières ambrées 33 cl")
 PackageType.create!( name: "Pack de 6 bières IPA 50 cl")
