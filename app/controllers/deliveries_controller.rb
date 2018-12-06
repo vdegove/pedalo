@@ -9,11 +9,10 @@ class DeliveriesController < ApplicationController
 
   def index
     if params[:query].present?
-      @deliveries = policy_scope(user_deliveries.where("recipient_name ILIKE ?
+      @deliveries = policy_scope(@user_deliveries.where("recipient_name ILIKE ?
         OR recipient_phone ILIKE ?
         OR address ILIKE ?
         OR status ILIKE ?", "%#{params[:query]}%", "%#{params[:query]}%", "%#{params[:query]}%", "%#{params[:query]}%"))
-    raise
     else
       @deliveries = policy_scope(@user_deliveries)
     end
