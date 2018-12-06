@@ -7,7 +7,21 @@ class DeliveriesController < ApplicationController
   end
 
   def index
-    @deliveries = policy_scope(Delivery)
+    if params[:query].present?
+      @deliveries = policy_scope(Delivery.where("recipient_name ILIKE ?
+        OR recipient_phone ILIKE ?
+        OR address ILIKE ?
+        OR status ILIKE ?", "%#{params[:query]}%", "%#{params[:query]}%", "%#{params[:query]}%", "%#{params[:query]}%"))
+    else
+      @deliveries = policy_scope(Delivery)
+    end
+  end
+
+  def today
+    today = DateTime.yesterday + 1.day
+    tomorrow = DateTime.tomorrow
+    @deliveries = Delivery.where('complete_after > ? AND complete_after < ?', today, tomorrow)
+    authorize @deliveries
   end
 
   def past
@@ -31,7 +45,7 @@ class DeliveriesController < ApplicationController
 
   def bulk_create
     @count = 0
-    CSV.foreach(params[:csv_file].tempfile, headers: true) do |row|
+    CSV.foreach(params[:file].tempfile, headers: true) do |row|
       delivery = create_delivery(row)
       delivery.save
       @count += 1
@@ -41,6 +55,11 @@ class DeliveriesController < ApplicationController
   def update
     @deliveries = Delivery.find(params[:id])
     @deliveries.update(deliveries_params)
+  end
+
+  def show
+    @delivery = Delivery.find(params[:id])
+    authorize @delivery
   end
 
   private

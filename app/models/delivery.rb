@@ -32,6 +32,14 @@ class Delivery < ApplicationRecord
     end
   end
 
+  # pg_search on deliveries' fields
+  include PgSearch
+  pg_search_scope :search_by_keyword,
+    against: [ :recipient_phone, :recipient_name, :address, :complete_after, :complete_before, :status ],
+    using: {
+      tsearch: { prefix: true }
+    }
+
   private
 
   def push_to_onfleet
@@ -93,6 +101,4 @@ class Delivery < ApplicationRecord
     end
     return d.join('\n')
   end
-
-
 end
