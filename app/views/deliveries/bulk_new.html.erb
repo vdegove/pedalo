@@ -3,6 +3,7 @@
   <p>Pedalo pédale très vite pour que tout soit prêt !</p>
 </div>
   <%= form_tag(deliveries_bulk_create_path, method: "post", multipart: true, class: "dropzone", id:"my-awesome-dropzone") do %>
+
   <%= file_field_tag 'file', class: "hidden" %>
   <%#= submit_tag("Drag and drop", class: "btn-model") %>
 <% end %>

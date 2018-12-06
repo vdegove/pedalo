@@ -1,4 +1,5 @@
 import "bootstrap";
-import { initDropzone } from "../plugins/dropzone"
+import { initDropzone } from "../plugins/dropzone";
+
 
 initDropzone();

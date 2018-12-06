@@ -8,7 +8,6 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
 }
 
 /* Logo */
@@ -27,9 +26,8 @@
 
 /* User Avatar */
 .navbar-wagon .avatar {
-  height: 35px;
-  width: 35px;
-  border-radius: 50%;
+  height: 40px;
+  width: 40px;
 }
 
 /* Right section */
@@ -93,3 +91,22 @@
   border-left: 1px solid #E6E6E6;
   border-top: 1px solid #E6E6E6;
 }
+
+@media (max-width: 950px) {
+  .btn-model {
+    font-size: 15px!important
+  }
+  .navbar-wagon-right a {
+    font-size: 15px!important
+  }
+}
+
+@media (max-width: 750px) {
+  .btn-model {
+    font-size: 10px!important
+  }
+  .navbar-wagon-right a {
+    font-size: 10px!important
+  }
+}
+
