@@ -65,7 +65,6 @@ class DeliveriesController < ApplicationController
     return delivery
   end
 
-
   def push_to_onfleet(delivery)
     Onfleet.api_key = ENV['ONFLEET_API_KEY']
 
@@ -84,6 +83,8 @@ class DeliveriesController < ApplicationController
       complete_before: delivery.complete_before.to_datetime.strftime('%Q').to_i, # timestamp with ms precision
       )
 
+    delivery.onfleet_task_dropoff = task.id # can be called later with task = Onfleet::Task.get(delivery.onfleet_task_dropoff)
+    delivery.onfleet_task_dropoff = task.tracking_url
   end
 
   def build_onfleet_task_details(delivery)
