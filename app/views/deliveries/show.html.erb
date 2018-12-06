@@ -1,24 +1,64 @@
 <div class="container">
+  <div class="big-title"><h1>Votre commande n°<%= @delivery.id %></h1></div>
   <div class="all-cards">
     <div class="card-left">
       <div class="infos-card">
-        <div class="status-edit">
-          <p>Status</p>
+        <div class="style">
+          <div class="status">
+            <p>Status</p>
+            <p><strong><%= @delivery.status? %></strong></p>
+          </div>
           <p>Edit</p>
         </div>
-        <br>
-        <p>Informations client</p>
-        <br>
-        <p>Livraison (date, créneau)</p>
-        <br>
-        <p>Informations complémentaires (digicode, étage, etc...)</p>
-        <br>
-        <p>Produits commandés</p>
+
+        <h3>Informations client</h3>
+        <div class="style">
+          <div>
+            <p><%= @delivery.recipient_name %></p>
+            <p><%= @delivery.address %></p>
+          </div>
+          <p><strong>N°</strong> : <%= @delivery.recipient_phone%></p>
+        </div>
+
+        <div class="style">
+          <div>
+            <h3>Date de livraison</h3>
+            <p><%= @delivery.complete_after.strftime("%m/%d/%Y") %></p>
+          </div>
+          <div>
+            <h3>Créneau de livraison</h3>
+            <p><%= @delivery.complete_after.to_formatted_s(:short).split(" ").last %> - <%= @delivery.complete_before.to_formatted_s(:short).split(" ").last %></p>
+          </div>
+        </div>
+
+        <h3>Informations complémentaires (digicode, étage, etc...)</h3>
+
+
+        <h3>Produits commandés</h3>
+        <div class="titles">
+          <div class="title"><p>Produits</p></div>
+          <div class="title"><p>Quantité</p></div>
+        </div>
+        <ul>
+          <% @delivery.delivery_packages.each do |delivery_package| %>
+            <li class="product-list">
+              <div class="product"><p><%= delivery_package.package_type.name %></p></div>
+              <div class="product"><p><%= delivery_package.amount %></p></div>
+            </li>
+          <% end %>
+        </ul>
       </div>
     </div>
     <div class="cards-right">
       <div class="map-card">
-        <%= image_tag "google-maps.png" %>
+        <div class="map-card2">
+          <iframe id="inlineFrameExample"
+              title="Inline Frame Example"
+              width=100%
+              height=100%
+              src="https://onf.lt/f7c8d73983">
+          </iframe>
+        </div>
       </div>
 
       <div class="progress-card">

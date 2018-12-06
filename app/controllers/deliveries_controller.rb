@@ -88,5 +88,4 @@ class DeliveriesController < ApplicationController
   def company_filter
     @user_deliveries = Delivery.where(company_id: current_user.company_id)
   end
-
 end

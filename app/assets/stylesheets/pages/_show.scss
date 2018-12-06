@@ -20,10 +20,10 @@
   border-radius: 5px;
   background-color: white;
   height: 100%;
-  padding: 10px;
+  padding: 20px;
 }
 
-.status-edit {
+.style {
   display: flex;
   justify-content: space-between;
 }
@@ -38,6 +38,30 @@
   flex: 0 0 auto;
   padding: 10px;
   background-color: white;
+  // position: relative;
+  overflow: hidden;
+}
+
+.map-card2 {
+  // position: absolute;
+  // top: 0;
+  // left: 0;
+  height: 122%;
+  width: 100%;
+}
+
+iframe {
+    border: 0px solid black;
+    width: 100%;
+}
+
+.output {
+    background: #eee;
+}
+
+// Cacher la partie blanche en dessous de la carte
+.detailsContainer {
+  display: none
 }
 
 .progress-card {
@@ -53,6 +77,57 @@
   .progress-card p {
     padding: 10px 0 10px 120px;
   }
+
+.product-list {
+  display: flex;
+  text-decoration: noun;
+  justify-content: space-between;
+}
+
+ul {
+  margin-left: -40px;
+}
+
+.titles {
+  display: flex;
+  height: 40px;
+  color: white;
+}
+
+.title {
+  background-color: #3a4763;
+  flex: 1;
+  font-size: 20px;
+  text-align: center;
+  justify-content: center;
+  font-weight: bold;
+  padding-top: 5px;
+}
+
+.product-list {
+  flex: 1;
+  display: flex;
+}
+
+.product {
+  flex: 1;
+  text-align: center;
+}
+
+.product-list:nth-child(odd) {
+  background: white;
+  padding-top: 5px;
+}
+.product-list:nth-child(even) {
+  background: #3a4763;
+  opacity: 0.8;
+  color: white;
+  padding-top: 5px;
+}
+
+.big-title {
+  margin-left: 40px;
+}
 
 // .driver-card {
 //   border: 1px solid #3A4763;
