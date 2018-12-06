@@ -17,5 +17,5 @@
     <%= link_to "A venir", upcoming_deliveries_path, class: "tab" %>
     <%= link_to "Tout voir", deliveries_path, class: "tab active" %>
   </div>
-  <% render "deliveries_table" %>
+  <%= render "table", deliveries: @deliveries %>
 </div>

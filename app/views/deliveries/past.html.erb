@@ -12,10 +12,10 @@
     </div>
   </div>
   <div class="tabs">
-    <%= link_to "Passées", past_deliveries_path, class: "tab" %>
+    <%= link_to "Passées", past_deliveries_path, class: "tab active" %>
     <%= link_to "Aujourd'hui", today_deliveries_path, class: "tab" %>
     <%= link_to "A venir", upcoming_deliveries_path, class: "tab" %>
-    <%= link_to "Tout voir", deliveries_path, class: "tab active" %>
+    <%= link_to "Tout voir", deliveries_path, class: "tab" %>
   </div>
-  <% render "deliveries_table" %>
+  <%= render "table", deliveries: @deliveries %>
 </div>
