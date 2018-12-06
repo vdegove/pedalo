@@ -84,13 +84,14 @@
 }
 
 .head {
-  background-color: #8ebcea;
+  // background-color: #8ebcea;
+  background-color: $light-realblue;
   flex: 1;
   font-size: 20px;
   text-align: center;
   justify-content: center;
   font-weight: bold;
-  padding-top: 10px;
+  padding-top: 8px;
 }
 
 .delivery-container{
@@ -107,17 +108,20 @@
 .delivery {
   flex: 1;
   text-align: center;
+  color: $realblue;
 }
 
 .delivery-rows:nth-child(odd) {
   background: white;
 }
 .delivery-rows:nth-child(even) {
-  background: #8ebcea57;
+  background: $transparent-blue;
 }
 
 .form-control {
   border-radius: 15px;
+  height: 38px;
+  font-size: 16px
 }
 
 .delivery-rows:hover{
