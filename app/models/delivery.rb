@@ -6,7 +6,6 @@ class CompleteValidation < ActiveModel::Validator
   end
 end
 
-
 class Delivery < ApplicationRecord
   validates :recipient_name, presence: true
   validates :recipient_phone, presence: true, format: { with: /\A(?:(?:\+|00)33|0)*[1-9](?:[\s.-]*\d{2}){4}\z/}
@@ -21,7 +20,7 @@ class Delivery < ApplicationRecord
 
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
-
+  before_create :push_to_onfleet
 
   def status?
     if self.picked_up_at.nil?
@@ -40,4 +39,66 @@ class Delivery < ApplicationRecord
     using: {
       tsearch: { prefix: true }
     }
+
+  private
+
+  def push_to_onfleet
+    task_pickup = Onfleet::Task.create(
+      destination: {
+        address: {
+          unparsed: "#{company.address}, France"
+        },
+      },
+      recipients: [{
+        name: company.contact_name,
+        phone: company.contact_phone
+      }],
+      notes: build_pickup_task_details,
+      complete_after: complete_after.to_datetime.strftime('%Q').to_i, # timestamp with ms precision
+      complete_before: complete_before.to_datetime.strftime('%Q').to_i, # timestamp with ms precision
+      pickup_task: true
+      )
+
+    task_dropoff = Onfleet::Task.create(
+      destination: {
+        address: {
+          unparsed: "#{address}, France"
+        },
+      },
+      recipients: [{
+        name: recipient_name,
+        phone: recipient_phone
+      }],
+      notes: build_dropoff_task_details,
+      complete_after: complete_after.to_datetime.strftime('%Q').to_i, # timestamp with ms precision
+      complete_before: complete_before.to_datetime.strftime('%Q').to_i, # timestamp with ms precision
+      dependencies: [task_pickup.id]
+      )
+
+    self.onfleet_task_pickup = task_pickup.id # can be called later with task = Onfleet::Task.get(delivery.onfleet_task_dropoff)
+    self.tracking_url_pickup = task_pickup.tracking_url
+    self.onfleet_task_dropoff = task_dropoff.id # can be called later with task = Onfleet::Task.get(delivery.onfleet_task_dropoff)
+    self.tracking_url_dropoff = task_dropoff.tracking_url
+  end
+
+  def build_pickup_task_details
+    "Ramasser pour : #{recipient_name}, #{address}
+
+    Colisage :
+    #{build_descr}"
+  end
+
+  def build_dropoff_task_details
+    return "Client : #{company.name}
+
+    Colisage :
+    #{build_descr}"
+  end
+
+  def build_descr
+    d = delivery_packages.map do |delivery_package|
+      "#{delivery_package.package_type.name} : #{delivery_package.amount}"
+    end
+    return d.join('\n')
+  end
 end
