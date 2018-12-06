@@ -1,7 +1,7 @@
 require 'csv'
 
 class DeliveriesController < ApplicationController
-  skip_after_action :verify_authorized, only: :bulk_new
+  skip_after_action :verify_authorized, only: [:bulk_new, :bulk_create]
 
   def bulk_new
   end
@@ -32,9 +32,7 @@ class DeliveriesController < ApplicationController
   def bulk_create
     CSV.foreach(params[:csv_file].tempfile, headers: true) do |row|
       delivery = create_delivery(row)
-      authorize(delivery)
       delivery.save
-      push_to_onfleet(delivery)
     end
     redirect_to root_path
   end
@@ -63,37 +61,5 @@ class DeliveriesController < ApplicationController
       end
     end
     return delivery
-  end
-
-  def push_to_onfleet(delivery)
-    Onfleet.api_key = ENV['ONFLEET_API_KEY']
-
-    task = Onfleet::Task.create(
-      destination: {
-        address: {
-          unparsed: "#{delivery.address}, France"
-        },
-      },
-      recipients: [{
-        name: delivery.recipient_name,
-        phone: delivery.recipient_phone
-      }],
-      notes: build_onfleet_task_details(delivery),
-      complete_after: delivery.complete_after.to_datetime.strftime('%Q').to_i, # timestamp with ms precision
-      complete_before: delivery.complete_before.to_datetime.strftime('%Q').to_i, # timestamp with ms precision
-      )
-
-    delivery.onfleet_task_dropoff = task.id # can be called later with task = Onfleet::Task.get(delivery.onfleet_task_dropoff)
-    delivery.onfleet_task_dropoff = task.tracking_url
-  end
-
-  def build_onfleet_task_details(delivery)
-    descrs = delivery.delivery_packages.map do |delivery_package|
-      "#{delivery_package.package_type.name} : #{delivery_package.amount}"
-    end
-    return "Client : #{delivery.company.name}
-
-    Colisage :
-    #{descrs.join('\n')}"
   end
 end
