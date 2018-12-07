@@ -34,29 +34,29 @@
   padding: 0px 5px 20px 60px;
 }
 
-  .infos-card {
-    border: 1px solid #3A4763;
-    border-radius: 2px;
-    background-color: white;
-    height: 100%;
-    padding: 20px;
-  }
+.infos-card {
+  border: 1px solid #3A4763;
+  border-radius: 2px;
+  background-color: white;
+  height: 100%;
+  padding: 20px;
+}
 
-  .titles {
-    display: flex;
-    height: 40px;
-    color: white;
-  }
+.titles {
+  display: flex;
+  height: 40px;
+  color: white;
+}
 
-  .title {
-    background-color: #3a4763;
-    flex: 1;
-    font-size: 20px;
-    text-align: center;
-    justify-content: center;
-    font-weight: bold;
-    padding-top: 5px;
-  }
+.title {
+  background-color: #3a4763;
+  flex: 1;
+  font-size: 20px;
+  text-align: center;
+  justify-content: center;
+  font-weight: bold;
+  padding-top: 5px;
+}
 
 
 .progress-card {
@@ -71,34 +71,35 @@
 }
 
 .progress-card p {
-    padding: 10px 0 10px 120px;
-
-  .product-list {
-    flex: 1;
-    display: flex;
-    text-decoration: noun;
-    justify-content: space-between;
+  padding: 10px 0 10px 120px;
 }
 
-  ul {
-    margin-left: -40px;
-  }
+.product-list {
+  flex: 1;
+  display: flex;
+  text-decoration: noun;
+  justify-content: space-between;
+}
 
-  .product {
-    flex: 1;
-    text-align: center;
-  }
+ul {
+  margin-left: -40px;
+}
 
-  .product-list:nth-child(odd) {
-    background: white;
-    padding-top: 5px;
-  }
-  .product-list:nth-child(even) {
-    background: #3a4763;
-    opacity: 0.8;
-    color: white;
-    padding-top: 5px;
-  }
+.product {
+  flex: 1;
+  text-align: center;
+}
+
+.product-list:nth-child(odd) {
+  background: white;
+  padding-top: 5px;
+}
+.product-list:nth-child(even) {
+  background: #3a4763;
+  opacity: 0.8;
+  color: white;
+  padding-top: 5px;
+}
 
 
 .cards-right {
@@ -109,7 +110,7 @@
   padding: 0px 60px 20px 5px;
 }
 
-  .map-card {
+.map-card {
     // flex: 0 0 50%;
     // height: 50%
     display: flex;
@@ -151,9 +152,9 @@
     height: 24%;
     z-index: -1;
   }
-    .progress-card p {
-      padding: 10px 0 10px 120px;
-    }
+  .progress-card p {
+    padding: 10px 0 10px 120px;
+  }
 
   .driver-card {
     border: 1px solid #3A4763;
@@ -168,15 +169,15 @@
     margin-top: 10px;
   }
 
-    .infos-driver {
-      position: absolute;
-      left: 20px;
-    }
+  .infos-driver {
+    position: absolute;
+    left: 20px;
+  }
 
-    .photo-driver img {
-      position: absolute;
-      top: 20px;
-      right: 40px;
-      height: 100px;
-      border-radius: 50%;
-    }
+  .photo-driver img {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    height: 100px;
+    border-radius: 50%;
+  }
