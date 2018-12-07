@@ -7,16 +7,17 @@
         <%= text_field_tag :query,
           params[:query],
           class: "form-control",
-          placeholder: "Rechercher une commande..."
+          placeholder: "Rechercher une commande...",
+          value: ""
         %>
       <% end %>
     </div>
   </div>
   <div class="tabs">
-    <%= link_to "Passées", past_deliveries_path, class: "tab" %>
-    <%= link_to "Aujourd'hui", today_deliveries_path, class: "tab" %>
-    <%= link_to "A venir", upcoming_deliveries_path, class: "tab" %>
-    <%= link_to "Tout voir", deliveries_path, class: "tab active" %>
+    <%= link_to "Tout voir", deliveries_path, class: delivery_tab_classes(@period, "all") %>
+    <%= link_to "Passées", deliveries_path({period: "past"}), class: delivery_tab_classes(@period, "past") %>
+    <%= link_to "Aujourd'hui", deliveries_path({period: "today"}), class: delivery_tab_classes(@period, "today" ) %>
+    <%= link_to "A venir", deliveries_path({period: "upcoming"}), class: delivery_tab_classes(@period, "upcoming" ) %>
   </div>
   <%= render "table", deliveries: @deliveries %>
   </div>
