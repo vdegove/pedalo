@@ -8,6 +8,9 @@ class DeliveriesController < ApplicationController
   end
 
   def index
+    today = DateTime.now.midnight
+    @period = "all"
+    @all_deliveries = policy_scope(@user_deliveries)
     if params[:query].present?
       @deliveries = policy_scope(@user_deliveries.where("recipient_name ILIKE ?
         OR recipient_phone ILIKE ?
@@ -15,33 +18,18 @@ class DeliveriesController < ApplicationController
         OR status ILIKE ?", "%#{params[:query]}%", "%#{params[:query]}%", "%#{params[:query]}%", "%#{params[:query]}%"))
     else
       @deliveries = policy_scope(@user_deliveries)
+      case params[:period]
+      when "past"
+        @period = "past"
+        @deliveries = @deliveries.past
+      when "today"
+        @period = "today"
+        @deliveries = @deliveries.today
+      when "upcoming"
+        @period = "upcoming"
+        @deliveries = @deliveries.upcoming
+      end
     end
-  end
-
-  def today
-    today = DateTime.yesterday + 1.day
-    tomorrow = DateTime.tomorrow
-    @deliveries = @user_deliveries.where('complete_after > ? AND complete_after < ?', today, tomorrow)
-    authorize @deliveries
-  end
-
-  def past
-    today = DateTime.now
-    @deliveries = @user_deliveries.where('complete_before < ?', today)
-    authorize @deliveries
-  end
-
-  def upcoming
-    today = DateTime.now
-    @deliveries = @user_deliveries.where('complete_after > ?', today)
-    authorize @deliveries
-  end
-
-  def today
-    today = DateTime.yesterday + 1.day
-    tomorrow = DateTime.tomorrow
-    @deliveries = @user_deliveries.where('complete_after > ? AND complete_after < ?', today, tomorrow)
-    authorize @deliveries
   end
 
   def bulk_create

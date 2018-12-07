@@ -4,6 +4,7 @@
   "dependencies": {
     "@rails/webpacker": "3.5",
     "bootstrap": "3",
+    "chart.js": "^2.7.3",
     "drag-drop": "^4.2.0",
     "dropzone": "^5.5.1",
     "ikonate": "^1.0.0",
