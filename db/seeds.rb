@@ -34,7 +34,10 @@ laffitte_delivery = Delivery.new(
   recipient_phone: "0602020202",
   address: "43 Rue Laffitte, 75009 Paris",
   complete_after: tomorrow + (8 * 60 + 30) * 60,
-  complete_before: tomorrow + 13 * 60 * 60
+  complete_before: tomorrow + 13 * 60 * 60,
+  name: "Jean Claude",
+  phone: "0612121212",
+  photo: "driver.jpg"
   )
 
 laffitte_delivery.company = brasserie
