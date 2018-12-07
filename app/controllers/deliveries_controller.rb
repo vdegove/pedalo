@@ -10,6 +10,7 @@ class DeliveriesController < ApplicationController
   def index
     today = DateTime.now.midnight
     @period = "all"
+    @all_deliveries = policy_scope(@user_deliveries)
     if params[:query].present?
       @deliveries = policy_scope(@user_deliveries.where("recipient_name ILIKE ?
         OR recipient_phone ILIKE ?

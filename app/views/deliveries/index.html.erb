@@ -14,20 +14,23 @@
     </div>
   </div>
   <div class="tabs">
-    <%= link_to "Tout voir", deliveries_path, class: delivery_tab_classes(@period, "all") %>
-    <%= link_to "Passées", deliveries_path({period: "past"}), class: delivery_tab_classes(@period, "past") %>
-    <%= link_to "Aujourd'hui", deliveries_path({period: "today"}), class: delivery_tab_classes(@period, "today" ) %>
-    <%= link_to "A venir", deliveries_path({period: "upcoming"}), class: delivery_tab_classes(@period, "upcoming" ) %>
+    <%= link_to "Tout voir",
+        deliveries_path, class: delivery_tab_classes(@period, "all") %>
+    <%= link_to "Passées",
+        deliveries_path({period: "past"}), class: delivery_tab_classes(@period, "past") %>
+    <%= link_to "Aujourd'hui",
+        deliveries_path({period: "today"}), class: delivery_tab_classes(@period, "today" ) %>
+    <%= link_to "A venir",
+        deliveries_path({period: "upcoming"}), class: delivery_tab_classes(@period, "upcoming" ) %>
   </div>
   <%= render "table", deliveries: @deliveries %>
   </div>
   <div class="dash-container">
     <% today_7 = DateTime.now.midnight - 7.day %>
     <% tomorrow_7 = DateTime.now.midnight - 6.day %>
-    <p>Nb livré : <%= @deliveries.where("status ILIKE ?", "Enregistré").count %>/<%= @deliveries.count %> </p>
-    <p>Nb retard : <%= @deliveries.where("complete_before < ?", DateTime.now).count %>/<%= @deliveries.count %></p>
-    <p>Comparatif S-1 : <%= @deliveries.count %> / <%= today = DateTime.yesterday + 1.day
-    tomorrow = DateTime.tomorrow
+    <p>Nb livré : <%= @all_deliveries.delivered.count %>/<%= @all_deliveries.count %> </p>
+    <p>Nb retard : <%= @all_deliveries.where("complete_before < ?", DateTime.now).count %>/<%= @all_deliveries.count %></p>
+    <p>Comparatif S-1 : <%= @all_deliveries.count %> / <%=
     @deliveries = @user_deliveries.where('complete_after > ? AND complete_after < ?', today_7, tomorrow_7).count %></p>
   </div>
 </div>
