@@ -22,12 +22,17 @@ class Delivery < ApplicationRecord
   after_validation :geocode, if: :will_save_change_to_address?
   before_create :push_to_onfleet
 
+
+
   def status?
     if self.picked_up_at.nil?
+      self.status = "Enregisté"
       return "Enregisté"
     elsif self.delivered_at.nil?
+      self.status = "Enlevé"
       return "Enlevé"
     else
+      self.status = "Livré"
       return "Livré"
     end
   end
