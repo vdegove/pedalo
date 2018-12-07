@@ -71,7 +71,16 @@
 }
 
 .progress-card p {
-  padding: 10px 0 10px 120px;
+  padding: 0px 10px;
+}
+
+.progress_bar {
+  margin-bottom: 10px;
+}
+
+.progress-bar-content {
+  height: 100%;
+  padding: 10px;
 }
 
 .product-list {
@@ -128,7 +137,7 @@ ul {
     // position: absolute;
     // top: 0;
     // left: 0;
-    height: 122%;
+    height: 138%;
     width: 100%;
   }
   iframe {
@@ -144,17 +153,14 @@ ul {
   //   display: none
   // }
 
-  .progress-card {
-    border: 1px solid #3A4763;
-    border-radius: 2px;
-    background-color: white;
-    padding: 10px;
-    height: 24%;
-    z-index: -1;
-  }
-  .progress-card p {
-    padding: 10px 0 10px 120px;
-  }
+  // .progress-card {
+  //   border: 1px solid #3A4763;
+  //   border-radius: 2px;
+  //   background-color: white;
+  //   padding: 10px;
+  //   height: 24%;
+  //   z-index: -1;
+  // }
 
   .driver-card {
     border: 1px solid #3A4763;
