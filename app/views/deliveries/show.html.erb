@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-show">
   <div class="big-title"><h1>Votre commande n°<%= @delivery.id %></h1></div>
   <div class="all-cards">
     <div class="card-left">
@@ -30,11 +30,11 @@
             <p><%= @delivery.complete_after.to_formatted_s(:short).split(" ").last %> - <%= @delivery.complete_before.to_formatted_s(:short).split(" ").last %></p>
           </div>
         </div>
+        <br>
+        <p><strong>Informations complémentaires (digicode, étage, etc...)</strong></p>
 
-        <h3>Informations complémentaires (digicode, étage, etc...)</h3>
 
-
-        <h3>Produits commandés</h3>
+        <h3>Commande</h3>
         <div class="titles">
           <div class="title"><p>Produits</p></div>
           <div class="title"><p>Quantité</p></div>
@@ -66,6 +66,16 @@
         <div class="progress_bar">
           <%= render 'progress_bar', delivery: @delivery %>
         </div>
+      </div>
+
+      <div class="driver-card">
+        <div class="infos-driver">
+          <h3>Votre livreur</h3>
+          <p><%= @delivery.name %><br>N°<%= @delivery.phone %></p>
+        </div>
+<!--         <div class="photo-driver">
+          <%#= image_tag @delivery.photo, alt: "driver photo" %>
+        </div> -->
       </div>
     </div>
   </div>
