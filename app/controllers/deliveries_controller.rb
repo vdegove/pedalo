@@ -49,6 +49,12 @@ class DeliveriesController < ApplicationController
   def show
     @delivery = @user_deliveries.find(params[:id])
     authorize @delivery
+    @driver_name = @delivery.name
+
+    @driver_phone = @delivery.phone
+
+    @driver_photo = @delivery.photo
+
   end
 
   private

@@ -1,26 +1,27 @@
+.container-show {
+  width: 1200px;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.big-title {
+  margin: 40px 0 40px 60px;
+}
+
 .all-cards {
   display: flex;
 }
 
-.card-left {
-  width: 50%;
-  padding: 30px 5px 20px 20px;
+.infos-card h3 {
+  font-family: "Rubik";
+  font-weight: thin;
+  font-size: 18px;
+  padding: 0px;
 }
 
-.cards-right {
-  width: 50%;
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-  padding: 30px 20px 20px 5px;
-}
-
-.infos-card {
-  border: 1px solid #3A4763;
-  border-radius: 5px;
-  background-color: white;
-  height: 100%;
-  padding: 20px;
+.infos-card p {
+  font-weight: bold;
 }
 
 .style {
@@ -28,64 +29,17 @@
   justify-content: space-between;
 }
 
-.map-card {
-  // flex: 0 0 50%;
-  // height: 50%
-  display: flex;
+.card-left {
+  width: 50%;
+  padding: 0px 5px 20px 60px;
+}
+
+.infos-card {
   border: 1px solid #3A4763;
-  border-radius: 5px;
-  height: 70%;
-  flex: 0 0 auto;
-  padding: 10px;
+  border-radius: 2px;
   background-color: white;
-  // position: relative;
-  overflow: hidden;
-}
-
-.map-card2 {
-  // position: absolute;
-  // top: 0;
-  // left: 0;
-  height: 122%;
-  width: 100%;
-}
-
-iframe {
-    border: 0px solid black;
-    width: 100%;
-}
-
-.output {
-    background: #eee;
-}
-
-// Cacher la partie blanche en dessous de la carte
-.detailsContainer {
-  display: none
-}
-
-.progress-card {
-  border: 1px solid #3A4763;
-  border-radius: 5px;
-  background-color: white;
-  padding: 10px;
-  height: 25%;
-  z-index: -1;
-  display: flex;
-  flex-direction: column;
-}
-  .progress-card p {
-    padding: 10px 0 10px 120px;
-  }
-
-.product-list {
-  display: flex;
-  text-decoration: noun;
-  justify-content: space-between;
-}
-
-ul {
-  margin-left: -40px;
+  height: 100%;
+  padding: 20px;
 }
 
 .titles {
@@ -104,9 +58,31 @@ ul {
   padding-top: 5px;
 }
 
+
+.progress-card {
+  border: 1px solid #3A4763;
+  border-radius: 5px;
+  background-color: white;
+  padding: 10px;
+  height: 25%;
+  z-index: -1;
+  display: flex;
+  flex-direction: column;
+}
+
+.progress-card p {
+  padding: 10px 0 10px 120px;
+}
+
 .product-list {
   flex: 1;
   display: flex;
+  text-decoration: noun;
+  justify-content: space-between;
+}
+
+ul {
+  margin-left: -40px;
 }
 
 .product {
@@ -125,13 +101,83 @@ ul {
   padding-top: 5px;
 }
 
-.big-title {
-  margin-left: 40px;
+
+.cards-right {
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  padding: 0px 60px 20px 5px;
 }
 
-// .driver-card {
-//   border: 1px solid #3A4763;
-//   border-radius: 5px;
-//   background-color: white;
-//   padding: 10px;
-// }
+.map-card {
+    // flex: 0 0 50%;
+    // height: 50%
+    display: flex;
+    border: 1px solid #3A4763;
+    border-radius: 2px;
+    height: 50%;
+    flex: 0 0 auto;
+    padding: 10px;
+    background-color: white;
+    // position: relative;
+    overflow: hidden;
+  }
+
+  .map-card2 {
+    // position: absolute;
+    // top: 0;
+    // left: 0;
+    height: 122%;
+    width: 100%;
+  }
+  iframe {
+    border: 0px solid black;
+    width: 100%;
+  }
+  .output {
+    background: #eee;
+  }
+
+  // Cacher le texte de la partie blanche en dessous de la carte
+  // .detailsContainer {
+  //   display: none
+  // }
+
+  .progress-card {
+    border: 1px solid #3A4763;
+    border-radius: 2px;
+    background-color: white;
+    padding: 10px;
+    height: 24%;
+    z-index: -1;
+  }
+  .progress-card p {
+    padding: 10px 0 10px 120px;
+  }
+
+  .driver-card {
+    border: 1px solid #3A4763;
+    border-radius: 2px;
+    background-color: white;
+    padding: 10px;
+    height: 24%;
+    position: relative;
+  }
+
+  .driver-card h3 {
+    margin-top: 10px;
+  }
+
+  .infos-driver {
+    position: absolute;
+    left: 20px;
+  }
+
+  .photo-driver img {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    height: 100px;
+    border-radius: 50%;
+  }

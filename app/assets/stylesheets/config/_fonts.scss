@@ -1,10 +1,11 @@
 // Import Google fonts
 @import url('https://fonts.googleapis.com/css?family=Karla:400,700|Rubik:400,500');
+@import url('https://fonts.googleapis.com/css?family=Contrail+One');
 
 
 // Define fonts for body and headers
 $body-font: 'Karla', "sans-serif";
-$headers-font: 'Rubik', "sans-serif";
+$headers-font: 'Contrail One', "cursive";
 
 // To use a font file (.woff) uncomment following lines
 // @font-face {
@@ -16,24 +17,24 @@ $headers-font: 'Rubik', "sans-serif";
 // }
 // $my-font: "Font Name";
 h1 {
-  font-size: 40px;
-  color: #3A4763;
-}
-
-h2 {
   font-size: 32px;
   color: #3A4763;
 }
 
+h2 {
+  font-size: 28px;
+  color: #3A4763;
+}
+
 h3 {
-  font-size: 24px;
+  font-size: 22px;
   color: #3A4763;
 }
 
 p {
-  font-size: 20px;
+  font-size: 15px;
 }
 
 a {
-  font-size: 20px;
+  font-size: 15px;
 }

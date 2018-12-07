@@ -1,8 +1,8 @@
 .btn-model {
-  color: #3A4763;
+  color: white;
   background-color: transparent;
-  border: 3px solid #3A4763;
-  padding: 8px 8px;
+  border: 3px solid #f9ce00;
+  padding: 5px 8px;
   border-radius: 50px;
   font-weight: lighter;
   box-shadow: 1px;
@@ -10,20 +10,17 @@
 
 .btn-model:hover {
   text-decoration: none;
-  color: #3A4763;
+  color: #24527A;
 }
 
 .btn-model-sign-in {
-  color: #3A4763;
+  color: #24527A;
   background-color: transparent;
-  border: 3px solid #3A4763;
-  padding: 8px 8px;
+  border: 3px solid #f9ce00;
+  padding: 5px 8px;
   border-radius: 50px;
   font-weight: lighter;
   box-shadow: 1px;
-  text-align: center;
-  vertical-align: middle;
-  width: 100vh;
 }
 
 .btn-model-sign-in:hover {

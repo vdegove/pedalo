@@ -1,7 +1,7 @@
 <div class="navbar-wagon">
   <!-- Logo -->
   <%= link_to root_path, class: "navbar-wagon-brand" do %>
-    <%= image_tag "logo.png", height: 50 %>
+    <h3>Pedalo</h3>
   <% end %>
 
   <!-- Right Navigation -->
@@ -12,22 +12,26 @@
       <!-- Links when logged in -->
       <%= link_to "Nouvelle expédition", deliveries_bulk_new_path, class: "btn-model" %>
       &ensp;&ensp;
-      <%= link_to "Tableau de bord", today_deliveries_path %>
+      <div id="unique-link">
+        <%= link_to "Tableau de bord", today_deliveries_path %>
+      </div>
 
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">
           <div class="dropdown">
-            <img src="../assets/usericon.svg" class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown">
+            <img src="../assets/usericon.svg" class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown" %>
                <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
                   <li><%= link_to "Mon compte", root_path %></li>
                   <li><%= link_to "Dashboard", today_deliveries_path %></li>
                   <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
-                </ul>
+              </ul>
           </div>
         </div>
       <% else %>
-      <%= link_to "Sign in", new_user_session_path %>
-      <% end %>
+      <div id="unique-link">
+        <%= link_to "Sign in", new_user_session_path %>
+      </div>
+    <% end %>
   </div>
 </div>
 
