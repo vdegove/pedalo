@@ -22,6 +22,15 @@ class Delivery < ApplicationRecord
   after_validation :geocode, if: :will_save_change_to_address?
   before_create :push_to_onfleet
 
+  #scope
+  today = today = DateTime.now.midnight
+  scope :today, -> { where('complete_after > ? AND complete_after < ?', today, today.tomorrow) }
+  scope :past, -> { where('complete_before < ?', today) }
+  scope :upcoming, -> { where('complete_after > ?', today) }
+  scope :delivered, -> { where(status: "Livré") }
+  scope :not_delivered, -> { where(status: "Enregisté") }
+  scope :in_process, -> { where(status: "Enlevé") }
+
 
 
   def status?
