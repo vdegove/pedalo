@@ -31,7 +31,7 @@
     <% nb_livred = @all_deliveries.delivered.count%>
     <% nb_delayed = @all_deliveries.where("complete_before < ?", DateTime.now).count  %>
     <% rest = @all_deliveries.count - (nb_delayed + nb_livred) %>
-    <canvas id="myChart" width="400" height="400" data-delayed="<%= nb_delayed %>" data-livred="<%= nb_livred %>" data-test = "<%=  rest%>"></canvas>
+    <canvas id="myChart" width="400" height="400" data-delayed="<%= nb_delayed %>" data-livred="<%= nb_livred %>" data-test = "<%=  rest%>" style="display: block;width: 360px;height: 360px;padding-top: 0px;"></canvas>
   </div>
 </div>
 
