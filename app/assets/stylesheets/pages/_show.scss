@@ -13,6 +13,17 @@
   display: flex;
 }
 
+.infos-card h3 {
+  font-family: "Rubik";
+  font-weight: thin;
+  font-size: 18px;
+  padding: 0px;
+}
+
+.infos-card p {
+  font-weight: bold;
+}
+
 .style {
   display: flex;
   justify-content: space-between;
@@ -47,12 +58,27 @@
     padding-top: 5px;
   }
 
+
+.progress-card {
+  border: 1px solid #3A4763;
+  border-radius: 5px;
+  background-color: white;
+  padding: 10px;
+  height: 25%;
+  z-index: -1;
+  display: flex;
+  flex-direction: column;
+}
+
+.progress-card p {
+    padding: 10px 0 10px 120px;
+
   .product-list {
     flex: 1;
     display: flex;
     text-decoration: noun;
     justify-content: space-between;
-  }
+}
 
   ul {
     margin-left: -40px;
