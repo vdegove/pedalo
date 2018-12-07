@@ -30,8 +30,7 @@
     <% tomorrow_7 = DateTime.now.midnight - 6.day %>
     <p>Nb livré : <%= @all_deliveries.delivered.count %>/<%= @all_deliveries.count %> </p>
     <p>Nb retard : <%= @all_deliveries.where("complete_before < ?", DateTime.now).count %>/<%= @all_deliveries.count %></p>
-    <p>Comparatif S-1 : <%= @all_deliveries.count %> / <%=
-    @deliveries = @user_deliveries.where('complete_after > ? AND complete_after < ?', today_7, tomorrow_7).count %></p>
+    <p>Comparatif S-1 : <%= @all_deliveries.today.count %> / <%= @user_deliveries.where('complete_after > ? AND complete_after < ?', today_7, tomorrow_7).count %></p>
   </div>
 </div>
 
