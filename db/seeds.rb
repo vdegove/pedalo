@@ -37,7 +37,6 @@ laffitte_delivery = Delivery.new(
   complete_before: tomorrow + 13 * 60 * 60,
   name: "Jean Claude",
   phone: "0612121212",
-  photo: "driver.jpg"
   )
 
 laffitte_delivery.company = brasserie

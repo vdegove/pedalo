@@ -1,4 +1,4 @@
-<div class="my-container">
+<div class="container-show">
   <div class="big-title"><h1>Votre commande n°<%= @delivery.id %></h1></div>
   <div class="all-cards">
     <div class="card-left">
@@ -73,9 +73,9 @@
           <h3>Votre livreur</h3>
           <p><%= @delivery.name %><br>N°<%= @delivery.phone %></p>
         </div>
-        <div class="photo-driver">
-          <%= image_tag @delivery.photo, alt: "driver photo" %>
-        </div>
+<!--         <div class="photo-driver">
+          <%#= image_tag @delivery.photo, alt: "driver photo" %>
+        </div> -->
       </div>
     </div>
   </div>
