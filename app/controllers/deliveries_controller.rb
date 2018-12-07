@@ -20,13 +20,13 @@ class DeliveriesController < ApplicationController
       case params[:period]
       when "past"
         @period = "past"
-        @deliveries = @deliveries.where('complete_before < ?', today)
+        @deliveries = @deliveries.past
       when "today"
         @period = "today"
-        @deliveries = @deliveries.where('complete_after > ? AND complete_after < ?', today, today.tomorrow)
+        @deliveries = @deliveries.today
       when "upcoming"
         @period = "upcoming"
-        @deliveries = @deliveries.where('complete_after > ?', today)
+        @deliveries = @deliveries.upcoming
       end
     end
   end
