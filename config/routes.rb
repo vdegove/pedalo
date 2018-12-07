@@ -18,6 +18,18 @@ Rails.application.routes.draw do
     collection do
       get 'today', to: "deliveries#today"
     end
+    collection do
+      get 'name', to: "deliveries#name"
+    end
+    collection do
+      get 'phone', to: "deliveries#phone"
+    end
+    collection do
+      get 'photo', to: "deliveries#photo"
+    end
   end
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  # Webooks
+  post '/webhooks/onfleet/:token/task-completed', to: 'onfleet_webhooks#task_completed'
+  get '/webhooks/onfleet/:token/task-completed', to: 'onfleet_webhooks#task_completed'
 end
