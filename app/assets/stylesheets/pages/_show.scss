@@ -23,6 +23,17 @@
   padding: 20px;
 }
 
+.infos-card h3 {
+  font-family: "Rubik";
+  font-weight: thin;
+  font-size: 18px;
+  padding: 0px;
+}
+
+.infos-card p {
+  font-weight: bold;
+}
+
 .style {
   display: flex;
   justify-content: space-between;
@@ -74,7 +85,8 @@ iframe {
   display: flex;
   flex-direction: column;
 }
-  .progress-card p {
+
+.progress-card p {
     padding: 10px 0 10px 120px;
   }
 
