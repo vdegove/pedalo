@@ -53,6 +53,25 @@
 //   text-align: center;
 // }
 
+.main-container {
+  display: flex;
+}
+
+.table-container {
+  flex: 2;
+}
+
+.dash-container {
+  flex: 1;
+  height: 85vh;
+  margin-top: 10px;
+  margin-right: 10px;
+  // border: solid 1px;
+  border-radius: 5px;
+  background-color: white;
+  box-shadow: 2px 2px 2px 2px #888888;
+}
+
 .container-content {
   margin-left: 10px;
   margin-right: 10px;
@@ -75,7 +94,9 @@
 
 .delivery-search {
   flex: 1;
-  margin-right: 10px;
+  margin-right: 0px;
+  margin-top: 10px;
+  width: 50px;
 }
 
 .headers {
@@ -116,9 +137,11 @@
   background: #8ebcea57;
 }
 
-.form-control {
+.delivery-search {
+  .form-control {
   border-radius: 15px;
-}
+  width: 80%;
+}}
 
 .delivery-rows:hover{
   cursor: pointer;

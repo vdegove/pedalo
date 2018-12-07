@@ -2981,6 +2981,11 @@ ignore-walk@^3.0.1:
   dependencies:
     minimatch "^3.0.4"
 
+ikonate@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/ikonate/-/ikonate-1.0.0.tgz#b2fed5c2a3cf9b07cc2f21a907266f38aebbdd26"
+  integrity sha512-zXie6rqjy/nOiqi74pKP5EF6KadZVyTW5g98ZFpQCoJtnCcRvwpV78W2QaLzxu/vb/Qh0GRcWP9ONgXDVLhhiQ==
+
 import-cwd@^2.0.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/import-cwd/-/import-cwd-2.1.0.tgz#aa6cf36e722761285cb371ec6519f53e2435b0a9"
