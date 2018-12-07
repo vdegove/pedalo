@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: 'deliveries#today'
+  root to: 'deliveries#index', period: "today"
 
   resources :deliveries, only: [:create, :update, :index]
   resources :companies, only: [:new, :create]
@@ -9,18 +9,6 @@ Rails.application.routes.draw do
   post 'deliveries/bulk-create', to: 'deliveries#bulk_create'
 
   resources :deliveries do
-    collection do
-      get 'past', to: "deliveries#past"
-    end
-    collection do
-      get 'upcoming', to: "deliveries#upcoming"
-    end
-    collection do
-      get 'today', to: "deliveries#today"
-    end
-    collection do
-      get 'name', to: "deliveries#name"
-    end
     collection do
       get 'phone', to: "deliveries#phone"
     end

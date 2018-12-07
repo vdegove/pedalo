@@ -13,7 +13,7 @@
       <%= link_to "Nouvelle expédition", deliveries_bulk_new_path, class: "btn-model" %>
       &ensp;&ensp;
       <div id="unique-link">
-        <%= link_to "Tableau de bord", today_deliveries_path %>
+        <%= link_to "Tableau de bord", root_path %>
       </div>
 
       <!-- Avatar with dropdown menu -->
@@ -22,7 +22,7 @@
             <img src="../assets/usericon.svg" class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown" %>
                <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
                   <li><%= link_to "Mon compte", root_path %></li>
-                  <li><%= link_to "Dashboard", today_deliveries_path %></li>
+                  <li><%= link_to "Dashboard", root_path %></li>
                   <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
               </ul>
           </div>
