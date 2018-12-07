@@ -31,32 +31,6 @@ class DeliveriesController < ApplicationController
     end
   end
 
-  # def today
-  #   today = DateTime.yesterday + 1.day
-  #   tomorrow = DateTime.tomorrow
-  #   @deliveries = @user_deliveries.where('complete_after > ? AND complete_after < ?', today, tomorrow)
-  #   authorize @deliveries
-  # end
-
-  # def past
-  #   today = DateTime.now
-  #   @deliveries = @user_deliveries.where('complete_before < ?', today)
-  #   authorize @deliveries
-  # end
-
-  # def upcoming
-  #   today = DateTime.now
-  #   @deliveries = @user_deliveries.where('complete_after > ?', today)
-  #   authorize @deliveries
-  # end
-
-  # def today
-  #   today = DateTime.yesterday + 1.day
-  #   tomorrow = DateTime.tomorrow
-  #   @deliveries = @user_deliveries.where('complete_after > ? AND complete_after < ?', today, tomorrow)
-  #   authorize @deliveries
-  # end
-
   def bulk_create
     @count = 0
     CSV.foreach(params[:file].tempfile, headers: true) do |row|
