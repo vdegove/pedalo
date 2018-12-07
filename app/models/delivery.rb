@@ -1,5 +1,6 @@
 class CompleteValidation < ActiveModel::Validator
   def validate(record)
+    # Todo : allow not to have a precise date
     if record.complete_before < record.complete_after || record.complete_after < DateTime.now
       record.errors[:base] << "Start time has to be after now"
     end

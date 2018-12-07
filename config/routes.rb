@@ -28,5 +28,8 @@ Rails.application.routes.draw do
       get 'photo', to: "deliveries#photo"
     end
   end
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  # Webooks
+  post '/webhooks/onfleet/:token/task-completed', to: 'onfleet_webhooks#task_completed'
+  get '/webhooks/onfleet/:token/task-completed', to: 'onfleet_webhooks#task_completed'
 end
