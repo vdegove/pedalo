@@ -26,13 +26,24 @@
   <%= render "table", deliveries: @deliveries %>
   </div>
   <div class="dash-container">
+    <div class="top-dashboard">
     <% today_7 = DateTime.now.midnight - 7.day %>
     <% tomorrow_7 = DateTime.now.midnight - 6.day %>
     <% nb_livred = @all_deliveries.delivered.count%>
     <% nb_delayed = @all_deliveries.where("complete_before < ?", DateTime.now).count  %>
     <% rest = @all_deliveries.count - (nb_delayed + nb_livred) %>
-    <canvas id="myChart" width="400" height="400" data-delayed="<%= nb_delayed %>" data-livred="<%= nb_livred %>" data-test = "<%=  rest%>" style="display: block;width: 360px;height: 360px;padding-top: 0px;"></canvas>
+    <div class="topleft-dashboard">
+    <canvas id="myChart" width="100" height="100" data-delayed="<%= nb_delayed %>" data-livred="<%= nb_livred %>" data-test = "<%=  rest%>"></canvas>
+    </div>
+    <div class="dash-infos">
+      Hello je suis en train de coder
+    </div>
+    </div>
+    <div class="bottom-dashboard">
     <canvas id="myChart2" width="400" height="400"></canvas>
+
+    </div>
+    </div>
   </div>
 </div>
 
