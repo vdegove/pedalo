@@ -1,6 +1,6 @@
 /* Style the sidebar - fixed full height */
 .sidebar {
-  height: 100vh;
+  height: calc(100vh - 55px);
   width: 160px;
   z-index: 1;
   top: 0;

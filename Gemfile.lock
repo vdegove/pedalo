@@ -85,8 +85,6 @@ GEM
     geocoder (1.5.0)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
-    groupdate (4.1.0)
-      activesupport (>= 4.2)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
     i18n (1.1.1)
@@ -241,7 +239,6 @@ DEPENDENCIES
   dotenv-rails
   font-awesome-sass (~> 5.0.9)
   geocoder
-  groupdate
   jbuilder (~> 2.0)
   listen (~> 3.0.5)
   onfleet-ruby!
