@@ -43,7 +43,7 @@
           <% @delivery.delivery_packages.each do |delivery_package| %>
             <li class="product-list">
               <div class="product"><p><%= delivery_package.package_type.name %></p></div>
-              <div class="product"><p><%= delivery_package.amount %></p></div>
+                <%= link_to "#{delivery_package.amount}", deliveries_path, class: "product" %>
             </li>
           <% end %>
         </ul>
