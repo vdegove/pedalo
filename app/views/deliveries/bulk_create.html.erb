@@ -1,0 +1,16 @@
+<div class="container-show">
+  <h1><%= @count %> livraisons importées !</h1>
+  <% @deliveries.each do |delivery| %>
+    <%= simple_form_for delivery, wrapper: :inline_form, html: { class: 'form-inline delivery-form-line' } do |f| %>
+      <%= f.input :recipient_name %>
+      <%= f.input :address, input_html: { size: '30' } %>
+      <%#= f.input :date, as: :date, label: false %>
+      <div class="bulk-date-check">Le <%= delivery.date.strftime("%d/%m/%y") %> entre</div>
+      <%= f.input :complete_after, as: :time, label: false %> et
+      <%= f.input :complete_before, as: :time, label: false %>
+      <%= f.button :submit, "Mettre à jour", class: "btn-no-background" %>
+    <% end %>
+  <% end %>
+
+</div>
+

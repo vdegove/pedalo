@@ -31,8 +31,6 @@ class Delivery < ApplicationRecord
   scope :not_delivered, -> { where(status: "Enregisté") }
   scope :in_process, -> { where(status: "Enlevé") }
 
-
-
   def status?
     if self.picked_up_at.nil?
       self.status = "Enregisté"
@@ -44,6 +42,10 @@ class Delivery < ApplicationRecord
       self.status = "Livré"
       return "Livré"
     end
+  end
+
+  def date
+    complete_after.to_date
   end
 
   # pg_search on deliveries' fields
