@@ -2,9 +2,14 @@
   <h3>Importez votre fichier CSV</h3>
   <p>Nous pédalons très vite pour que tout soit prêt !</p>
 </div>
-  <%= form_tag(deliveries_bulk_create_path, method: "post", multipart: true, class: "dropzone", id:"my-awesome-dropzone") do %>
 
-  <%= file_field_tag 'file', class: "hidden" %>
-  <%#= submit_tag("Drag and drop", class: "btn-model") %>
-<% end %>
+<div class="centered">
+    <%= form_tag(deliveries_bulk_create_path, method: "post", multipart: true, class: "form-inline") do %>
+      <div class="form-group"><%= file_field_tag 'file'%></div>
+      <%= submit_tag("Importer", class: "btn-no-background") %>
+    <% end %>
+    <br>
+    <br>
+    <p>Format accepté : <a href="#">téléchargez un modèle de fichier</a></p>
+</div>
 
