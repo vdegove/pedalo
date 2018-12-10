@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   resources :deliveries, only: [:create, :update, :show]
   resources :companies, only: [:new, :create]
 
+  get '/dashboard', to: 'deliveries#dashboard'
+
   get '/deliveries/bulk-new', to: 'deliveries#bulk_new'
   post 'deliveries/bulk-create', to: 'deliveries#bulk_create'
 

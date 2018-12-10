@@ -1,0 +1,125 @@
+/* Style the sidebar - fixed full height */
+.sidebar {
+  height: 100vh;
+  width: 160px;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #24527A;
+  overflow-x: hidden;
+  padding-top: 16px;
+  position: sticky!important;
+  top: 0!important;
+  float: left;
+  border-top: 2px solid #F9CE01;
+  text-align: center;
+
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+}
+
+.welcome {
+  border: 1px 0.2 solid #F9CE01;
+}
+/* Style sidebar links */
+.sidebar-links a {
+  padding: 6px 8px 6px 16px;
+  font-size: 16px;
+  color: white;
+  text-decoration: none;
+  // display: block;
+}
+
+.delivery-list li {
+  position: relative;
+  text-align: center;
+}
+
+.delivery-list li a:before {
+  content: "";
+  position: absolute;
+  // z-index: -1;
+  z-index: -1;
+  left: 51%;
+  right: 51%;
+  bottom: 0;
+  background: #f9ce01;
+  height: 4px;
+  -webkit-transition-property: left, right;
+  transition-property: left, right;
+  -webkit-transition-duration: 0.6s;
+  transition-duration: 0.6s;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+
+.delivery-list li a:hover:before, .delivery-list li a:focus:before, .delivery-list li a:active:before {
+  left: 0;
+  right: 0;
+}
+/* Style links on mouse-over */
+
+
+/* Style the main content */
+.main {
+  margin-left: 160px; /* Same as the width of the sidenav */
+  padding: 0px 10px;
+}
+
+/* Card style */
+.card {
+  height: 175px;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+  background-size: cover !important;
+  background-position: center;
+  color: white;
+  position: relative;
+}
+.card-user {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  width: 40px;
+  border-radius: 50%;
+}
+.card-category {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 15px;
+  text-transform: uppercase;
+}
+.card-description {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+}
+.card-description h2 {
+  font-size: 24px;
+}
+.card-description p {
+  font-size: 14px;
+  opacity: 0.7;
+  font-weight: lighter;
+}
+.card-link {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  z-index: 2;
+  background: black;
+  opacity: 0;
+}
+.card-link:hover {
+  opacity: 0.1;
+}
+
+/* Add media queries for small screens (when the height of the screen is less than 450px, add a smaller padding and font-size) */
+@media screen and (max-height: 450px) {
+  .sidebar {padding-top: 15px;}
+  .sidebar a {font-size: 18px;}
+}
