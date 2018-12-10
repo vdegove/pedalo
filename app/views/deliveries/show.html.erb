@@ -39,7 +39,7 @@
           <div class="title"><p>Produits</p></div>
           <div class="title"><p>Quantité</p></div>
         </div>
-        <ul>
+        <ul class="margin-left-negatif-40">
           <% @delivery.delivery_packages.each do |delivery_package| %>
             <li class="product-list">
               <div class="product"><p><%= delivery_package.package_type.name %></p></div>

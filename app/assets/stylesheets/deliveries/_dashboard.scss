@@ -12,10 +12,38 @@
   cursor: pointer;
   text-decoration: none;
   opacity: 0.8;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  position: relative;
+  overflow: hidden;
 }
+
+.tabs a:hover:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 0;
+  right: 100%;
+  bottom: 0;
+  background: #F9CE01;
+  height: 4px;
+  -webkit-transition-property: right;
+  transition-property: right;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+
+.tabs a:hover:hover:before, .tabs a:hover:focus:before, .tabs a:hover:active:before {
+  right: 0;
+}
+
 .tabs h3 {
   margin-top: 0;
 }
+
 .tabs p {
   opacity: 0.5;
   margin-bottom: 0;
@@ -29,17 +57,19 @@
 }
 
 .tab:first-child {
-  border-radius: 20px 0 0 0;
+  border-radius: 0 0 0 0;
 }
 .tab:last-child {
-  border-radius: 0 20px 0 0;
+  border-radius: 0 0 0 0;
 }
-.tab.active {
-  background: white;
-  color: black;
-  border-bottom: 3px solid;
-  border-color: white white #F9CE01 white;
-}
+
+// .tab.active {
+//   background: white;
+//   color: black;
+//   border-bottom: 3px solid;
+//   border-color: white white #F9CE01 white;
+//  }
+
 // .container {
 //   position: absolute;
 //   margin-top: 80px;
@@ -58,6 +88,7 @@
 
 .table-container {
   flex: 2;
+  box-shadow: 0 20px 20px -5px rgba(0,0,0,0.15);
 }
 
 .dash-container {
@@ -163,8 +194,10 @@
 
 .topleft-dashboard {
   background-color: white;
+  border-color: blue;
   width: 320px;
-  border-radius: 10px
+  border-radius: 10px;
+  box-shadow: 0 20px 20px -14px rgba(0,0,0,0.15);
 }
 
 .dash-infos{
@@ -172,11 +205,13 @@
   width: 200px;
   background-color: white;
   margin-left: 10px;
-  border-radius: 10px
+  border-radius: 10px;
+  box-shadow: 0 20px 20px -14px rgba(0,0,0,0.15);
 }
 .bottom-dashboard {
   background-color: white;
   border-radius: 10px;
+  box-shadow: 0 20px 20px -14px rgba(0,0,0,0.15);
 }
 
 
@@ -186,3 +221,4 @@
   margin-top: 10px;
   ;
 }
+
