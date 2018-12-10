@@ -37,6 +37,7 @@ class DeliveriesController < ApplicationController
     CSV.foreach(params[:file].tempfile, headers: true) do |row|
       delivery = create_delivery(row)
       delivery.save
+      delivery.push_to_onfleet
       @count += 1
     end
   end

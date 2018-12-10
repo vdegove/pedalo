@@ -21,7 +21,6 @@ class Delivery < ApplicationRecord
 
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
-  before_create :push_to_onfleet
 
   #scope
   today = today = DateTime.now.midnight
@@ -54,8 +53,6 @@ class Delivery < ApplicationRecord
     using: {
       tsearch: { prefix: true }
     }
-
-  private
 
   def push_to_onfleet
     task_pickup = Onfleet::Task.create(
@@ -94,7 +91,10 @@ class Delivery < ApplicationRecord
     self.tracking_url_pickup = task_pickup.tracking_url
     self.onfleet_task_dropoff = task_dropoff.id # can be called later with task = Onfleet::Task.get(delivery.onfleet_task_dropoff)
     self.tracking_url_dropoff = task_dropoff.tracking_url
+    self.save
   end
+
+  private
 
   def build_pickup_task_details
     "Ramasser pour : #{recipient_name}, #{address}
