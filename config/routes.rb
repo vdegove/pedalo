@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'package_packages/index'
+
   devise_for :users
   root to: 'deliveries#index', period: "today"
 
@@ -17,6 +17,8 @@ Rails.application.routes.draw do
       get 'photo', to: "deliveries#photo"
     end
   end
+
+  resources :delivery_packages, only: [:edit, :update]
 
   # Webooks
   post '/webhooks/onfleet/:token/task-completed', to: 'onfleet_webhooks#task_completed'
