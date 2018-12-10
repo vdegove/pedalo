@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'package_packages/index'
   devise_for :users
   root to: 'deliveries#index', period: "today"
 
