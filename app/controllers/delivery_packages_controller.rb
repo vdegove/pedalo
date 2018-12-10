@@ -1,9 +1,9 @@
 class DeliveryPackagesController < ApplicationController
   skip_after_action :verify_authorized, only: [:edit, :update]
-  def edit
 
-    respond_to do |format|
+  def edit
     @delivery_package = DeliveryPackage.find(params[:id])
+    respond_to do |format|
       format.html
       format.js
     end

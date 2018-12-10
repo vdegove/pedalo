@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :delivery_packages, only: [:edit, :update]
+  resources :delivery_packages, only: [:edit, :update, :new]
 
   # Webooks
   post '/webhooks/onfleet/:token/task-completed', to: 'onfleet_webhooks#task_completed'
