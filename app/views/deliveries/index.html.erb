@@ -13,16 +13,6 @@
           <% end %>
         </div>
       </div>
-          <div class="tabs">
-            <%= link_to "Tout voir",
-                root_path, class: delivery_tab_classes(@period, "all") %>
-            <%= link_to "Passées",
-                root_path({period: "past"}), class: delivery_tab_classes(@period, "past") %>
-            <%= link_to "Aujourd'hui",
-                root_path({period: "today"}), class: delivery_tab_classes(@period, "today" ) %>
-            <%= link_to "A venir",
-                root_path({period: "upcoming"}), class: delivery_tab_classes(@period, "upcoming" ) %>
-          </div>
       <%= render "table", deliveries: @deliveries %>
   </div>
 </div>
