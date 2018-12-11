@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: 'deliveries#index', period: "today"
+  root to: 'pages#home'
 
   get '/deliveries?period=today', to: 'deliveries#index', as: 'deliveries'
   resources :deliveries, only: [:create, :update, :show]

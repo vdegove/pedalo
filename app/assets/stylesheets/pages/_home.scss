@@ -1,33 +1,52 @@
 // Specific CSS for your home-page
+
 .banner {
-  background-position: center;
+  color: white;
+  background-size: cover !important;
   background-repeat: no-repeat;
-  background-size: cover;
-  margin: 0;
-  padding: 0;
-  // position: absolute;
-  // top: 0;
-  // bottom: 0;
-  // left: 0;
-  right: 0;
+  background-position: center;
+  height: calc(100vh - 55px);
   display: flex;
   justify-content: center;
-  align-items: center;
+}
+
+  .banner h1 {
+    font-size: 50px;
+    font-weight: bold;
+    text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
+    color: #f9ce00;
+  }
+
+  .banner p {
+    font-size: 20px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+
+  .banner a {
+    font-size: 20px;
+  }
+
+.banner .home-container {
+  // position: relative;
+  // z-index: 1;
+}
+
+.home-container {
+  // margin: 0 auto;
+  // max-width: 1080px;
+  // width: 90%;
+  margin-top: 200px;
 }
 
 .banner-content {
-  height: 300px;
-  text-align: center;
-  margin: 0;
-}
-
-.banner-content h1 {
-  font-size: 70px;
-}
-
-.banner-content p {
-  margin: 0;
-  font-size: 20px;
-  opacity: 0.9;
-  font-weight: normal;
+  // position: absolute;
+  // top: 0;
+  // left: 0;
+  // right: 0;
+  // bottom: 0;
+  // display: flex;
+  // flex-direction: column;
+  // text-align: left;
+  // justify-content: space-between;
 }
