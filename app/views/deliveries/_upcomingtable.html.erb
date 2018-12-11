@@ -1,0 +1,23 @@
+<div class="container-content">
+    <div class="headers-upcoming">
+      <div class="head-upcoming">Nom</div>
+      <div class="head-upcoming">Date de livraison</div>
+      <div class="head-upcoming">Créneau de livraison</div>
+      <div class="head-upcoming">Status</div>
+    </div>
+  <div class="delivery-container-upcoming">
+    <% @deliveries.first(15).each do |delivery| %>
+    <% debut = delivery.complete_after.to_formatted_s(:short).split(" ").last %>
+    <% fin = delivery.complete_before.to_formatted_s(:short).split(" ").last %>
+      <!-- <div class="delivery-rows"> -->
+        <%= link_to delivery_path(delivery), class: "delivery-rows" do %>
+          <div class="delivery-upcoming"><%= delivery.recipient_name %></div>
+          <div class="delivery-upcoming"><%= delivery.complete_after.strftime("%d/%m/%Y") %></div>
+          <div class="delivery-upcoming"><%= debut %> - <%= fin %></div>
+          <div class="delivery-upcoming"><%= delivery.status? %></div>
+        <% end %>
+      <!-- </div> -->
+    <% end %>
+  </div>
+</div>
+

@@ -1,9 +1,21 @@
 .dashboard-card {
   height: 250px;
+  width: 340px;
   background-color: white;
   background-position: center;
   color: #24527A;
-  position: relative;
+  margin: 8px;
+  box-shadow: 0 20px 20px -18px rgba(0,0,0,0.15);
+  text-align: center;
+  margin-top: 5px;
+  padding: 50px;
+  border-bottom: 2px solid #F9CE01;
+   h3 {
+    font-size: 30px;
+   }
+   p {
+    font-size: 20px;
+   }
 }
 
 .card-description {
@@ -18,5 +30,105 @@
   font-size: 14px;
   opacity: 0.7;
   font-weight: lighter;
+}
+
+.main-card-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-container {
+  display: flex;
+  padding: 30px;
+}
+
+.card-title-container {
+  margin-left: 50px;
+  margin-top: 20px;
+  text-decoration-line: underline !important;
+  text-decoration-color: #F9CE01;
+}
+
+#myChart {
+  margin-top: 0px;
+  margin-left: 10px;
+  width: 300px !important;
+  height: 300px !important;
+}
+
+#myChart2 {
+  width: 500px !important;
+  height: 500px !important;
+}
+
+.topleft-dashboard {
+    background-color: white;
+    border-color: blue;
+    width: 320px;
+    border-radius: 10px;
+    box-shadow: 0 20px 20px -14px rgba(0,0,0,0.15);
+  }
+
+.dash-infos{
+  height: 300px;
+  width: 200px;
+  background-color: white;
+  margin-left: 10px;
+  border-radius: 10px;
+  box-shadow: 0 20px 20px -14px rgba(0,0,0,0.15);
+}
+
+.bottom-dashboard {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 20px 20px -14px rgba(0,0,0,0.15);
+}
+
+
+.top-dashboard {
+  display: flex;
+  margin-bottom: 16px;
+  margin-top: 10px;
+  ;
+}
+
+.headers-upcoming {
+  display: flex;
+  height: 40px;
+}
+
+.head-upcoming {
+  background-color: #F9CE01;
+  flex: 1;
+  font-size: 20px;
+  text-align: center;
+  justify-content: center;
+  font-weight: bold;
+  padding-top: 10px;
+}
+
+.delivery-container-upcoming {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.delivery-rows {
+  flex: 1;
+  display: flex;
+}
+
+.delivery-upcoming {
+  flex: 1;
+  text-align: center;
+  color: #24527A;
+  opacity: 0.7;
+}
+
+.delivery-rows:nth-child(odd) {
+  background: white;
+}
+.delivery-rows:nth-child(even) {
+  background-color: light-gray;
 }
 

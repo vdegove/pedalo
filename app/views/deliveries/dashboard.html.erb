@@ -1,35 +1,44 @@
-<div class="main-container">
-    <div class="container-search">
-      <div class="orders">Votre tableau de bord</div>
-        <div class="delivery-search">
-          <%= form_tag root_path, method: :get do %>
-            <%= text_field_tag :query,
-              params[:query],
-              class: "form-control",
-              placeholder: "Rechercher une commande...",
-              value: ""
-            %>
-          <% end %>
-        </div>
-      </div>
-      <div class="card-container">
-        <div class="dashboard-card">
-           <canvas id="myChart2" width="400" height="400" data-></canvas>
-        </div>
-        <div class="dashboard-card">
-        <% today_7 = DateTime.now.midnight - 7.day %>
-        <% tomorrow_7 = DateTime.now.midnight - 6.day %>
-        <% nb_livred = @deliveries.delivered.count%>
-        <% nb_delayed = @deliveries.where("complete_before < ?", DateTime.now).count  %>
-        <% rest = @deliveries.count - (nb_delayed + nb_livred) %>
-        </div>
-        <div class="dashboard-card">
-           <canvas id="myChart" width="100" height="100" data-delayed="<%= nb_delayed %>" data-livred="<%= nb_livred %>" data-test = "<%=  rest%>"></canvas>
-        </div>
-       <div class="dashboard-card">
-         <%= @deliveries.today.important.count %>
-       </div>
+<div class="main-card-container">
+  <div class="container-search">
+    <div class="orders">Bienvenue sur votre tableau de bord</div>
+    <div class="delivery-search">
+      <%= form_tag root_path, method: :get do %>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+          placeholder: "Rechercher une commande...",
+          value: ""
+        %>
+      <% end %>
     </div>
+  </div>
+  <div class="card-title-container"><h3>Aujourd'hui, sur Pedalo :</h3></div>
+  <div class="card-container">
+    <div data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1000">
+      <div class="dashboard-card">
+        <h3><%= @deliveries.today.important.count %></h3> <p>livraisons sont prévues.</p>
+      </div>
+    </div>
+    <div data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500">
+      <div class="dashboard-card">
+        <h3><%= @deliveries.today.important.count %></h3> <p>livraisons ont été effectuées.</p>
+      </div>
+    </div>
+    <div data-aos="fade-down" data-aos-easing="linear" data-aos-duration="2000">
+      <div class="dashboard-card">
+        <h3><%= @deliveries.today.important.count %></h3> <p>livraisons sont à venir.</p>
+      </div>
+    </div>
+    <div data-aos="fade-down" data-aos-easing="linear" data-aos-duration="2500">
+      <div class="dashboard-card">
+        graph JS
+      </div>
+    </div>
+  </div>
+  <div class="card-title-container"><h3>Vos livraisons à venir :</h3></div>
+  <div class="upcoming-container">
+    <%= render "upcomingtable", deliveries: @deliveries.upcoming %>
+  </div>
 </div>
 
 
