@@ -1,14 +1,14 @@
 /* Style the sidebar - fixed full height */
 .sidebar {
-  min-height: 100%;
-  width: 160px;
+  height: calc(100vh - 70px);
+  width: 240px;
   z-index: 1;
   top: 0;
   left: 0;
   background-color: #24527A;
   overflow-x: hidden;
   // padding-top: 16px;
-  position: sticky!important;
+  position: sticky !important;
   top: 0!important;
   float: left;
   border-top: 2px solid #F9CE01;
@@ -34,8 +34,9 @@
 
 .delivery-list li {
   position: relative;
-  text-align: center;
+  text-align: left;
   margin: 12px 0px;
+  padding-left: 20px;
 }
 
 .delivery-list li a:before {
@@ -43,8 +44,8 @@
   position: absolute;
   // z-index: -1;
   z-index: -1;
-  left: 51%;
-  right: 51%;
+  left: 0%;
+  right: 100%;
   bottom: 0;
   background: #f9ce01;
   height: 4px;
@@ -57,7 +58,6 @@
 }
 
 .delivery-list li a:hover:before, .delivery-list li a:focus:before, .delivery-list li a:active:before {
-  left: 0;
   right: 0;
 }
 /* Style links on mouse-over */
@@ -65,7 +65,7 @@
 
 /* Style the main content */
 .main {
-  margin-left: 160px; /* Same as the width of the sidenav */
+  margin-left: 200px; /* Same as the width of the sidenav */
   padding: 0px 10px;
 }
 

@@ -32,16 +32,15 @@ class Delivery < ApplicationRecord
   scope :past, -> { where('complete_before < ?', today) }
   scope :upcoming, -> { where('complete_after > ?', today) }
   scope :delivered, -> { where(status: "Livré") }
-  scope :not_delivered, -> { where(status: "Enregisté") }
+  scope :not_delivered, -> { where(status: "Enregistré") }
   scope :in_process, -> { where(status: "Enlevé") }
   scope :important, -> { where('complete_before < ?', now) }
   scope :recent, -> { where('created_at < ?', now) }
 
-
   def status?
     if self.picked_up_at.nil?
-      self.status = "Enregisté"
-      return "Enregisté"
+      self.status = "Enregistré"
+      return "Enregistré"
     elsif self.delivered_at.nil?
       self.status = "Enlevé"
       return "Enlevé"
