@@ -1,7 +1,7 @@
 require 'csv'
 
 class DeliveriesController < ApplicationController
-  skip_after_action :verify_authorized, only: [:bulk_new, :bulk_create]
+  skip_after_action :verify_authorized, only: [:bulk_new, :bulk_create, :dashboard]
   before_action :company_filter, only: [:index, :today, :past, :upcoming, :show, :update, :dashboard]
 
   def bulk_new
@@ -34,11 +34,14 @@ class DeliveriesController < ApplicationController
 
   def bulk_create
     @count = 0
+    @deliveries = []
     CSV.foreach(params[:file].tempfile, headers: true) do |row|
       # byebug
       delivery = create_delivery(row)
       delivery.save
+      delivery.push_to_onfleet
       @count += 1
+      @deliveries << delivery
     end
   end
 
@@ -59,19 +62,32 @@ class DeliveriesController < ApplicationController
   end
 
   def dashboard
-     @deliveries = policy_scope(@user_deliveries)
+     @deliveries = @user_deliveries
   end
 
   private
 
   def create_delivery(row)
+    # delivery = current_user.company.deliveries.new(
+    #   recipient_name: row["recipient_name"],
+    #   recipient_phone: row["recipient_phone"],
+    #   address: row["address"],
+    #   complete_after: DateTime.parse(row["complete_after"]),
+    #   complete_before: DateTime.parse(row["complete_before"])
+    #   )
     delivery = current_user.company.deliveries.new(
       recipient_name: row["recipient_name"],
       recipient_phone: row["recipient_phone"],
       address: row["address"],
-      complete_after: DateTime.parse(row["complete_after"]),
-      complete_before: DateTime.parse(row["complete_before"])
       )
+    if row["date"]
+      delivery.complete_after = Date.parse(row["date"]).to_time + 9 * 60 * 60
+      delivery.complete_before = Date.parse(row["date"]).to_time + 19 * 60 * 60
+    else
+      delivery.complete_after = DateTime.parse(row["complete_after"])
+      delivery.complete_before = DateTime.parse(row["complete_before"])
+    end
+
     PackageType.all.each do |package_type|
       if row[package_type.name] && row[package_type.name] != "0"
         delivery.delivery_packages.new(

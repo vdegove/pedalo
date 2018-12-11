@@ -1,8 +1,10 @@
 class CompleteValidation < ActiveModel::Validator
   def validate(record)
     # Todo : allow not to have a precise date
-    if record.complete_before < record.complete_after || record.complete_after < DateTime.now
-      record.errors[:base] << "Start time has to be after now"
+    if record.complete_before < record.complete_after
+      record.errors[:base] << "Complete after has to be before complete before"
+    elsif record.complete_after < DateTime.now
+      record.errors[:base] << "A Delivery starting date cannot be before now"
     end
   end
 end
@@ -21,7 +23,6 @@ class Delivery < ApplicationRecord
 
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
-  before_create :push_to_onfleet
 
 
   # scope
@@ -37,8 +38,6 @@ class Delivery < ApplicationRecord
   scope :recent, -> { where('created_at < ?', now) }
 
 
-
-
   def status?
     if self.picked_up_at.nil?
       self.status = "Enregisté"
@@ -52,6 +51,10 @@ class Delivery < ApplicationRecord
     end
   end
 
+  def date
+    complete_after.to_date
+  end
+
   # pg_search on deliveries' fields
   include PgSearch
   pg_search_scope :search_by_keyword,
@@ -59,8 +62,6 @@ class Delivery < ApplicationRecord
     using: {
       tsearch: { prefix: true }
     }
-
-  private
 
   def push_to_onfleet
     task_pickup = Onfleet::Task.create(
@@ -99,7 +100,10 @@ class Delivery < ApplicationRecord
     self.tracking_url_pickup = task_pickup.tracking_url
     self.onfleet_task_dropoff = task_dropoff.id # can be called later with task = Onfleet::Task.get(delivery.onfleet_task_dropoff)
     self.tracking_url_dropoff = task_dropoff.tracking_url
+    self.save
   end
+
+  private
 
   def build_pickup_task_details
     "Ramasser pour : #{recipient_name}, #{address}
