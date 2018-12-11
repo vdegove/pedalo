@@ -6,6 +6,13 @@
 
 .big-title {
   margin: 40px 0 30px 60px;
+  vertical-align: middle;
+}
+
+.big-title i {
+  color: #24527A;
+  font-size: 30px;
+  text-decoration: none;
 }
 
 .style {
@@ -29,12 +36,17 @@
 }
 
   .infos-card {
-    border: 1px solid #3A4763;
+    // border: 1px solid #3A4763;
+    box-shadow: 0px 2px 4px rgba(36,82,122,0.15);
     border-radius: 2px;
     background-color: white;
     height: 100%;
     padding: 20px;
     flex: 1 1 100vh;
+  }
+
+  .infos-card p {
+    padding: 0;
   }
 
 .margin-left-negatif-40 {
@@ -109,7 +121,7 @@
 
   .map-card {
     display: flex;
-    border: 1px solid #3A4763;
+    box-shadow: 0px 2px 4px rgba(36,82,122,0.15);
     border-radius: 2px;
     height: 50%;
     // flex: 0 0 auto;
@@ -133,7 +145,7 @@
     }
 
   .progress-card {
-    border: 1px solid #3A4763;
+    box-shadow: 0px 2px 4px rgba(36,82,122,0.15);
     border-radius: 2px;
     background-color: white;
     padding: 0 10px 0px 10px;
@@ -158,16 +170,16 @@
       // }
 
   .driver-card {
-    border: 1px solid #3A4763;
+    box-shadow: 0px 2px 4px rgba(36,82,122,0.15);
     border-radius: 2px;
     background-color: white;
-    padding: 10px;
+    padding: 0 10px 0px 10px;
     position: relative;
     flex: 1 1 auto;
   }
 
-  .driver-card h3 {
-    margin-top: 10px;
+  .driver-card h3, p {
+    padding: 0px 0px 0px 10px;
   }
 
     .infos-driver {
