@@ -5,6 +5,8 @@ import Chart from 'chart.js';
 
 var ctx = document.getElementById("myChart");
 
+if (ctx) {
+
 // const myStatus = JSON.parse(ctx.canvas.dataset.deliveries)
 const livred = ctx.dataset.livred
 const delayed = ctx.dataset.delayed
@@ -44,7 +46,11 @@ var myChart = new Chart(ctx, {
     }
 });
 
+}
+
   var ctx2 = document.getElementById("myChart2");
+
+  if (ctx2) {
   var myChart = new Chart(ctx2, {
       type: 'bar',
       data: {
@@ -96,8 +102,9 @@ var myChart = new Chart(ctx, {
   });
 
 
-
+}
 
 }
+
 
  export { initChart }

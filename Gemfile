@@ -43,5 +43,5 @@ group :development, :test do
 end
 
 # for modal
-gem 'bootstrap'
-gem 'popper_js'
+# gem 'bootstrap'
+# gem 'popper_js'

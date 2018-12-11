@@ -43,15 +43,12 @@
           <% @delivery.delivery_packages.each do |delivery_package| %>
             <li class="product-list">
               <div class="product"><p><%= delivery_package.package_type.name %></p></div>
-
-              <%= link_to 'Add release', edit_delivery_package_path(delivery_package) ,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window'}  %>
-              <div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
-
-
-              <!--
-                <%= link_to "#{delivery_package.amount}",  edit_delivery_package_path(delivery_package), class: "product" %> -->
+             <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modal">
+              Modifier
+            </button>
             </li>
           <% end %>
+          <%= render 'delivery_packages/edit'%>
         </ul>
       </div>
     </div>
