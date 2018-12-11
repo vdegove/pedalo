@@ -1,7 +1,15 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  root to: 'deliveries#index', period: "today"
+
+  authenticated :user do
+      root to: 'deliveries#dashboard'
+  end
+
+  root 'pages#home', as: :authenticated_root
+  # root to: 'deliveries#index', period: "today"
+
+
   get '/deliveries/bulk-new', to: 'deliveries#bulk_new'
   post 'deliveries/bulk-create', to: 'deliveries#bulk_create'
 
