@@ -3,7 +3,7 @@
     <div class="container-search">
       <div class="orders">Votre tableau de bord</div>
         <div class="delivery-search">
-          <%= form_tag deliveries_path, method: :get do %>
+          <%= form_tag root_path, method: :get do %>
             <%= text_field_tag :query,
               params[:query],
               class: "form-control",
@@ -28,13 +28,13 @@
       </div>
     <div class="tabs">
       <%= link_to "Tout voir",
-          deliveries_path, class: delivery_tab_classes(@period, "all") %>
+          root_path, class: delivery_tab_classes(@period, "all") %>
       <%= link_to "Passées",
-          deliveries_path({period: "past"}), class: delivery_tab_classes(@period, "past") %>
+          root_path({period: "past"}), class: delivery_tab_classes(@period, "past") %>
       <%= link_to "Aujourd'hui",
-          deliveries_path({period: "today"}), class: delivery_tab_classes(@period, "today" ) %>
+          root_path({period: "today"}), class: delivery_tab_classes(@period, "today" ) %>
       <%= link_to "A venir",
-          deliveries_path({period: "upcoming"}), class: delivery_tab_classes(@period, "upcoming" ) %>
+          root_path({period: "upcoming"}), class: delivery_tab_classes(@period, "upcoming" ) %>
     </div>
   <%= render "table", deliveries: @deliveries %>
   </div>

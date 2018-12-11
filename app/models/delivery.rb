@@ -21,7 +21,6 @@ class Delivery < ApplicationRecord
 
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
-  before_create :push_to_onfleet
 
 
   # scope
@@ -37,8 +36,6 @@ class Delivery < ApplicationRecord
   scope :recent, -> { where('created_at < ?', now) }
 
 
-
-
   def status?
     if self.picked_up_at.nil?
       self.status = "Enregisté"
@@ -52,6 +49,10 @@ class Delivery < ApplicationRecord
     end
   end
 
+  def date
+    complete_after.to_date
+  end
+
   # pg_search on deliveries' fields
   include PgSearch
   pg_search_scope :search_by_keyword,
@@ -59,8 +60,6 @@ class Delivery < ApplicationRecord
     using: {
       tsearch: { prefix: true }
     }
-
-  private
 
   def push_to_onfleet
     task_pickup = Onfleet::Task.create(
@@ -99,7 +98,10 @@ class Delivery < ApplicationRecord
     self.tracking_url_pickup = task_pickup.tracking_url
     self.onfleet_task_dropoff = task_dropoff.id # can be called later with task = Onfleet::Task.get(delivery.onfleet_task_dropoff)
     self.tracking_url_dropoff = task_dropoff.tracking_url
+    self.save
   end
+
+  private
 
   def build_pickup_task_details
     "Ramasser pour : #{recipient_name}, #{address}
