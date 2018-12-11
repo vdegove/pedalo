@@ -1,7 +1,7 @@
 require 'csv'
 
 class DeliveriesController < ApplicationController
-  skip_after_action :verify_authorized, only: [:bulk_new, :bulk_create]
+  skip_after_action :verify_authorized, only: [:bulk_new, :bulk_create, :update]
   before_action :company_filter, only: [:index, :today, :past, :upcoming, :show, :update, :dashboard]
 
   def bulk_new
@@ -51,8 +51,8 @@ class DeliveriesController < ApplicationController
   end
 
   def update
-    @deliveries = @user_deliveries.find(params[:id])
-    @deliveries.update
+    @delivery = @user_deliveries.find(params[:id])
+    @delivery.update(deliveries_params)
     respond_to do |format|
       format.html
       format.js
@@ -100,10 +100,6 @@ class DeliveriesController < ApplicationController
   end
 
   def deliveries_params
-    if :deliveries
-      params.require(:deliveries).permit(:id, :company_id, :recipient_phone, :recipient_name, :address, :complete_before, :complete_after, pac)
-    else
       params.require(:delivery).permit(:id, :company_id, :recipient_phone, :recipient_name, :address, :complete_before, :complete_after)
-  end
   end
 end
