@@ -32,4 +32,6 @@ Rails.application.routes.draw do
   # Webooks
   post '/webhooks/onfleet/:token/task-completed', to: 'onfleet_webhooks#task_completed'
   get '/webhooks/onfleet/:token/task-completed', to: 'onfleet_webhooks#task_completed'
+  post '/webhooks/onfleet/:token/driver-assigned', to: 'onfleet_webhooks#driver_assigned'
+  get '/webhooks/onfleet/:token/driver-assigned', to: 'onfleet_webhooks#driver_assigned'
 end
