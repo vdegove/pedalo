@@ -9,7 +9,11 @@
       <%= f.input :complete_after, as: :time, label: false, input_html: {style: "width: 60px;"} %> et
       <%= f.input :complete_before, as: :time, label: false, input_html: {style: "width: 60px;"} %>
       <div class="packages-summary">
-        <%= sanitize delivery.delivery_packages.map{ |delivery_package| "#{delivery_package.amount} #{delivery_package.package_type.name.downcase}"}.join("<br>") %>
+        <% if delivery.delivery_packages.blank? %>
+          Pas de contenu de commande
+        <% else %>
+          <%= sanitize delivery.delivery_packages.map{ |delivery_package| "#{delivery_package.amount} #{delivery_package.package_type.name.downcase}"}.join("<br>") %>
+        <% end %>
       </div>
       <%= f.button :submit, "Mettre à jour", class: "btn-no-background-no-strong" %>
     <% end %>
