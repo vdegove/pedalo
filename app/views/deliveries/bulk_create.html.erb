@@ -1,0 +1,26 @@
+<div class="container-show">
+  <ul>
+  <h1><%= @count %> livraisons importées !</h1>
+  <li><% @deliveries.each do |delivery| %>
+  <li><%= delivery.recipient_name %></li>
+  <li><%= delivery.address %></li>
+  <li><%= delivery.complete_after %></li>
+  <li><%= delivery.complete_before %></li>
+    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modal2-<%= delivery.id %>">
+        Mettre à jour
+      </button>
+    <%= render 'edit_delivery', delivery: delivery %>
+</ul>
+
+      <div class="packages-summary", id="package-amount-<%= delivery.id %>">
+        <%= render 'delivery_details', delivery: delivery %>
+      </div>
+
+       <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modal-<%= delivery.id %>">
+        Modifier
+      </button>
+    <%= render 'edit', delivery: delivery %>
+  <% end %>
+  <%= link_to "valider", root_path %>
+</div>
+

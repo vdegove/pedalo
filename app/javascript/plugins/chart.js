@@ -57,7 +57,7 @@ var myChart = new Chart(ctx, {
           options: {
             borderWidth: 1,
           },
-          labels: ["Lundi", "Mardi", "mercredi", "Jeudi", "Vendredi", "Samedi"],
+          labels: ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"],
           datasets: [{
               label: 'Semaine en cours',
               data: [12, 19, 2, 2, 2, 2],

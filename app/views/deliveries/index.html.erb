@@ -1,28 +1,41 @@
 <div class="main-container">
   <div class="table-container">
-  <div class="container-search">
-    <div class="orders">Commandes</div>
-    <div class="delivery-search">
-      <%= form_tag deliveries_path, method: :get do %>
-        <%= text_field_tag :query,
-          params[:query],
-          class: "form-control",
-          placeholder: "Rechercher une commande...",
-          value: ""
-        %>
-      <% end %>
+    <div class="container-search">
+      <div class="orders">Votre tableau de bord</div>
+        <div class="delivery-search">
+          <%= form_tag root_path, method: :get do %>
+            <%= text_field_tag :query,
+              params[:query],
+              class: "form-control",
+              placeholder: "Rechercher une commande...",
+              value: ""
+            %>
+          <% end %>
+        </div>
+      </div>
+      <div class="dashboard-card-container">
+        <div class="row">
+          <div class="col-xs-12 col-sm-4">
+            <div class="dashboard-card">hello</div>
+          </div>
+          <div class="col-xs-12 col-sm-4">
+            <div class="dashboard-card">hello</div>
+          </div>
+          <div class="col-xs-12 col-sm-4">
+           <div class="dashboard-card">hello</div>
+          </div>
+        </div>
+      </div>
+    <div class="tabs">
+      <%= link_to "Tout voir",
+          root_path, class: delivery_tab_classes(@period, "all") %>
+      <%= link_to "Passées",
+          root_path({period: "past"}), class: delivery_tab_classes(@period, "past") %>
+      <%= link_to "Aujourd'hui",
+          root_path({period: "today"}), class: delivery_tab_classes(@period, "today" ) %>
+      <%= link_to "A venir",
+          root_path({period: "upcoming"}), class: delivery_tab_classes(@period, "upcoming" ) %>
     </div>
-  </div>
-  <div class="tabs">
-    <%= link_to "Tout voir",
-        deliveries_path, class: delivery_tab_classes(@period, "all") %>
-    <%= link_to "Passées",
-        deliveries_path({period: "past"}), class: delivery_tab_classes(@period, "past") %>
-    <%= link_to "Aujourd'hui",
-        deliveries_path({period: "today"}), class: delivery_tab_classes(@period, "today" ) %>
-    <%= link_to "A venir",
-        deliveries_path({period: "upcoming"}), class: delivery_tab_classes(@period, "upcoming" ) %>
-  </div>
   <%= render "table", deliveries: @deliveries %>
   </div>
   <div class="dash-container">
@@ -37,14 +50,16 @@
     </div>
     <div class="dash-infos">
       Hello je suis en train de coder
+      <%= @all_deliveries.today.important.count %>
     </div>
     </div>
     <div class="bottom-dashboard">
-    <canvas id="myChart2" width="400" height="400"></canvas>
+    <canvas id="myChart2" width="400" height="400" data-></canvas>
 
     </div>
     </div>
   </div>
 </div>
+
 
 

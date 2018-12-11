@@ -2,7 +2,7 @@ require 'csv'
 
 class DeliveriesController < ApplicationController
   skip_after_action :verify_authorized, only: [:bulk_new, :bulk_create]
-  before_action :company_filter, only: [:index, :today, :past, :upcoming, :show, :update]
+  before_action :company_filter, only: [:index, :today, :past, :upcoming, :show, :update, :dashboard]
 
   def bulk_new
   end
@@ -34,27 +34,44 @@ class DeliveriesController < ApplicationController
 
   def bulk_create
     @count = 0
+    @deliveries = []
     CSV.foreach(params[:file].tempfile, headers: true) do |row|
+      # byebug
       delivery = create_delivery(row)
       delivery.save
+      delivery.push_to_onfleet
       @count += 1
+      @deliveries << delivery
     end
+  end
+
+  def bulk_update
+    @deliveries = @user_deliveries.find(params[:id])
+    @deliveries.update(deliveries_params)
   end
 
   def update
     @deliveries = @user_deliveries.find(params[:id])
-    @deliveries.update(deliveries_params)
+    @deliveries.update
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def show
     @delivery = @user_deliveries.find(params[:id])
     authorize @delivery
-    @driver_name = @delivery.name
+    @driver_name = @delivery.driver_name
 
-    @driver_phone = @delivery.phone
+    @driver_phone = @delivery.driver_phone
 
-    @driver_photo = @delivery.photo
+    @driver_photo = @delivery.driver_photo
 
+  end
+
+  def dashboard
+     @deliveries = policy_scope(@user_deliveries)
   end
 
   private
@@ -80,5 +97,13 @@ class DeliveriesController < ApplicationController
 
   def company_filter
     @user_deliveries = Delivery.where(company_id: current_user.company_id)
+  end
+
+  def deliveries_params
+    if :deliveries
+      params.require(:deliveries).permit(:id, :company_id, :recipient_phone, :recipient_name, :address, :complete_before, :complete_after, pac)
+    else
+      params.require(:delivery).permit(:id, :company_id, :recipient_phone, :recipient_name, :address, :complete_before, :complete_after)
+  end
   end
 end

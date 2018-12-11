@@ -12,6 +12,10 @@ class DeliveryPackagesController < ApplicationController
   def update
     @delivery_package = DeliveryPackage.find(params[:id])
     @delivery_package.update(delivery_package_params)
+    respond_to do |format|
+        format.html
+        format.js
+      end
   end
 
   private

@@ -6,7 +6,7 @@
     "bootstrap": "3",
     "chart.js": "^2.7.3",
     "drag-drop": "^4.2.0",
-    "dropzone": "^5.5.1",
+    "hover.css": "^2.3.2",
     "ikonate": "^1.0.0",
     "jquery": "^3.3.1"
   },

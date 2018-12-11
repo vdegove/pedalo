@@ -2022,11 +2022,6 @@ drag-drop@^4.2.0:
     flatten "^1.0.2"
     run-parallel "^1.0.0"
 
-dropzone@^5.5.1:
-  version "5.5.1"
-  resolved "https://registry.yarnpkg.com/dropzone/-/dropzone-5.5.1.tgz#06e2f513e61d6aa363d4b556f18574f47cf7ba26"
-  integrity sha512-3VduRWLxx9hbVr42QieQN25mx/I61/mRdUSuxAmDGdDqZIN8qtP7tcKMa3KfpJjuGjOJGYYUzzeq6eGDnkzesA==
-
 duplexify@^3.4.2, duplexify@^3.6.0:
   version "3.6.1"
   resolved "https://registry.yarnpkg.com/duplexify/-/duplexify-3.6.1.tgz#b1a7a29c4abfd639585efaecce80d666b1e34125"
@@ -2892,6 +2887,11 @@ hosted-git-info@^2.1.4:
   version "2.7.1"
   resolved "https://registry.yarnpkg.com/hosted-git-info/-/hosted-git-info-2.7.1.tgz#97f236977bd6e125408930ff6de3eec6281ec047"
   integrity sha512-7T/BxH19zbcCTa8XkMlbK5lTo1WtgkFi3GvdWEyNuc4Vex7/9Dqbnpsf4JMydcfj9HCg4zUWFTL3Za6lapg5/w==
+
+hover.css@^2.3.2:
+  version "2.3.2"
+  resolved "https://registry.yarnpkg.com/hover.css/-/hover.css-2.3.2.tgz#f07193d9c7409d4e395134d3b2215b99eb55e0d3"
+  integrity sha1-8HGT2cdAnU45UTTTsiFbmetV4NM=
 
 hpack.js@^2.1.6:
   version "2.1.6"

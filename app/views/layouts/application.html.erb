@@ -3,18 +3,21 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <%= favicon_link_tag '../..assets/images/favicon.png'%>
-    <title>Pedalo – Vos livraisons en un clic</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Pedalo – Olvo – vous commandez, nous livrons à vélo</title>
     <meta name="title" content="Pedalo – Vos livraisons en un clic">
     <meta name="description" content="Avec Pedalo, lancer vos livraisons en un clic. Un outil SAS qui offre au commerçants et e-commerçants, un moyen de gérer rapidement leurs lots de livraisons">
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= favicon_link_tag %>
     <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
   </head>
   <body>
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
+    <%= render 'shared/sidebar' unless current_page?(new_user_session_path)%>
+
     <%= yield %>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
