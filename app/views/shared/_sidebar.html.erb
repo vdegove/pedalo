@@ -1,8 +1,8 @@
 <div class="sidebar">
   <div class="sidebar-container">
     <ul class="sidebar-content">
-      <li><a href="#home"><i class="fas fa-home fa-lg"></i> Accueil</a></li>
-      <li><a href="#clients"><i class="fas fa-boxes fa-lg"></i> Commandes</a>
+      <li><%= link_to '<i class="fas fa-home fa-lg"></i> Accueil'.html_safe, root_path %></li>
+      <li><a href="#"><i class="fas fa-boxes fa-lg"></i> Commandes</a>
         <ul class="delivery-list">
           <li><%= link_to "À venir", deliveries_path({period: "upcoming"}) %></li>
           <li><%= link_to "Passées", deliveries_path({period: "past"}) %></li>
