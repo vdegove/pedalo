@@ -8,6 +8,7 @@ Bundler.require(*Rails.groups)
 
 module Pedalo
   class Application < Rails::Application
+    config.time_zone = 'Paris'
     config.generators do |generate|
           generate.assets false
           generate.helper false

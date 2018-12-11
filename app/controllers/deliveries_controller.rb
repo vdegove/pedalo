@@ -34,11 +34,14 @@ class DeliveriesController < ApplicationController
 
   def bulk_create
     @count = 0
+    @deliveries = []
     CSV.foreach(params[:file].tempfile, headers: true) do |row|
       # byebug
       delivery = create_delivery(row)
       delivery.save
+      delivery.push_to_onfleet
       @count += 1
+      @deliveries << delivery
     end
   end
 
