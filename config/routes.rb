@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get '/deliveries/bulk-new', to: 'deliveries#bulk_new'
   post 'deliveries/bulk-create', to: 'deliveries#bulk_create'
 
-  get '/deliveries?period=today', to: 'deliveries#index', as: 'deliveries'
+  get '/deliveries', to: 'deliveries#index', as: 'deliveries'
   resources :deliveries, only: [:create, :update, :show]
   resources :companies, only: [:new, :create]
 
