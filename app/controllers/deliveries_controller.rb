@@ -68,13 +68,26 @@ class DeliveriesController < ApplicationController
   private
 
   def create_delivery(row)
+    # delivery = current_user.company.deliveries.new(
+    #   recipient_name: row["recipient_name"],
+    #   recipient_phone: row["recipient_phone"],
+    #   address: row["address"],
+    #   complete_after: DateTime.parse(row["complete_after"]),
+    #   complete_before: DateTime.parse(row["complete_before"])
+    #   )
     delivery = current_user.company.deliveries.new(
       recipient_name: row["recipient_name"],
       recipient_phone: row["recipient_phone"],
       address: row["address"],
-      complete_after: DateTime.parse(row["complete_after"]),
-      complete_before: DateTime.parse(row["complete_before"])
       )
+    if row["date"]
+      delivery.complete_after = Date.parse(row["date"]).to_time + 9 * 60 * 60
+      delivery.complete_before = Date.parse(row["date"]).to_time + 19 * 60 * 60
+    else
+      delivery.complete_after = DateTime.parse(row["complete_after"])
+      delivery.complete_before = DateTime.parse(row["complete_before"])
+    end
+
     PackageType.all.each do |package_type|
       if row[package_type.name] && row[package_type.name] != "0"
         delivery.delivery_packages.new(
