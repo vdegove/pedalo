@@ -1,31 +1,16 @@
 <div class="sidebar">
   <div class="sidebar-container">
     <ul class="sidebar-links">
-      <div class="welcome">
-        <li><a href="#home"><i class="fas fa-home fa-lg"></i> Accueil</a></li>
-      </div>
-      &ensp;
-      <div class="welcome">
-        <li><a href="#clients"><i class="fas fa-boxes fa-lg"></i> Commandes</a>
-        </li>
-      </div>
-      &ensp;&ensp;
+      <li><a href="#home"><i class="fas fa-home fa-lg"></i> Accueil</a></li>
+      <li><a href="#clients"><i class="fas fa-boxes fa-lg"></i> Commandes</a>
         <ul class="delivery-list">
           <li><%= link_to "À venir", deliveries_path({period: "upcoming"}) %></li>
-          &ensp;
           <li><%= link_to "Passées", deliveries_path({period: "past"}) %></li>
-          &ensp;
-          <li><%= link_to "Aujourd'hui", deliveries_path({period: "today"})%></li>
+          <li><%= link_to "Aujourd'hui", deliveries_path({period: "today"}) %></li>
         </ul>
-        &ensp;
-      <div class="welcome">
-        <li><a href="#contact"><i class="fas fa-chart-line fa-lg"></i> Métriques</a>
-        </li>
-      &ensp;
-      </div>
-      <div class="welcome">
-        <li><a href="#contact"><i class="fas fa-plus-square fa-lg"></i> Nouvelle commande</a></li>
-      </div>
+      </li>
+      <li><a href="#contact"><i class="fas fa-chart-line fa-lg"></i> Métriques</a></li>
+      <li><a href="#contact"><i class="fas fa-plus-square fa-lg"></i> Nouvelle commande</a></li>
     </ul>
   </div>
 </div>
