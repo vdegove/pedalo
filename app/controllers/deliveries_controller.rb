@@ -2,7 +2,7 @@ require 'csv'
 
 class DeliveriesController < ApplicationController
   skip_after_action :verify_authorized, only: [:bulk_new, :bulk_create]
-  before_action :company_filter, only: [:index, :today, :past, :upcoming, :show, :update]
+  before_action :company_filter, only: [:index, :today, :past, :upcoming, :show, :update, :dashboard]
 
   def bulk_new
   end
@@ -35,6 +35,7 @@ class DeliveriesController < ApplicationController
   def bulk_create
     @count = 0
     CSV.foreach(params[:file].tempfile, headers: true) do |row|
+      # byebug
       delivery = create_delivery(row)
       delivery.save
       @count += 1
@@ -49,12 +50,16 @@ class DeliveriesController < ApplicationController
   def show
     @delivery = @user_deliveries.find(params[:id])
     authorize @delivery
-    @driver_name = @delivery.name
+    @driver_name = @delivery.driver_name
 
-    @driver_phone = @delivery.phone
+    @driver_phone = @delivery.driver_phone
 
-    @driver_photo = @delivery.photo
+    @driver_photo = @delivery.driver_photo
 
+  end
+
+  def dashboard
+     @deliveries = policy_scope(@user_deliveries)
   end
 
   private

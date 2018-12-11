@@ -18,6 +18,9 @@ gem "geocoder"
 #pg_search
 gem 'pg_search'
 
+#group_by_date
+# gem 'groupdate'
+
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass', '~> 3.3'
 gem 'font-awesome-sass', '~> 5.0.9'
