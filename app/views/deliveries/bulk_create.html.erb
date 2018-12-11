@@ -2,13 +2,16 @@
   <h1><%= @count %> livraisons importées !</h1>
   <% @deliveries.each do |delivery| %>
     <%= simple_form_for delivery, wrapper: :inline_form, html: { class: 'form-inline delivery-form-line' } do |f| %>
-      <%= f.input :recipient_name %>
-      <%= f.input :address, input_html: { size: '30' } %>
+      <%= f.input :recipient_name, input_html: { size: '16' }  %>
+      <%= f.input :address, input_html: { size: '24' } %>
       <%#= f.input :date, as: :date, label: false %>
-      <div class="bulk-date-check">Le <%= delivery.date.strftime("%d/%m/%y") %> entre</div>
-      <%= f.input :complete_after, as: :time, label: false %> et
-      <%= f.input :complete_before, as: :time, label: false %>
-      <%= f.button :submit, "Mettre à jour", class: "btn-no-background" %>
+      <div class="bulk-date-check">le <strong><%= delivery.date.strftime("%d/%m/%y") %></strong> entre</div>
+      <%= f.input :complete_after, as: :time, label: false, input_html: {style: "width: 60px;"} %> et
+      <%= f.input :complete_before, as: :time, label: false, input_html: {style: "width: 60px;"} %>
+      <div class="packages-summary">
+        <%= sanitize delivery.delivery_packages.map{ |delivery_package| "#{delivery_package.amount} #{delivery_package.package_type.name.downcase}"}.join("<br>") %>
+      </div>
+      <%= f.button :submit, "Mettre à jour", class: "btn-no-background-no-strong" %>
     <% end %>
   <% end %>
 
