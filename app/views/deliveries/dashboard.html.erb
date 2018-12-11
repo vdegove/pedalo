@@ -1,0 +1,37 @@
+<div class="main-container">
+    <div class="container-search">
+      <div class="orders">Votre tableau de bord</div>
+        <div class="delivery-search">
+          <%= form_tag root_path, method: :get do %>
+            <%= text_field_tag :query,
+              params[:query],
+              class: "form-control",
+              placeholder: "Rechercher une commande...",
+              value: ""
+            %>
+          <% end %>
+        </div>
+      </div>
+      <div class="card-container">
+        <div class="dashboard-card">
+           <canvas id="myChart2" width="400" height="400" data-></canvas>
+        </div>
+        <div class="dashboard-card">
+        <% today_7 = DateTime.now.midnight - 7.day %>
+        <% tomorrow_7 = DateTime.now.midnight - 6.day %>
+        <% nb_livred = @deliveries.delivered.count%>
+        <% nb_delayed = @deliveries.where("complete_before < ?", DateTime.now).count  %>
+        <% rest = @deliveries.count - (nb_delayed + nb_livred) %>
+        </div>
+        <div class="dashboard-card">
+           <canvas id="myChart" width="100" height="100" data-delayed="<%= nb_delayed %>" data-livred="<%= nb_livred %>" data-test = "<%=  rest%>"></canvas>
+        </div>
+       <div class="dashboard-card">
+         <%= @deliveries.today.important.count %>
+       </div>
+    </div>
+</div>
+
+
+
+

@@ -1,7 +1,7 @@
 require 'csv'
 
 class DeliveriesController < ApplicationController
-  skip_after_action :verify_authorized, only: [:bulk_new, :bulk_create]
+  skip_after_action :verify_authorized, only: [:bulk_new, :bulk_create, :dashboard]
   before_action :company_filter, only: [:index, :today, :past, :upcoming, :show, :update, :dashboard]
 
   def bulk_new
@@ -62,7 +62,7 @@ class DeliveriesController < ApplicationController
   end
 
   def dashboard
-     @deliveries = policy_scope(@user_deliveries)
+     @deliveries = @user_deliveries
   end
 
   private
