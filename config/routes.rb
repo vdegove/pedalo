@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
+
   root to: 'deliveries#index', period: "today"
   get '/deliveries/bulk-new', to: 'deliveries#bulk_new'
   post 'deliveries/bulk-create', to: 'deliveries#bulk_create'
