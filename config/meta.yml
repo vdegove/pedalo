@@ -3,5 +3,5 @@
 meta_product_name: "Pedalo"
 meta_title: "Pedalo - La gestion de livraison simplifiée"
 meta_description: "Importez, suivez, analysez vos livraisons en temps réel"
-meta_image: "olvo-team.jpg"                       # should exist in `app/assets/images/`
+meta_image: "olvo-dashboard.jpg"                       # should exist in `app/assets/images/`
 twitter_account: "@olvomess"   # required for Twitter Cards
