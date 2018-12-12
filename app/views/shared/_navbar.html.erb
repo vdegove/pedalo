@@ -5,7 +5,7 @@
   <% end %>
   <% if user_signed_in? %>
      <div class="delivery-search">
-      <%= form_tag root_path, method: :get do %>
+      <%= form_tag deliveries_path, method: :get do %>
         <%= text_field_tag :query,
           params[:query],
           class: "form-control",
