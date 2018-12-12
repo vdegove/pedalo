@@ -25,7 +25,7 @@ puts "Creating plants package types…"
 PackageType.create!(name: "Grande jardinière 80 cm × 20 cm")
 PackageType.create!(name: "Pot de fleur moyen")
 
-tomorrow = (Date.today + 1).to_time
+tomorrow = Date.tomorrow.to_time
 
 puts "Creating a first delivery for Tout Schuss…"
 
@@ -53,6 +53,16 @@ bottles_for_delivery = DeliveryPackage.new(
 laffitte_delivery.save!
 casks_for_delivery.save!
 bottles_for_delivery.save!
+
+today_delivery = Delivery.new(
+  recipient_name: "Olivier",
+  recipient_phone: "0602020202",
+  address: "43 Rue Laffitte, 75009 Paris",
+  complete_after: tomorrow + (8 * 60 + 30) * 60,
+  complete_before: tomorrow + 13 * 60 * 60,
+  name: "Jean Claude",
+  phone: "0612121212",
+  )
 
 
 
