@@ -3,6 +3,7 @@ require 'csv'
 class DeliveriesController < ApplicationController
   skip_after_action :verify_authorized, only: [:bulk_new, :bulk_create, :dashboard, :test_bulk_create]
   before_action :company_filter, only: [:index, :today, :past, :upcoming, :show, :update, :dashboard]
+  before_action :check_status, only: [:index, :dashboard]
 
   def bulk_new
   end
@@ -20,13 +21,13 @@ class DeliveriesController < ApplicationController
       @deliveries = policy_scope(@user_deliveries)
       case params[:period]
       when "past"
-        @period = "past"
+        @period = "Passées"
         @deliveries = @deliveries.past
       when "today"
-        @period = "today"
+        @period = "Aujourd'hui"
         @deliveries = @deliveries.today
       when "upcoming"
-        @period = "upcoming"
+        @period = "A venir"
         @deliveries = @deliveries.upcoming
       end
     end
@@ -49,10 +50,18 @@ class DeliveriesController < ApplicationController
     @deliveries = Delivery.last(5)
     render 'bulk_create'
   end
-
-  def update
+  def bulk_update
     @deliveries = @user_deliveries.find(params[:id])
     @deliveries.update(deliveries_params)
+  end
+
+  def update
+    @delivery = @user_deliveries.find(params[:id])
+    @delivery.update(deliveries_params)
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def show
@@ -105,5 +114,15 @@ class DeliveriesController < ApplicationController
 
   def company_filter
     @user_deliveries = Delivery.where(company_id: current_user.company_id)
+  end
+
+  def deliveries_params
+      params.require(:delivery).permit(:id, :company_id, :recipient_phone, :recipient_name, :address, :complete_before, :complete_after)
+  end
+
+  def check_status
+    @user_deliveries.each do |delivery|
+      delivery.status?
+    end
   end
 end

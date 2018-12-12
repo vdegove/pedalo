@@ -1,4 +1,4 @@
-<div class="container-show">
+<div class="container-check">
   <h1><%= @count %> livraisons importées !</h1>
   <% @deliveries.each do |delivery| %>
     <%= simple_form_for delivery, wrapper: :inline_form, html: { class: 'form-inline delivery-form-line' } do |f| %>
@@ -20,6 +20,5 @@
     <% end %>
   <% end %>
   <%= link_to "valider", root_path, class: "btn-no-background" %>
-
 </div>
 

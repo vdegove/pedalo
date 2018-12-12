@@ -1,0 +1,21 @@
+<div class="modal fade" id="modal-<%= delivery.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+
+        <% delivery.delivery_packages.each do |delivery_package| %>
+          <%= delivery_package.package_type.name.downcase %>
+          <%= simple_form_for(delivery_package, remote: true) do |f| %>
+            <%= f.input :amount %>
+            <%= f.submit "Mettre à jour", class: "btn btn-primary" %>
+          <% end %>
+          <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>

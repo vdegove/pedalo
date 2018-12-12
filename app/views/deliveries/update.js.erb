@@ -1,0 +1,14 @@
+function updateDelivery(deliveryHTML) {
+  const delivery = document.getElementById('edit_delivery_<%= @delivery.id %>');
+  delivery.innerHTML = deliveryHTML;
+}
+
+
+function closeModal() {
+  const closeButton = document.querySelector('#modal2-<%= @delivery.id %> .close');
+  closeButton.click();
+}
+
+
+updateDelivery("<%= j render 'deliveries/edit_delivery', delivery: @delivery %>");
+closeModal();
