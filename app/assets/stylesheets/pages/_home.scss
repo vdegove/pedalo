@@ -2,9 +2,10 @@
 
 .banner {
   color: white;
-  background-size: cover !important;
+  //background-size: cover !important;
+  background-size: 50%;
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: right;
   height: calc(100vh - 55px);
   display: flex;
   justify-content: center;
