@@ -1,6 +1,6 @@
 <ul class="progressbar">
-  <li class="active">Enregistré<br><%= delivery.created_at.strftime("%Hh%M - %m/%d/%Y") %></li>
-  <li class="<%= "active" if delivery.status? == "Enlevé" || delivery.status? == "Livré" %>">Enlevé<br><%= Time.parse(delivery.picked_up_at).strftime("%Hh%M - %m/%d/%Y") if (delivery.status? == "Enlevé") %></li>
-  <li class="<%= "active" if delivery.status? == "Livré" %>">Livré<br><%= Time.parse(delivery.delivered_at).strftime("%Hh%M - %m/%d/%Y") if (delivery.status? == "Livré") %></li>
+  <li class="active"><p>Enregistré</p><%= delivery.created_at.strftime("%Hh%M - %m/%d/%Y") %></li>
+  <li class="<%= "active" if delivery.status? == "Enlevé" || delivery.status? == "Livré" %>"><p>Enlevé</p><%= delivery.picked_up_at.strftime("%Hh%M - %d/%m/%Y") if (delivery.status? == "Enlevé") %></li>
+  <li class="<%= "active" if delivery.status? == "Livré" %>"><p>Livré</p><%= delivery.delivered_at.strftime("%Hh%M - %d/%m/%Y") if (delivery.status? == "Livré") %></li>
 </ul>
 

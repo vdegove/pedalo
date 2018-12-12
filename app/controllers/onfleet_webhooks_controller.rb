@@ -28,17 +28,14 @@ class OnfleetWebhooksController < ApplicationController
     if params[:check]
       render json: params[:check], status: :ok
     else
+      delivery = Delivery.find_by onfleet_task_pickup: params[:taskId]
+      delivery = Delivery.find_by onfleet_task_dropoff: params[:taskId] if delivery.blank?
 
-      delivery_pickup = Delivery.find_by onfleet_task_pickup: params[:taskId]
-      if delivery_pickup
-        delivery_pickup.picked_up_at = Time.at(params[:data][:task][:completionDetails][:time]/1000)
-        delivery_pickup.save
-      else
-        delivery_dropoff = Delivery.find_by onfleet_task_dropoff: params[:taskId]
-        if delivery_dropoff
-          delivery_dropoff.delivered_at = Time.at(params[:data][:task][:completionDetails][:time]/1000)
-          delivery_dropoff.save
-        end
+      if delivery
+        delivery.driver_phone = params[:data][:worker][:phone]
+        delivery.driver_photo = params[:data][:worker][:imageUrl]
+        delivery.driver_name = params[:data][:worker][:name]
+        delivery.save
       end
       head :no_content
     end

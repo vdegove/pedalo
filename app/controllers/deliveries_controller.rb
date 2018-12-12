@@ -1,8 +1,9 @@
 require 'csv'
 
 class DeliveriesController < ApplicationController
-  skip_after_action :verify_authorized, only: [:bulk_new, :bulk_create, :update]
+  skip_after_action :verify_authorized, only: [:bulk_new, :bulk_create, :dashboard, :update]
   before_action :company_filter, only: [:index, :today, :past, :upcoming, :show, :update, :dashboard]
+  before_action :check_status, only: [:index, :dashboard]
 
   def bulk_new
   end
@@ -67,23 +68,35 @@ class DeliveriesController < ApplicationController
     @driver_phone = @delivery.driver_phone
 
     @driver_photo = @delivery.driver_photo
-
   end
 
   def dashboard
-     @deliveries = policy_scope(@user_deliveries)
+    @deliveries = @user_deliveries
   end
 
   private
 
   def create_delivery(row)
+    # delivery = current_user.company.deliveries.new(
+    #   recipient_name: row["recipient_name"],
+    #   recipient_phone: row["recipient_phone"],
+    #   address: row["address"],
+    #   complete_after: DateTime.parse(row["complete_after"]),
+    #   complete_before: DateTime.parse(row["complete_before"])
+    #   )
     delivery = current_user.company.deliveries.new(
       recipient_name: row["recipient_name"],
       recipient_phone: row["recipient_phone"],
       address: row["address"],
-      complete_after: DateTime.parse(row["complete_after"]),
-      complete_before: DateTime.parse(row["complete_before"])
       )
+    if row["date"]
+      delivery.complete_after = Date.parse(row["date"]).to_time + 9 * 60 * 60
+      delivery.complete_before = Date.parse(row["date"]).to_time + 19 * 60 * 60
+    else
+      delivery.complete_after = DateTime.parse(row["complete_after"])
+      delivery.complete_before = DateTime.parse(row["complete_before"])
+    end
+
     PackageType.all.each do |package_type|
       if row[package_type.name] && row[package_type.name] != "0"
         delivery.delivery_packages.new(
@@ -101,5 +114,10 @@ class DeliveriesController < ApplicationController
 
   def deliveries_params
       params.require(:delivery).permit(:id, :company_id, :recipient_phone, :recipient_name, :address, :complete_before, :complete_after)
+
+  def check_status
+    @user_deliveries.each do |delivery|
+      delivery.status?
+    end
   end
 end

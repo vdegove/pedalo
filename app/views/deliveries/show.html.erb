@@ -1,5 +1,7 @@
 <div class="container-show">
-  <div class="big-title"><h1>Votre commande n°<%= @delivery.id %></h1></div>
+  <div class="big-title">
+    <h1><a href="javascript:history.back(-1)"><i class="fas fa-arrow-left"></i></a>&ensp;&ensp;Votre commande n°<%= @delivery.id %></h1>
+  </div>
   <div class="all-cards">
     <div class="card-left">
       <div class="infos-card">
@@ -20,7 +22,7 @@
           <h3>Créneau de livraison</h3>
         </div>
         <div class="style">
-          <p><%= @delivery.complete_after.strftime("%m/%d/%Y") %></p>
+          <p><%= @delivery.complete_after.strftime("%d/%m/%Y") %></p>
           <p><%= @delivery.complete_after.to_formatted_s(:short).split(" ").last %> - <%= @delivery.complete_before.to_formatted_s(:short).split(" ").last %></p>
         </div>
         <br>
@@ -72,5 +74,4 @@
       </div>
     </div>
   </div>
-  <div class="btn-return-show"><a href="javascript:history.back(-1)">Retour</a></div>
 </div>

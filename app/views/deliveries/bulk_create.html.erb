@@ -2,9 +2,20 @@
   <ul>
   <h1><%= @count %> livraisons importées !</h1>
   <% @deliveries.each do |delivery| %>
-  <div class="container-details">
-      <div id="edit_delivery_<%= delivery.id %>">
-        <%= render 'edit_delivery', delivery: delivery %>
+
+    <%= simple_form_for delivery, wrapper: :inline_form, html: { class: 'form-inline delivery-form-line' } do |f| %>
+      <%= f.input :recipient_name, input_html: { size: '16' }  %>
+      <%= f.input :address, input_html: { size: '24' } %>
+      <%#= f.input :date, as: :date, label: false %>
+      <div class="bulk-date-check">le <strong><%= delivery.date.strftime("%d/%m/%y") %></strong> entre</div>
+      <%= f.input :complete_after, as: :time, label: false, input_html: {style: "width: 60px;"} %> et
+      <%= f.input :complete_before, as: :time, label: false, input_html: {style: "width: 60px;"} %>
+      <div class="packages-summary">
+        <% if delivery.delivery_packages.blank? %>
+          Pas de contenu de commande
+        <% else %>
+          <%= sanitize delivery.delivery_packages.map{ |delivery_package| "#{delivery_package.amount} #{delivery_package.package_type.name.downcase}"}.join("<br>") %>
+        <% end %>
       </div>
       <div class="modal fade" id="modal2-<%= delivery.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
