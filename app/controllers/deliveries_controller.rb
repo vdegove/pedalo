@@ -3,6 +3,7 @@ require 'csv'
 class DeliveriesController < ApplicationController
   skip_after_action :verify_authorized, only: [:bulk_new, :bulk_create, :dashboard]
   before_action :company_filter, only: [:index, :today, :past, :upcoming, :show, :update, :dashboard]
+  before_action :check_status, only: [:index, :dashboard]
 
   def bulk_new
   end
@@ -100,5 +101,11 @@ class DeliveriesController < ApplicationController
 
   def company_filter
     @user_deliveries = Delivery.where(company_id: current_user.company_id)
+  end
+
+  def check_status
+    @user_deliveries.each do |delivery|
+      delivery.status?
+    end
   end
 end

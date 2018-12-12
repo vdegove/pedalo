@@ -31,8 +31,8 @@ var myChart = new Chart(ctx, {
                     'rgba(250, 70, 70, 0.5)',
                     'rgba(160, 160, 160, 0.2)'
                 ],
-        // data: [livred, delayed, rest]
-        data: [6, 4, 6]
+        data: [livred, delayed, rest]
+        // data: [6, 4, 6]
     }],
 
     // These labels appear in the legend and in the tooltips when hovering different arcs
