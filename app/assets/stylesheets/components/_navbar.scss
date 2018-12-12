@@ -1,25 +1,39 @@
 /* Main navbar */
 .navbar-wagon {
   box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
-  background: #24527a;
+  background: #f7f7f7;
   transition: all 0.3s ease;
-  height: 55px;
+  height: 70px;
   padding: 0px 30px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  border-bottom: 2px solid #5dacbd;
 }
 
 /* Logo */
 .navbar-wagon-brand h3 {
-  color: #f9ce00;
+  color: #5dacbd;
   font-size: 32px;
 }
 
 
+.delivery-search {
+  // display: flex;
+  // margin-right: 0px;
+  // margin-top: 10px;
+  // margin-left: 70px;
+  margin-left: 130px;
+  flex-grow: 1;
+
+  form {
+    width: 50%;
+  }
+}
+
 .navbar-wagon a:hover {
  text-decoration: none;
- color: white;
+ color: #606470;
 }
 
 /* User Avatar */
@@ -36,7 +50,7 @@
 }
 
 #unique-link a {
-  color: white;
+  color: #606470;
 }
 
 /* Basic navbar item */
@@ -47,7 +61,7 @@
 
 /* Navbar link */
 .navbar-wagon-link {
-  color: #616668;
+  color: #ff570c;
   font-size: 14px;
 }
 .navbar-wagon-link:hover {

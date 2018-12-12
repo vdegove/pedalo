@@ -1,0 +1,1 @@
+<%= sanitize delivery.delivery_packages.map{ |delivery_package| "#{delivery_package.amount} #{delivery_package.package_type.name.downcase}"}.join("<br>") %>

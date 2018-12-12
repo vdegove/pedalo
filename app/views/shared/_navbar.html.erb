@@ -1,17 +1,26 @@
 <div class="navbar-wagon">
   <!-- Logo -->
-  <%= link_to root_path, class: "navbar-wagon-brand" do %>
+  <%= link_to pages_home_path, class: "navbar-wagon-brand" do %>
     <h3>Pedalo</h3>
   <% end %>
-
+  <% if user_signed_in? %>
+     <div class="delivery-search">
+      <%= form_tag root_path, method: :get do %>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+          placeholder: "Rechercher une commande...",
+          value: ""
+        %>
+       <% end %>
+      </div>
+    <% else %>
+    <% end %>
   <!-- Right Navigation -->
   <div class="navbar-wagon-right">
-
     <% if user_signed_in? %>
-
       <!-- Links when logged in -->
       <%= link_to "Nouvelle expédition", deliveries_bulk_new_path, class: "btn-model" %>
-
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">
           <div class="dropdown">
