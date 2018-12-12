@@ -9,7 +9,7 @@
   text-align: center;
   margin-top: 5px;
   padding: 50px;
-  border-bottom: 2px solid #5dacbd;
+  border-bottom: 2px solid #27b1be;
    h3 {
     font-size: 40px;
     color: black;
@@ -58,12 +58,19 @@
   margin-top: 20px;
 }
 
+.card-title-container-second h3 {
+  font-family: "Rubik";
+  margin-left: 62px;
+  margin-top: 20px;
+}
+
 .undertitle-dashboard {
   flex: 1;
   padding-top : 12px;
-  padding-left: 90px;
+  padding-left: 35px;
   padding-bottom: -40px;
   font-size: 20px;
+  font-weight: bold;
 }
 
 #myChart {
@@ -112,7 +119,7 @@
 .headers-upcoming {
   display: flex;
   padding: 12px;
-  background-color: #5dacbd;
+  background-color: #27b1be;
   margin-left: 35px;
   margin-right: 35px;
 }
