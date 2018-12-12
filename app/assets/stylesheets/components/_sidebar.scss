@@ -1,17 +1,9 @@
 /* Style the sidebar - fixed full height */
 .sidebar {
-  height: calc(100vh - 70px);
-  width: 240px;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: #f7f7f7;
-  overflow-x: hidden;
-  // padding-top: 16px;
-  border-right: 1px solid rgba(96, 100, 112, 0.2);
-  position: sticky;
-  top: 0!important;
-  float: left;
+z-index: 1;
+background-color: #f7f7f7;
+border-right: 1px solid rgba(96, 100, 112, 0.2);
+width: 12%;
   ul {
     list-style: none;
     padding: 0;

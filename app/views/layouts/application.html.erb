@@ -32,8 +32,12 @@
   <body>
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
-    <%= render 'shared/sidebar' if (user_signed_in? && !current_page?(pages_home_path)) %>
-    <%= yield %>
+    <div class="layout-container">
+      <%= render 'shared/sidebar' if (user_signed_in? && !current_page?(pages_home_path)) %>
+      <div class="width-100">
+        <%= yield %>
+      </div>
+    </div>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
