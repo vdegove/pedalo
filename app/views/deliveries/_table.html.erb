@@ -1,10 +1,10 @@
 <div class="container-content">
-    <div class="headers">
-      <div class="head">Nom</div>
-      <div class="head">Date de livraison</div>
-      <div class="head">Créneau de livraison</div>
-      <div class="head">Status</div>
-    </div>
+  <div class="headers">
+    <div class="head">NOM</div>
+    <div class="head">DATE DE LIVRAISON</div>
+    <div class="head">CRÉNEAU DE LIVRAISON</div>
+    <div class="head">STATUT</div>
+  </div>
   <div class="delivery-container">
     <% @deliveries.each do |delivery| %>
     <% debut = delivery.complete_after.to_formatted_s(:short).split(" ").last %>
@@ -14,7 +14,10 @@
           <div class="delivery"><%= delivery.recipient_name %></div>
           <div class="delivery"><%= delivery.complete_after.strftime("%d/%m/%Y") %></div>
           <div class="delivery"><%= debut %> - <%= fin %></div>
-          <div class="delivery"><%= delivery.status? %></div>
+          <div class="delivery delivery-<%= status_class(delivery) %>">
+              <%= delivery.status? %>
+
+          </div>
         <% end %>
       <!-- </div> -->
     <% end %>
