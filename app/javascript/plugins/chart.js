@@ -13,6 +13,7 @@ const delayed = ctx.dataset.delayed
 const enregistred = ctx.dataset.enregistred
 const in_process = ctx.dataset.in_process
 
+Chart.defaults.global.defaultFontFamily = "Rubik";
 var myChart = new Chart(ctx, {
     type: 'doughnut',
     options: {
@@ -30,10 +31,10 @@ var myChart = new Chart(ctx, {
     data: {
     datasets: [{
         backgroundColor: [
-                    'rgba(70, 160, 70, 0.8)',
-                    'rgba(250, 70, 70, 0.8)',
+                    'rgba(37, 177, 190, 0.8)',
+                    'rgba(167, 188, 185, 0.8)',
                     'rgba(243, 225, 0, 0.8)',
-                    'rgba(160, 160, 160, 0.8)'
+                    'rgba(224, 235, 235, 0.8)'
                 ],
         data: [delivered, delayed, in_process, enregistred]
         // data: [6, 4, 6, 3]
@@ -43,7 +44,7 @@ var myChart = new Chart(ctx, {
     labels: [
         'Livré',
         'Retard',
-        'En Cours',
+        'En cours',
         'Enregistré'
     ]
     }

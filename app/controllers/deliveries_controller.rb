@@ -27,7 +27,7 @@ class DeliveriesController < ApplicationController
         @period = "Aujourd'hui"
         @deliveries = @deliveries.today
       when "upcoming"
-        @period = "A venir"
+        @period = "À venir"
         @deliveries = @deliveries.upcoming
       end
     end
