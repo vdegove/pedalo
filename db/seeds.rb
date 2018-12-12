@@ -26,6 +26,7 @@ PackageType.create!(name: "Grande jardinière 80 cm × 20 cm")
 PackageType.create!(name: "Pot de fleur moyen")
 
 tomorrow = Date.tomorrow.to_time
+yesterday = Date.yesterday.to_time
 
 puts "Creating a first delivery for Tout Schuss…"
 
@@ -33,10 +34,10 @@ laffitte_delivery = Delivery.new(
   recipient_name: "Olivier",
   recipient_phone: "0602020202",
   address: "43 Rue Laffitte, 75009 Paris",
-  complete_after: tomorrow + (8 * 60 + 30) * 60,
-  complete_before: tomorrow + 13 * 60 * 60,
-  name: "Jean Claude",
-  phone: "0612121212",
+  complete_after: yesterday + (8 * 60 + 30) * 60,
+  complete_before: yesterday + 13 * 60 * 60,
+  picked_up_at: yesterday + 9 * 60 * 60,
+  delivered_at: yesterday + (9 * 60 + 30) * 60
   )
 
 laffitte_delivery.company = brasserie
@@ -54,15 +55,42 @@ laffitte_delivery.save!
 casks_for_delivery.save!
 bottles_for_delivery.save!
 
+today = Date.today.to_time
+
 today_delivery = Delivery.new(
-  recipient_name: "Olivier",
-  recipient_phone: "0602020202",
-  address: "43 Rue Laffitte, 75009 Paris",
-  complete_after: tomorrow + (8 * 60 + 30) * 60,
-  complete_before: tomorrow + 13 * 60 * 60,
-  name: "Jean Claude",
-  phone: "0612121212",
+  recipient_name: "Frédérique Grenier",
+  recipient_phone: "0602020203",
+  address: "47 rue du Pré-Saint-Gervais, 93500 Pantin",
+  complete_after: today + (8 * 60 + 30) * 60,
+  complete_before: today + 13 * 60 * 60,
+  picked_up_at: today + 12 * 60 * 60,
+  delivered_at: today + (12 * 60 + 30) * 60
   )
+today_delivery.company = brasserie
+today_delivery.save!
+
+today_delivery_2 = Delivery.new(
+  recipient_name: "Vincent Delgoff",
+  recipient_phone: "0602020204",
+  address: "1 rue Véronèse, 75013 Paris",
+  complete_after: today + (16 * 60 + 30) * 60,
+  complete_before: today + 20 * 60 * 60,
+  )
+
+today_delivery_2.company = brasserie
+today_delivery_2.save!
+
+today_delivery_3 = Delivery.new(
+  recipient_name: "Tristram",
+  recipient_phone: "0602020205",
+  address: "10 rue de Ménilmontant, 75020 Paris",
+  complete_after: today + (16 * 60 + 30) * 60,
+  complete_before: today + 20 * 60 * 60,
+  )
+
+today_delivery_3.company = brasserie
+today_delivery_3.save!
+
 
 
 
