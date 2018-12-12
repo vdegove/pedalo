@@ -13,9 +13,9 @@
     <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
   </head>
   <body>
-    <%= render 'shared/navbar' unless current_page?(root_path)%>
+    <%= render 'shared/navbar' if user_signed_in? %>
     <%= render 'shared/flashes' %>
-    <%= render 'shared/sidebar' unless current_page?(new_user_session_path)%>
+    <%= render 'shared/sidebar' if user_signed_in? %>
     <%= yield %>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>

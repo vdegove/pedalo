@@ -58,11 +58,10 @@ class DeliveriesController < ApplicationController
     @driver_phone = @delivery.driver_phone
 
     @driver_photo = @delivery.driver_photo
-
   end
 
   def dashboard
-     @deliveries = @user_deliveries
+    @deliveries = @user_deliveries
   end
 
   private

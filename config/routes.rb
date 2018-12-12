@@ -1,7 +1,15 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  root to: 'deliveries#index', period: "today"
+
+  authenticated :user do
+      root to: 'deliveries#dashboard'
+  end
+
+  root 'pages#home', as: :authenticated_root
+  # root to: 'deliveries#index', period: "today"
+
+
   get '/deliveries/bulk-new', to: 'deliveries#bulk_new'
   post 'deliveries/bulk-create', to: 'deliveries#bulk_create'
 
@@ -24,4 +32,6 @@ Rails.application.routes.draw do
   # Webooks
   post '/webhooks/onfleet/:token/task-completed', to: 'onfleet_webhooks#task_completed'
   get '/webhooks/onfleet/:token/task-completed', to: 'onfleet_webhooks#task_completed'
+  post '/webhooks/onfleet/:token/driver-assigned', to: 'onfleet_webhooks#driver_assigned'
+  get '/webhooks/onfleet/:token/driver-assigned', to: 'onfleet_webhooks#driver_assigned'
 end

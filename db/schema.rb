@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_10_135418) do
+ActiveRecord::Schema.define(version: 2018_12_11_222201) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,8 +47,8 @@ ActiveRecord::Schema.define(version: 2018_12_10_135418) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "status"
-    t.string "picked_up_at"
-    t.string "delivered_at"
+    t.datetime "picked_up_at"
+    t.datetime "delivered_at"
     t.string "onfleet_task_dropoff"
     t.string "tracking_url_dropoff"
     t.string "onfleet_task_pickup"
