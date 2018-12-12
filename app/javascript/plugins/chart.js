@@ -32,7 +32,7 @@ var myChart = new Chart(ctx, {
     datasets: [{
         backgroundColor: [
                     'rgba(37, 177, 190, 0.8)',
-                    'rgba(167, 188, 185, 0.8)',
+                    'rgba(255, 146, 128, 0.3)',
                     'rgba(243, 225, 0, 0.8)',
                     'rgba(224, 235, 235, 0.8)'
                 ],
