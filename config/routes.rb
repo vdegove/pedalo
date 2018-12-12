@@ -6,14 +6,13 @@ Rails.application.routes.draw do
   authenticated :user do
       root to: 'deliveries#dashboard'
   end
-
-  root 'pages#home', as: :authenticated_root
+  root 'pages#home'
+  get "/pages/home", to: "pages#home"
   # root to: 'deliveries#index', period: "today"
-
-
   get '/deliveries/bulk-new', to: 'deliveries#bulk_new'
   post 'deliveries/bulk-create', to: 'deliveries#bulk_create'
-  patch "deliveries/:id", to: "deliveries#update", as: 'update'
+
+ # patch "deliveries/:id", to: "deliveries#update", as: 'update'
 
 
 #  get '/deliveries?period=today', to: 'deliveries#index', as: 'deliveries'
@@ -23,10 +22,7 @@ Rails.application.routes.draw do
   resources :deliveries, only: [:create, :update, :show]
 
   resources :companies, only: [:new, :create]
-
   get '/dashboard', to: 'deliveries#dashboard'
-
-
   # resources :deliveries do
   #   collection do
   #     get 'phone', to: "deliveries#phone"
@@ -36,7 +32,9 @@ Rails.application.routes.draw do
   #   end
   # end
 
+
   resources :delivery_packages, only: [:edit, :update, :new]
+
 
   # Webooks
   post '/webhooks/onfleet/:token/task-completed', to: 'onfleet_webhooks#task_completed'
