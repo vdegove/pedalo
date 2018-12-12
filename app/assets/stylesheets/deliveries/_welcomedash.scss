@@ -165,6 +165,10 @@
   border-radius: 3px;
 }
 
+.delivery-rows a:hover {
+  text-decoration: none;
+}
+
 .delivery-upcoming {
   flex: 1;
   text-align: left;
@@ -173,5 +177,4 @@
 
 .delivery-rows:hover{
   text-decoration: none;
-  color: black;
 }
