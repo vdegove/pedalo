@@ -10,15 +10,21 @@ Rails.application.routes.draw do
   # root to: 'deliveries#index', period: "today"
 
 
+# For debugging bulk create
+  get 'deliveries/test-bulk-create', to: 'deliveries#test_bulk_create'
+
+
   get '/deliveries/bulk-new', to: 'deliveries#bulk_new'
   post 'deliveries/bulk-create', to: 'deliveries#bulk_create'
 
+
   get '/deliveries', to: 'deliveries#index', as: 'deliveries'
-  resources :deliveries, only: [:create, :update, :show]
+  resources :deliveries, only: [:create, :update, :show] do
+    resources :delivery_packages, only: [:index, :update]
+  end
   resources :companies, only: [:new, :create]
 
   get '/dashboard', to: 'deliveries#dashboard'
-
 
   # resources :deliveries do
   #   collection do
