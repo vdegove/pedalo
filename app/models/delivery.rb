@@ -34,6 +34,7 @@ class Delivery < ApplicationRecord
   scope :delivered, -> { where(status: "Livré") }
   scope :not_delivered, -> { where('status = ? OR status = ?', "Enregistré", "Enlevé") }
   scope :in_process, -> { where(status: "Enlevé") }
+  scope :enregistred, -> { where(status: "Enregistré") }
   scope :important, -> { where('complete_before < ?', now) }
   scope :recent, -> { where('created_at < ?', now) }
 

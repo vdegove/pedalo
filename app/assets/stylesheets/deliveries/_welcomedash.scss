@@ -22,6 +22,11 @@
    }
 }
 
+#gauge {
+    padding-top: 0px !important;
+    padding-left: 10px !important;
+   }
+
 .card-description {
   position: absolute;
   bottom: 10px;
@@ -59,7 +64,7 @@
   margin-top: 0px;
   margin-left: 10px;
   width: 300px !important;
-  height: 300px !important;
+  height: 240px !important;
 }
 
 #myChart2 {
