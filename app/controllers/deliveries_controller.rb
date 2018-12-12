@@ -21,13 +21,13 @@ class DeliveriesController < ApplicationController
       @deliveries = policy_scope(@user_deliveries)
       case params[:period]
       when "past"
-        @period = "past"
+        @period = "Passées"
         @deliveries = @deliveries.past
       when "today"
-        @period = "today"
+        @period = "Aujourd'hui"
         @deliveries = @deliveries.today
       when "upcoming"
-        @period = "upcoming"
+        @period = "A venir"
         @deliveries = @deliveries.upcoming
       end
     end
@@ -114,6 +114,7 @@ class DeliveriesController < ApplicationController
 
   def deliveries_params
       params.require(:delivery).permit(:id, :company_id, :recipient_phone, :recipient_name, :address, :complete_before, :complete_after)
+  end
 
   def check_status
     @user_deliveries.each do |delivery|
