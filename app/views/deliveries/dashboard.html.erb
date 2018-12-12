@@ -1,18 +1,6 @@
 <div class="main-card-container">
-  <div class="container-search">
-    <div class="orders">Bienvenue sur votre tableau de bord</div>
-    <div class="delivery-search">
-      <%= form_tag root_path, method: :get do %>
-        <%= text_field_tag :query,
-          params[:query],
-          class: "form-control",
-          placeholder: "Rechercher une commande...",
-          value: ""
-        %>
-      <% end %>
-    </div>
-  </div>
-  <div class="card-title-container"><h3>Aujourd'hui, sur Pedalo :</h3></div>
+    <div class="orders">Bonjour, Brasserie Tout Schuss.</div>
+    <div class="undertitle-dashboard">Aujourd'hui, sur votre espace Pedalo :</div>
   <div class="card-container">
     <div data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1000">
       <div class="dashboard-card">
@@ -27,11 +15,6 @@
     <div data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500">
       <div class="dashboard-card">
         <h3><%= @deliveries.today.important.count %></h3> <p>livraisons sont à venir.</p>
-      </div>
-    </div>
-    <div data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1750">
-      <div class="dashboard-card">
-        graph JS
       </div>
     </div>
   </div>
