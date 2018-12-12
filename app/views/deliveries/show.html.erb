@@ -37,9 +37,12 @@
           <% @delivery.delivery_packages.each do |delivery_package| %>
             <li class="product-list">
               <div class="product"><p><%= delivery_package.package_type.name %></p></div>
-              <div class="product"><p><%= delivery_package.amount %></p></div>
+             <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modal">
+              Modifier
+            </button>
             </li>
           <% end %>
+          <%= render 'deliveries/edit'%>
         </ul>
       </div>
     </div>
