@@ -1,3 +1,7 @@
+<!-- app/views/offers/show.html.erb -->
+<% content_for :meta_title, "#{@delivery.name} is on #{DEFAULT_META["meta_product_name"]}" %>
+<% content_for :meta_description, @delivery.description %>
+<% content_for :meta_image, cl_image_path(@delivery.photo.path) %>
 <div class="container-show">
   <div class="big-title">
     <h1><a href="javascript:history.back(-1)"><i class="fas fa-arrow-left"></i></a>&ensp;&ensp;Votre commande n°<%= @delivery.id %></h1>
