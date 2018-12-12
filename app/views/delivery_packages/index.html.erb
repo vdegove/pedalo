@@ -1,0 +1,8 @@
+<% @delivery_packages.each do |delivery_package| %>
+
+   <h2><%= delivery_package.package_type.name %></h2>
+   <%= simple_form_for(delivery_package, method: :post, url: "##{delivery_package}") do |f| %>
+     <%= f.input :amount %>
+       <%= f.button :submit %>
+   <% end %>
+<% end %>
