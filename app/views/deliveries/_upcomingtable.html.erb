@@ -1,9 +1,9 @@
-<div class="container-content">
+<div class="container-content-upcoming">
     <div class="headers-upcoming">
-      <div class="head-upcoming">Nom</div>
-      <div class="head-upcoming">Date de livraison</div>
-      <div class="head-upcoming">Créneau de livraison</div>
-      <div class="head-upcoming">Status</div>
+      <div class="head-upcoming">NOM</div>
+      <div class="head-upcoming">DATE DE LIVRAISON</div>
+      <div class="head-upcoming">CRÉNEAU DE LIVRAISON</div>
+      <div class="head-upcoming">STATUT</div>
     </div>
   <div class="delivery-container-upcoming">
     <% @deliveries.first(10).each do |delivery| %>
@@ -15,9 +15,8 @@
           <div class="delivery-upcoming"><%= delivery.complete_after.strftime("%d/%m/%Y") %></div>
           <div class="delivery-upcoming"><%= debut %> - <%= fin %></div>
           <div class="delivery-upcoming"><%= delivery.status? %></div>
+          <% end %>
         <% end %>
-      <!-- </div> -->
-    <% end %>
-  </div>
+    </div>
 </div>
 

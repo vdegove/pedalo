@@ -1,16 +1,16 @@
 <div class="sidebar">
   <div class="sidebar-container">
     <ul class="sidebar-content">
-      <li><%= link_to '<i class="fas fa-home fa-lg"></i> Accueil'.html_safe, root_path %></li>
-      <li><a href="#"><i class="fas fa-boxes fa-lg"></i> Commandes</a>
+      <li><%= link_to '<i class="fas fa-home fa-lg"></i> &ensp;Accueil'.html_safe, root_path %></li>
+      <li><a href="#"><i class="fas fa-boxes fa-lg"></i> &ensp;Commandes</a>
         <ul class="delivery-list">
           <li><%= link_to "À venir", deliveries_path({period: "upcoming"}) %></li>
           <li><%= link_to "Passées", deliveries_path({period: "past"}) %></li>
           <li><%= link_to "Aujourd'hui", deliveries_path({period: "today"}) %></li>
         </ul>
       </li>
-      <li><a href="#contact"><i class="fas fa-chart-line fa-lg"></i> Métriques</a></li>
-      <li><a href="#contact"><i class="fas fa-plus-square fa-lg"></i> Nouvelle commande</a></li>
+      <li><a href="#contact"><i class="fas fa-chart-line fa-lg"></i>&ensp; Métriques</a></li>
+      <li><a href="#contact"><i class="fas fa-plus-square fa-lg"></i> &ensp; Nouvelle commande</a></li>
     </ul>
   </div>
 </div>
