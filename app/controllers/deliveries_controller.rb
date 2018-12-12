@@ -1,7 +1,7 @@
 require 'csv'
 
 class DeliveriesController < ApplicationController
-  skip_after_action :verify_authorized, only: [:bulk_new, :bulk_create, :dashboard, :update]
+  skip_after_action :verify_authorized, only: [:bulk_new, :bulk_create, :dashboard, :test_bulk_create]
   before_action :company_filter, only: [:index, :today, :past, :upcoming, :show, :update, :dashboard]
   before_action :check_status, only: [:index, :dashboard]
 
@@ -46,6 +46,10 @@ class DeliveriesController < ApplicationController
     end
   end
 
+  def test_bulk_create
+    @deliveries = Delivery.last(5)
+    render 'bulk_create'
+  end
   def bulk_update
     @deliveries = @user_deliveries.find(params[:id])
     @deliveries.update(deliveries_params)
