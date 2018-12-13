@@ -4,7 +4,7 @@
 }
 
 .delivery-form-line {
-  min-height: 60px;
+  // min-height: 60px;
   font-size:16px;
 }
 
@@ -16,11 +16,38 @@
     font-size:16px;
 }
 
-.packages-summary {
+// .packages-summary {
+//   display: inline-block;
+//   font-size: 15px;
+//   vertical-align: middle;
+//   margin: 0 10px;
+//   width: 280px;
+//   overflow: hidden;
+// }
+
+.flex {
+  display: flex;
+  align-items: center;
+}
+
+.pt-check-container {
+  margin-left: 20px;
+  .pt-check {
+    margin-right: 20px;
+  }
+}
+
+.new_delivery_package,
+.edit_delivery_package {
   display: inline-block;
-  font-size: 15px;
-  vertical-align: middle;
-  margin: 0 10px;
-  width: 280px;
-  overflow: hidden;
+
+  .narrow-input {
+    width: 50px;
+  }
+}
+
+.package-type-icon {
+  width: 60px;
+  height: 60px;
+  margin: 5px 0px;
 }

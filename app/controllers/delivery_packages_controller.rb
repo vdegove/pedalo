@@ -1,5 +1,5 @@
 class DeliveryPackagesController < ApplicationController
-  skip_after_action :verify_authorized, only: [:update]
+  skip_after_action :verify_authorized, only: [:update, :create]
   skip_after_action :verify_policy_scoped, only: [:index] # TODO : ugly hack, remove that shit
 
 
@@ -16,11 +16,11 @@ class DeliveryPackagesController < ApplicationController
   # end
 
   def create
-    skip_authorization
+    delivery_package = DeliveryPackage.new(delivery_package_params)
+    delivery_package.delivery = Delivery.find(params[:delivery_id])
+    delivery_package.save
     redirect_to deliveries_test_bulk_create_path
   end
-
-
 
   # def edit
   #   @delivery_package = DeliveryPackage.find(params[:id])
@@ -32,18 +32,18 @@ class DeliveryPackagesController < ApplicationController
   # TODO : see if relevant
 
   def update
-    raise
-    # @delivery_package = DeliveryPackage.find(params[:id])
-    # @delivery_package.update(delivery_package_params)
+    @delivery_package = DeliveryPackage.find(params[:id])
+    @delivery_package.update(delivery_package_params)
     # respond_to do |format|
     #     format.html
     #     format.js
     #   end
+    redirect_to deliveries_test_bulk_create_path
   end
 
   private
 
   def delivery_package_params
-    params.require(:delivery_package).permit(:amount)
+    params.require(:delivery_package).permit(:amount, :package_type_id)
   end
 end

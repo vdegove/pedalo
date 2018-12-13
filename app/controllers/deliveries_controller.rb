@@ -51,6 +51,7 @@ class DeliveriesController < ApplicationController
   end
 
   def test_bulk_create
+    @count = 5
     @deliveries = Delivery.last(5)
     render 'bulk_create'
   end

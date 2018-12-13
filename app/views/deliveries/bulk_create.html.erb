@@ -9,26 +9,43 @@
         <div class="bulk-date-check">le <strong><%= delivery.date.strftime("%d/%m/%y") %></strong> entre</div>
         <%= f.input :complete_after, as: :time, label: false, input_html: {style: "width: 60px;"} %> et
         <%= f.input :complete_before, as: :time, label: false, input_html: {style: "width: 60px;"} %>
-        <div class="packages-summary">
+        <!-- <div class="packages-summary"> -->
           <%# if delivery.delivery_packages.blank? %>
             <!-- Pas de contenu de commande -->
           <%# else %>
             <%# sanitize delivery.delivery_packages.map{ |delivery_package| "#{delivery_package.amount} #{delivery_package.package_type.name.downcase}"}.join("<br>") %>
           <%# end %>
           <%# link_to sanitize('<i class="fas fa-edit"></i>'), delivery_delivery_packages_path(delivery.id) %>
-        </div>
+        <!-- </div> -->
         <%#= f.button :submit, "Mettre à jour", class: "btn-no-background-no-strong" %>
       <% end %>
-      <div class="flex">
+      <div class="flex pt-check-container">
         <% delivery.company.package_types.each do |package_type| %>
+        <div class="pt-check">
+
+              <img src="<%= package_type.icon %>" class="package-type-icon" title="<%= package_type.name %>">
           <%= form_for(DeliveryPackage.find_by(package_type: package_type, delivery: delivery) || [delivery, DeliveryPackage.new]) do |form| %>
-            <%= form.number_field :amount, class: "narrow-input" %> <%= package_type.name %>
-            <%= form.hidden_field :package_type_id, value: package_type.id %>
+              <%= form.number_field :amount, class: "narrow-input" %>
+              <%= form.hidden_field :package_type_id, value: package_type.id %>
           <% end %>
+          </div>
         <% end %>
       </div>
+      <button class="btn-no-background-no-strong">Mettre à jour</button>
     </div>
   <% end %>
   <%= link_to "valider", root_path, class: "btn-no-background" %>
+
+  <br><br>
+  <hr>
+
+
+  <h3><%= current_user.company.name %>, vous pouvez expédier les types de colis suivants :</h3>
+  <ul class="list-inline">
+    <% current_user.company.package_types.each do |package_type| %>
+      <li><p><img src="<%= package_type.icon %>" class="package-type-icon"> : <%= package_type.name %></p></li>
+    <% end %>
+  </ul>
+  <p>Si vous souhaitez expédier d'autres types de colis, n'hésiter pas à <a href="#">nous contacter</a> pour un devis personnalisé.</p>
 </div>
 
