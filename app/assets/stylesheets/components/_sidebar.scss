@@ -1,16 +1,22 @@
 /* Style the sidebar - fixed full height */
 .sidebar {
-z-index: 1;
-background-color: #f7f7f7;
-border-right: 1px solid rgba(96, 100, 112, 0.2);
-width: 12%;
-  ul {
-    list-style: none;
+  z-index: 1;
+  background-color: #f7f7f7;
+  width: 19%;
+  min-height: 100%;
+  border-right: 1px solid rgba(96, 100, 112, 0.2);
+  .sidebar-container {
+    height: 500px;
+    position: sticky !important;
+    top: 15px !important;
+  }
+  ul.sidebar-content {
     padding: 0;
   }
 }
 
 .sidebar-content > li {
+  list-style-type: none;
   margin: 24px 0px;
   display: block;
 }
@@ -24,12 +30,17 @@ width: 12%;
   display: block;
 }
 
-.delivery-list li {
-  position: relative;
-  text-align: left;
-  margin: 12px 0px;
-  padding-left: 36px;
+.delivery-list {
+  padding-left: 0;
+  li {
+    list-style-type: none;
+    position: relative;
+    text-align: left;
+    margin: 12px 0px;
+    padding-left: 36px;
+  }
 }
+
 
 .delivery-list li a:before {
   content: "";

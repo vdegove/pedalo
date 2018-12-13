@@ -1,14 +1,14 @@
 <div class="sidebar">
   <div class="sidebar-container">
     <ul class="sidebar-content">
-      <li><%= link_to '<i class="fas fa-home fa-lg"></i> &ensp;Accueil'.html_safe, root_path %></li>
+      <li><%= link_to '<i class="fas fa-home fa-lg"></i> &ensp; Tableau de bord'.html_safe, root_path %></li>
       <li><%= link_to '<i class="fas fa-boxes fa-lg"></i> &ensp;Commandes'.html_safe, deliveries_path({period: "today"}) %></li>
         <ul class="delivery-list">
           <li><%= link_to "À venir", deliveries_path({period: "upcoming"}) %></li>
           <li><%= link_to "Passées", deliveries_path({period: "past"}) %></li>
           <li><%= link_to "Aujourd'hui", deliveries_path({period: "today"}) %></li>
+          <li><%= link_to "Récent", deliveries_path({period: "today"}) %></li>
         </ul>
-      </li>
       <li><%= link_to '<i class="fas fa-plus-square fa-lg"></i> &ensp;Nouvelle expédition'.html_safe, deliveries_bulk_new_path %></li>
     </ul>
   </div>
