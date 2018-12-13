@@ -16,10 +16,16 @@ Company.create!( name: "Alias Vert")
 
 
 puts "Creating beer package types…"
-PackageType.create!( name: "Pack de 12 bières blondes 33 cl")
-PackageType.create!( name: "Pack de 12 bières ambrées 33 cl")
-PackageType.create!( name: "Pack de 6 bières IPA 50 cl")
-PackageType.create!( name: "Fut de 30 L de bière blonde")
+PackageType.create!( name: "Pack de 12 bières blondes 33 cl", icon: "https://res.cloudinary.com/dqozfzznu/image/upload/v1544718539/blonde.png")
+PackageType.create!( name: "Pack de 12 bières ambrées 33 cl", icon: "https://res.cloudinary.com/dqozfzznu/image/upload/v1544717932/ambr%C3%A9e.png")
+PackageType.create!( name: "Fut de 30 L de bière blonde", icon: "https://res.cloudinary.com/dqozfzznu/image/upload/v1544718555/fut-blonde.png")
+
+puts "Attribute them to Brasserie Tout Schuss…"
+
+PackageType.last(3).each do |t|
+  CompanyPackageType.create!(company: brasserie, package_type: t)
+end
+
 
 puts "Creating plants package types…"
 PackageType.create!(name: "Grande jardinière 80 cm × 20 cm")
@@ -48,7 +54,7 @@ casks_for_delivery = DeliveryPackage.new(
   amount: 3)
 bottles_for_delivery = DeliveryPackage.new(
   delivery: laffitte_delivery,
-  package_type: PackageType.find_by(name: "Pack de 6 bières IPA 50 cl"),
+  package_type: PackageType.find_by(name: "Pack de 12 bières blondes 33 cl"),
   amount: 1)
 
 laffitte_delivery.save!
