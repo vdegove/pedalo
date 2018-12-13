@@ -12,7 +12,9 @@
         <div class="col-xs-12 col-md-3">
           <div data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1000">
             <div class="dashboard-card">
-              <p> Aujourd'hui,</p> <h3><%= total %></h3> <p>livraisons prévues.</p>
+              <div class="dashboard-card-description">
+               <p> Aujourd'hui,</p> <h3><%= total %></h3> <p>livraisons prévues.</p>
+              </div>
             </div>
           </div>
 
@@ -20,7 +22,9 @@
         <div class="col-xs-12 col-md-3">
           <div data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1250">
             <div class="dashboard-card">
-              <p> Aujourd'hui,</p> <h3><%= delivered %></h3> <p>livraisons effectuées.</p>
+              <div class="dashboard-card-description">
+               <p> Aujourd'hui,</p> <h3><%= delivered %></h3> <p>livraisons effectuées.</p>
+              </div>
             </div>
           </div>
 
@@ -28,7 +32,9 @@
         <div class="col-xs-12 col-md-3">
           <div data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500">
             <div class="dashboard-card">
-              <p> Aujourd'hui,</p> <h3><%= not_delivered %></h3> <p>livraisons à venir, dont <strong><%= in_process %></strong> en cours ...</p>
+              <div class="dashboard-card-description">
+                <p> Aujourd'hui,</p> <h3><%= not_delivered %></h3> <p>livraisons à venir, dont <strong><%= in_process %></strong> en cours ...</p>
+              </div>
             </div>
           </div>
 
