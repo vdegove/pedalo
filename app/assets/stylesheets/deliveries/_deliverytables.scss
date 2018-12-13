@@ -127,7 +127,7 @@
 .headers {
   display: flex;
   padding: 12px;
-  background-color: #27b1be;
+  background-color: #25b1be;
   margin-left: 35px;
   margin-right: 35px;
 }
@@ -138,8 +138,9 @@
   text-align: left;
   justify-content: center;
   font-weight: bold;
-  padding-top: 10px;
-  color: rgba(0, 0, 0, 0.7);
+  // padding-top: 10px;
+  // color: rgba(0, 0, 0, 0.7);
+  color: white;
   margin-left: 30px;
 }
 
@@ -189,4 +190,24 @@
 
 .delivery-livre {
   color: green;
+}
+
+.container-show {
+
+  .headers {
+    margin-right: 0;
+    margin-left: 0;
+
+    .head {
+      text-align: center;
+    }
+  }
+
+  p {
+    text-align: center;
+  }
+
+  .delivery-rows {
+    align-items: center;
+  }
 }

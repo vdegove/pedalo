@@ -1,0 +1,14 @@
+<div class="container-show">
+  <div class="headers">
+    <div class="head">PRODUIT</div>
+    <div class="head">QUANTITÉ</div>
+  </div>
+  <div>
+    <% @delivery.delivery_packages.each do |delivery_package| %>
+        <div class="delivery-rows">
+          <div class="delivery"><p><%= delivery_package.package_type.name %></p></div>
+          <div class="delivery"><p><%= delivery_package.amount %></p></div>
+        </div>
+    <% end %>
+  </div>
+</div>
