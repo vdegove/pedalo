@@ -1,15 +1,20 @@
-<div class="bulknew-title">
-  <h3>Importez votre fichier CSV</h3>
-  <p>Nous pédalons très vite pour que tout soit prêt !</p>
+<div class="bulknew-container">
+  <div class="bulknew-content">
+    <div class="bulknew-title">
+      <h3>Importez votre fichier CSV</h3>
+      <p>Nous pédalons très vite pour que tout soit prêt !</p>
+    </div>
+    <div class="centered">
+        <%= form_tag(deliveries_bulk_create_path, method: "post", multipart: true, class: "form-inline") do %>
+          <div class="form-group"><%= file_field_tag 'file'%></div>
+          <%= submit_tag("Importer", class: "btn-no-background") %>
+        <% end %>
+        <br>
+        <br>
+        <p>Format accepté : <a href="#">téléchargez un modèle de fichier</a></p>
+    </div>
+  </div>
 </div>
 
-<div class="centered">
-    <%= form_tag(deliveries_bulk_create_path, method: "post", multipart: true, class: "form-inline") do %>
-      <div class="form-group"><%= file_field_tag 'file'%></div>
-      <%= submit_tag("Importer", class: "btn-no-background") %>
-    <% end %>
-    <br>
-    <br>
-    <p>Format accepté : <a href="#">téléchargez un modèle de fichier</a></p>
-</div>
+
 

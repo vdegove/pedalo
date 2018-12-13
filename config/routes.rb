@@ -1,17 +1,17 @@
 Rails.application.routes.draw do
+
   devise_for :users
 
 
   authenticated :user do
       root to: 'deliveries#dashboard'
   end
-
-  root 'pages#home', as: :authenticated_root
+  root 'pages#home'
+  get "/pages/home", to: "pages#home"
   # root to: 'deliveries#index', period: "today"
 
-
 # For debugging bulk create
-  get 'deliveries/test-bulk-create', to: 'deliveries#test_bulk_create'
+get 'deliveries/test-bulk-create', to: 'deliveries#test_bulk_create'
 
 
   get '/deliveries/bulk-new', to: 'deliveries#bulk_new'
@@ -25,7 +25,6 @@ Rails.application.routes.draw do
   resources :delivery_packages, only: :update
   # resources :delivery_packages, only: [:new, :show, :edit, :update]
   resources :companies, only: [:new, :create]
-
   get '/dashboard', to: 'deliveries#dashboard'
 
 
@@ -38,6 +37,10 @@ Rails.application.routes.draw do
   #     get 'photo', to: "deliveries#photo"
   #   end
   # end
+
+
+  resources :delivery_packages, only: [:edit, :update, :new]
+
 
   # Webooks
   post '/webhooks/onfleet/:token/task-completed', to: 'onfleet_webhooks#task_completed'

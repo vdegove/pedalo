@@ -6,7 +6,7 @@
       <div class="head-upcoming">STATUT</div>
     </div>
   <div class="delivery-container-upcoming">
-    <% @deliveries.first(10).each do |delivery| %>
+    <% @deliveries.important.first(5).each do |delivery| %>
     <% debut = delivery.complete_after.to_formatted_s(:short).split(" ").last %>
     <% fin = delivery.complete_before.to_formatted_s(:short).split(" ").last %>
       <!-- <div class="delivery-rows"> -->
@@ -14,7 +14,10 @@
           <div class="delivery-upcoming"><%= delivery.recipient_name %></div>
           <div class="delivery-upcoming"><%= delivery.complete_after.strftime("%d/%m/%Y") %></div>
           <div class="delivery-upcoming"><%= debut %> - <%= fin %></div>
-          <div class="delivery-upcoming"><%= delivery.status? %></div>
+          <div class="delivery delivery-<%= status_class(delivery) %>">
+              <%= delivery.status? %>
+
+          </div>
           <% end %>
         <% end %>
     </div>

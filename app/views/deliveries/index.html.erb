@@ -1,18 +1,6 @@
 <div class="main-container">
   <div class="table-container">
-    <div class="container-search">
-      <div class="orders">Votre tableau de bord</div>
-        <div class="delivery-search">
-          <%= form_tag root_path, method: :get do %>
-            <%= text_field_tag :query,
-              params[:query],
-              class: "form-control",
-              placeholder: "Rechercher une commande...",
-              value: ""
-            %>
-          <% end %>
-        </div>
-      </div>
+      <div class="orders">Votre tableau de bord - <%= @period %></div>
       <%= render "table", deliveries: @deliveries %>
   </div>
 </div>

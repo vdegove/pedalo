@@ -1,16 +1,16 @@
 .container-show {
-  width: 1300px;
-  margin-left: auto;
-  margin-right: auto;
+  width: 100%;
+  //margin-right: auto;
+  //margin-left: 172px;
 }
 
 .big-title {
-  margin: 40px 0 30px 60px;
+  margin: 40px 0 30px 300px;
   vertical-align: middle;
 }
 
 .big-title i {
-  color: #24527A;
+  color: #25B1BE;
   font-size: 30px;
   text-decoration: none;
 }
@@ -22,7 +22,7 @@
 
 .all-cards {
   display: flex;
-  height: calc(100vh - 230px)
+  height: calc(100vh - 230px);
 }
 
 
@@ -149,7 +149,7 @@
     border-radius: 2px;
     background-color: white;
     padding: 0 10px 0px 10px;
-    z-index: -1;
+    z-index: 1;
 
     flex-direction: column;
     // flex: 1 1 auto;

@@ -1,5 +1,4 @@
-<%= render 'shared/home_navbar' %>
-<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%= image_path "image-homepage-forest.png" %>');">
+<div class="banner" style="background-image: url('<%= image_path "homepage.svg" %>');">
   <div class="col-xs-2"></div>
   <div class="col-xs-5">
     <div class="home-container">
@@ -7,14 +6,13 @@
         <h1>La gestion de livraison simplifiée</h1>
         <p>Importez, suivez, analysez vos livraisons en temps réel</p>
         <div>
-          <a href="#" class="btn-home">Livrez-moi</a>
+          <%= link_to "Livrez-moi", deliveries_bulk_new_path, class: "btn-home" %>
         </div>
       </div>
     </div>
   </div>
   <div class="col-xs-3"></div>
   <div class="col-xs-3"></div>
-
 </div>
   <!--     <ul>
         <li><p>Uploadez vos commandes en format CSV ou par API </p></li>

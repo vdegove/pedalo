@@ -2,10 +2,11 @@
 
 .banner {
   color: white;
-  background-size: cover !important;
+  //background-size: cover !important;
+  background-size: 50%;
   background-repeat: no-repeat;
-  background-position: center;
-  height: calc(100vh - 55px);
+  background-position: right;
+  height: calc(100vh - 70px);
   display: flex;
   justify-content: center;
 }
@@ -14,7 +15,7 @@
     font-size: 50px;
     font-weight: bold;
     text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
-    color: #f9ce00;
+    color: #25B1BE;
   }
 
   .banner p {

@@ -1,6 +1,5 @@
 .dashboard-card {
-  height: 250px;
-  width: 340px;
+  height: 200px;
   background-color: white;
   background-position: center;
   color: #24527A;
@@ -8,15 +7,15 @@
   box-shadow: 0 20px 20px -18px rgba(0,0,0,0.15);
   text-align: center;
   margin-top: 5px;
-  padding: 50px;
-  border-bottom: 2px solid #F9CE01;
+  padding: 10px;
+  border-bottom: 2px solid #27b1be;
    h3 {
-    font-size: 40px;
+    font-size: 30px;
     color: black;
     font-family: "Rubik";
    }
    p {
-    font-size: 22px;
+    font-size: 20px;
     color: black;
     opacity: 0.7;
    }
@@ -42,30 +41,46 @@
 }
 
 .card-container {
-  display: flex;
-  padding: 30px;
-  margin-right: 50px;
+  margin: 0 40px;
 }
 
-.card-title-container {
+.card-title-container h3 {
   font-family: "Rubik";
   margin-left: 50px;
   margin-top: 20px;
-  text-decoration-line: underline !important;
-  text-decoration-color: #F9CE01;
 }
+
+.card-title-container-second h3 {
+  font-family: "Rubik";
+  margin-left: 62px;
+  margin-top: 20px;
+}
+
+.undertitle-dashboard {
+  flex: 1;
+  padding-top : 12px;
+  padding-left: 35px;
+  padding-bottom: -40px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+#gauge {
+    padding-top: 0px !important;
+    padding-left: 10px !important;
+   }
 
 #myChart {
   margin-top: 0px;
   margin-left: 10px;
-  width: 300px !important;
-  height: 300px !important;
+  width: 100%;
+  // height: 240px !important;
 }
 
-#myChart2 {
-  width: 500px !important;
-  height: 500px !important;
-}
+// #myChart2 {
+//   width: 500px !important;
+//   height: 500px !important;
+// }
 
 .topleft-dashboard {
     background-color: white;
@@ -101,9 +116,9 @@
 .headers-upcoming {
   display: flex;
   padding: 12px;
-  background-color: #F9CE01;
-  margin-left: 30px;
-  margin-right: 30px;
+  background-color: #27b1be;
+  margin-left: 35px;
+  margin-right: 35px;
 }
 
 .head-upcoming {
@@ -147,6 +162,10 @@
   border-radius: 3px;
 }
 
+.delivery-rows a:hover {
+  text-decoration: none;
+}
+
 .delivery-upcoming {
   flex: 1;
   text-align: left;
@@ -155,5 +174,4 @@
 
 .delivery-rows:hover{
   text-decoration: none;
-  color: black;
 }
