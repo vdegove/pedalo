@@ -1,3 +1,14 @@
+.flex {
+  display: flex;
+}
+
+.new_delivery_package,
+.edit_delivery_package {
+  .narrow-input {
+    width: 50px;
+  }
+}
+
 .tabs {
   display: flex;
   padding: 10px 10px 0 10px;

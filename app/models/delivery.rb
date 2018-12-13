@@ -24,6 +24,8 @@ class Delivery < ApplicationRecord
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
 
+  accepts_nested_attributes_for :delivery_packages
+
 
   # scope
   today = DateTime.now.midnight

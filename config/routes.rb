@@ -20,12 +20,15 @@ Rails.application.routes.draw do
 
   get '/deliveries', to: 'deliveries#index', as: 'deliveries'
   resources :deliveries, only: [:create, :update, :show] do
-    resources :delivery_packages, only: [:index]
+    resources :delivery_packages, only: [:index, :create]
   end
+  resources :delivery_packages, only: :update
   # resources :delivery_packages, only: [:new, :show, :edit, :update]
   resources :companies, only: [:new, :create]
 
   get '/dashboard', to: 'deliveries#dashboard'
+
+
 
   # resources :deliveries do
   #   collection do

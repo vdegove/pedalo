@@ -22,7 +22,13 @@ class DeliveryPackagesController < ApplicationController
     end
   end
 
+  def create
+    skip_authorization
+    redirect_to deliveries_test_bulk_create_path
+  end
+
   def update
+    raise
     @delivery_package = DeliveryPackage.find(params[:id])
     @delivery_package.update(delivery_package_params)
     respond_to do |format|
