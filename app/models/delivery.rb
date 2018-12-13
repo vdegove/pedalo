@@ -28,6 +28,8 @@ class Delivery < ApplicationRecord
   # scope
   today = DateTime.now.midnight
   now = DateTime.now
+  last_import = Delivery.last.created_at
+  two_minutes_ago = last_import - 2.minutes
   scope :today, -> { where('complete_after > ? AND complete_after < ?', today, today.tomorrow) }
   scope :past, -> { where('complete_before < ?', today) }
   scope :upcoming, -> { where('complete_after > ?', today) }
@@ -35,8 +37,10 @@ class Delivery < ApplicationRecord
   scope :not_delivered, -> { where('status = ? OR status = ?', "Enregistré", "Enlevé") }
   scope :in_process, -> { where(status: "Enlevé") }
   scope :enregistred, -> { where(status: "Enregistré") }
-  scope :important, -> { where('complete_before < ? AND status != ?', now, "Livré") }
-  scope :recent, -> { where('created_at < ?', now) }
+  scope :important, -> { where('status != ?', "Livré") }
+  scope :recent, -> { where('created_at <= ? AND created_at > ?', last_import, two_minutes_ago) }
+
+
 
   def status?
     if self.picked_up_at.nil?
