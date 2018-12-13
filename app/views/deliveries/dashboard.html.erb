@@ -43,9 +43,10 @@
           <div data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1750">
             <div class="dashboard-card" id="gauge">
               <div id="chart-legend">
-                Livré <i class="fa fa-square" aria-hidden="true" style="color: rgb(136, 252, 142)"></i>
-                Retard <i class="fa fa-square" aria-hidden="true" style="color: rgb(242, 130, 130)"></i>
-                En Cours <i class="fa fa-square" aria-hidden="true" style="color: rgb(31, 187, 198)"></i>Enregistré <i class="fa fa-square" aria-hidden="true" style="color: rgb(225, 229, 224)"></i>
+                <span>Livré <i class="fa fa-square" aria-hidden="true" style="color: rgb(8, 103, 136)"></i></span>
+                <span>Retard <i class="fa fa-square" aria-hidden="true" style="color: rgb(242, 130, 130)"></i></span>
+                <span>En Cours <i class="fa fa-square" aria-hidden="true" style="color: rgb(31, 187, 198)"></i></span>
+                <span>Enregistré <i class="fa fa-square" aria-hidden="true" style="color: rgb(225, 229, 224)"></i></span>
               </div>
               <canvas id="myChart" data-delivered="<%= delivered %>" data-delayed="<%= delayed %>" data-enregistred="<%= enregistred %>" data-in_process="<%= in_process %>"></canvas>
             </div>

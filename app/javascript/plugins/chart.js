@@ -25,7 +25,7 @@ var myChart = new Chart(ctx, {
     data: {
     datasets: [{
         backgroundColor: [
-                    'rgb(136, 252, 142)',
+                    'rgb(8, 103, 136)',
                     'rgb(242, 130, 130)',
                     'rgb(31, 187, 198)',
                     'rgb(225, 229, 224)'
