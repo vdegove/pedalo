@@ -48,3 +48,7 @@ end
 # for modal
 # gem 'bootstrap'
 # gem 'popper_js'
+
+# Gemfile
+gem 'sidekiq'
+gem 'sidekiq-failures', '~> 1.0'

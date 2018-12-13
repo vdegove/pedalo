@@ -47,4 +47,10 @@ get 'deliveries/test-bulk-create', to: 'deliveries#test_bulk_create'
   get '/webhooks/onfleet/:token/task-completed', to: 'onfleet_webhooks#task_completed'
   post '/webhooks/onfleet/:token/driver-assigned', to: 'onfleet_webhooks#driver_assigned'
   get '/webhooks/onfleet/:token/driver-assigned', to: 'onfleet_webhooks#driver_assigned'
+
+
+  require "sidekiq/web"
+  authenticate :user, lambda { |u| u.admin } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
 end
