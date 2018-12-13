@@ -8,7 +8,7 @@
   background-position: right;
   height: calc(100vh - 70px);
   display: flex;
-  justify-content: center;
+  // justify-content: center;
 }
 
   .banner h1 {
@@ -22,32 +22,14 @@
     font-size: 20px;
     margin-top: 10px;
     margin-bottom: 20px;
+    color: #606470;
   }
 
   .banner a {
     font-size: 20px;
   }
 
-.banner .home-container {
-  // position: relative;
-  // z-index: 1;
-}
 
-.home-container {
-  // margin: 0 auto;
-  // max-width: 1080px;
-  // width: 90%;
-  margin-top: 200px;
-}
-
-.banner-content {
-  // position: absolute;
-  // top: 0;
-  // left: 0;
-  // right: 0;
-  // bottom: 0;
-  // display: flex;
-  // flex-direction: column;
-  // text-align: left;
-  // justify-content: space-between;
-}
+  .home-container {
+    margin-top: 200px;
+  }
