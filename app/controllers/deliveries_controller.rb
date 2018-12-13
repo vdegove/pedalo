@@ -47,7 +47,7 @@ class DeliveriesController < ApplicationController
       # byebug
       delivery = create_delivery(row)
       delivery.save
-      delivery.push_to_onfleet
+      PushToOnfleetJob.perform_later(delivery.id) # to be
       @count += 1
       @deliveries << delivery
     end
