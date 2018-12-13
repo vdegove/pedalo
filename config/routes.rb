@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   # root to: 'deliveries#index', period: "today"
 
 # For debugging bulk create
-# get 'deliveries/test-bulk-create', to: 'deliveries#test_bulk_create'
+get 'deliveries/test-bulk-create', to: 'deliveries#test_bulk_create'
 
 
   get '/deliveries/bulk-new', to: 'deliveries#bulk_new'
@@ -20,10 +20,14 @@ Rails.application.routes.draw do
 
   get '/deliveries', to: 'deliveries#index', as: 'deliveries'
   resources :deliveries, only: [:create, :update, :show] do
-    resources :delivery_packages, only: [:index, :update]
+    resources :delivery_packages, only: [:index, :create]
   end
+  resources :delivery_packages, only: :update
+  # resources :delivery_packages, only: [:new, :show, :edit, :update]
   resources :companies, only: [:new, :create]
   get '/dashboard', to: 'deliveries#dashboard'
+
+
 
   # resources :deliveries do
   #   collection do

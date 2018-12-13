@@ -1,9 +1,11 @@
 .layout-container {
+  min-height: calc(100vh - 70px);
   display: flex;
 
 }
 
 .width-100 {
+  min-height: 100%;
   width: 100%;
 
 }

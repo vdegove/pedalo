@@ -24,6 +24,9 @@ class DeliveriesController < ApplicationController
     else
       @deliveries = policy_scope(@user_deliveries)
       case params[:period]
+      when "recent"
+        @period = "Ajoutées récemment - #{@deliveries.last.created_at.strftime("%d/%m/%Y")}"
+        @deliveries = @deliveries.recent
       when "past"
         @period = "Passées"
         @deliveries = @deliveries.past
@@ -51,6 +54,7 @@ class DeliveriesController < ApplicationController
   end
 
   def test_bulk_create
+    @count = 5
     @deliveries = Delivery.last(5)
     render 'bulk_create'
   end
