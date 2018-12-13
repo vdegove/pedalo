@@ -28,10 +28,8 @@ class Delivery < ApplicationRecord
 
 
   # scope
-  today = DateTime.now.midnight
+  today = DateTime.now.midnight # TODO: WTF change that
   now = DateTime.now
-  last_import = Delivery.last.created_at
-  two_minutes_ago = last_import - 2.minutes
   scope :today, -> { where('complete_after > ? AND complete_after < ?', today, today.tomorrow) }
   scope :past, -> { where('complete_before < ?', today) }
   scope :upcoming, -> { where('complete_after > ?', today) }
@@ -40,7 +38,7 @@ class Delivery < ApplicationRecord
   scope :in_process, -> { where(status: "Enlevé") }
   scope :enregistred, -> { where(status: "Enregistré") }
   scope :important, -> { where('status != ?', "Livré") }
-  scope :recent, -> { where('created_at <= ? AND created_at > ?', last_import, two_minutes_ago) }
+  scope :recent, -> { where('created_at <= ? AND created_at > ?', Delivery.last_import, Delivery.last_import - 2.minutes) }
 
 
 
@@ -133,5 +131,9 @@ class Delivery < ApplicationRecord
       "#{delivery_package.package_type.name} : #{delivery_package.amount}"
     end
     return d.join('\n')
+  end
+
+  def self.last_import
+    self.last.created_at
   end
 end

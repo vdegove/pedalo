@@ -17,7 +17,7 @@ Company.create!( name: "Alias Vert")
 
 puts "Creating beer package types…"
 PackageType.create!( name: "Pack de 12 bières blondes 33 cl", icon: "https://res.cloudinary.com/dqozfzznu/image/upload/v1544718539/blonde.png")
-PackageType.create!( name: "Pack de 12 bières ambrées 33 cl", icon: "https://res.cloudinary.com/dqozfzznu/image/upload/v1544717932/ambr%C3%A9e.png")
+PackageType.create!( name: "Pack de 12 bières ambrées 33 cl", icon: 'https://res.cloudinary.com/dqozfzznu/image/upload/v1544717932/ambr%C3%A9e.png')
 PackageType.create!( name: "Fut de 30 L de bière blonde", icon: "https://res.cloudinary.com/dqozfzznu/image/upload/v1544718555/fut-blonde.png")
 
 puts "Attribute them to Brasserie Tout Schuss…"
@@ -48,6 +48,8 @@ laffitte_delivery = Delivery.new(
 
 laffitte_delivery.company = brasserie
 
+puts "Giving it some packages…"
+
 casks_for_delivery = DeliveryPackage.new(
   delivery: laffitte_delivery,
   package_type: PackageType.find_by(name: "Fut de 30 L de bière blonde"),
@@ -72,6 +74,7 @@ today_delivery = Delivery.new(
   picked_up_at: today + 12 * 60 * 60,
   delivered_at: today + (12 * 60 + 30) * 60
   )
+
 today_delivery.company = brasserie
 today_delivery.save!
 
