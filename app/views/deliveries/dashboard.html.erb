@@ -33,7 +33,11 @@
           <div data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500">
             <div class="dashboard-card">
               <div class="dashboard-card-description">
-                <p> Aujourd'hui,</p> <h3><%= not_delivered %></h3> <p>livraisons à venir, dont <strong><%= in_process %></strong> en cours ...</p>
+                <% if not_delivered == 0 %>
+                  <p> Aujourd'hui,</p> <h3><%= not_delivered %></h3> <p>livraisons à venir. 🎉</p>
+                <% else %>
+                  <p> Aujourd'hui,</p> <h3><%= not_delivered %></h3> <p>livraisons à venir, dont <strong><%= in_process %></strong> en cours.</p>
+                <% end %>
               </div>
             </div>
           </div>
@@ -54,7 +58,7 @@
 
         </div>
       </div>
-      <div class="card-title-container-second">Vos livraisons à venir :</div>
+      <div class="card-title-container-second">Vos livraisons à venir :</div>
         <div class="upcoming-container">
           <%= render "upcomingtable", deliveries: @deliveries %>
         </div>
