@@ -31,19 +31,18 @@
           </div>
         <% end %>
       </div>
-      <button class="btn-no-background-no-strong">Mettre à jour</button>
     </div>
   <% end %>
-  <%= link_to "valider", root_path, class: "btn-no-background" %>
+  <%= link_to "Valider", root_path, class: "btn-no-background validate-center" %>
 
   <br><br>
   <hr>
 
 
-  <h3><%= current_user.company.name %>, vous pouvez expédier les types de colis suivants :</h3>
+  <h2><%= current_user.company.name %>, vous pouvez expédier les types de colis suivants :</h2>
   <ul class="list-inline">
     <% current_user.company.package_types.each do |package_type| %>
-      <li><p><img src="<%= package_type.icon %>" class="package-type-icon"> : <%= package_type.name %></p></li>
+      <li><p><img src="<%= package_type.icon %>" class="package-type-icon"> <%= package_type.name %></p></li>
     <% end %>
   </ul>
   <p>Si vous souhaitez expédier d'autres types de colis, n'hésiter pas à <a href="#">nous contacter</a> pour un devis personnalisé.</p>
