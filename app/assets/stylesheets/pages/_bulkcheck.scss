@@ -1,6 +1,20 @@
+.row-check {
+  padding: 15px 20px;
+  margin: 5px 5px;
+  background-color: white;
+  box-shadow: 0px 2px 4px rgba(36,82,122,0.05);
+  color: black;
+  border-radius: 3px;
+  border-bottom: 2px solid #25b1be;
+  border-radius: 8px;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.12) !important;
+}
+
+
 .bulk-date-check {
   display: inline-block;
   width: 124px;
+  margin-top: 10px;
 }
 
 .delivery-form-line {
@@ -54,4 +68,8 @@
   width: 50px;
   height: 50px;
   margin: 5px 0px;
+}
+
+.validate-center {
+  margin-top: 100px;
 }

@@ -1,11 +1,12 @@
 <div class="container-check">
   <h1><%= @count %> livraisons importées !</h1>
   <% @deliveries.each do |delivery| %>
-    <div class="flex">
+    <div class="flex row-check">
       <%= simple_form_for delivery, wrapper: :inline_form, html: { class: 'form-inline delivery-form-line' } do |f| %>
         <%= f.input :recipient_name, label: :false, input_html: { size: '16' }  %>
         <%= f.input :address, label: :false, input_html: { size: '24' } %>
         <%#= f.input :date, as: :date, label: false %>
+        <br>
         <div class="bulk-date-check">le <strong><%= delivery.date.strftime("%d/%m/%y") %></strong> entre</div>
         <%= f.input :complete_after, as: :time, label: false, input_html: {style: "width: 60px;"} %> et
         <%= f.input :complete_before, as: :time, label: false, input_html: {style: "width: 60px;"} %>
@@ -33,6 +34,7 @@
       </div>
     </div>
   <% end %>
+  <br><br>
   <%= link_to "Valider", root_path, class: "btn-no-background validate-center" %>
 
   <br><br>
