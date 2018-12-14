@@ -6,9 +6,9 @@
   <div class="all-cards">
     <div class="card-left">
       <div class="infos-card">
-        <div class="style">
-          <p>Status</p>
-          <p><strong><%= @delivery.status? %></strong></p>
+        <div class="delivery-show-<%= status_class(@delivery) %>">
+          <p style="color: black">Status</p>
+          <p><%= @delivery.status? %></p>
         </div>
         <h3>Informations client</h3>
         <div class="style">
