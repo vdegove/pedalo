@@ -2,9 +2,9 @@
     <% total = @deliveries.today.count %>
     <% delivered = @deliveries.today.delivered.count %>
     <% not_delivered =  @deliveries.today.not_delivered.count %>
-    <% delayed = @deliveries.today.important.count %>
-    <% enregistred = total - delayed %>
     <% in_process = @deliveries.today.in_process.count %>
+    <% delayed = @deliveries.today.late.count %>
+    <% enregistred = total - delayed - delivered - in_process%>
   <!-- --- -->
 <div class="main-card-container">
     <div class="orders">Bonjour, <%= current_user.company.name %>. </div>
